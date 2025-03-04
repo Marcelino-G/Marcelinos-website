@@ -1,15 +1,11 @@
 <script setup>
-
 </script>
 
 <template>
-    <section>
-        
-        img, p, or video
-        
-    </section>
+  <div>
+    <section>img, p, or video</section>
+  </div>
 </template>
 
 <style scoped>
-
 </style>

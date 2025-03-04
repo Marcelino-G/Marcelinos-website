@@ -1,11 +1,11 @@
 <script setup>
-
 </script>
 
 <template>
-    <p> describes the project content.. </p>
+  <div>
+    <p>describes the project content..</p>
+  </div>
 </template>
 
 <style scoped>
-
 </style>

@@ -1,12 +1,16 @@
 <script setup>
+const props = defineProps({
+  title: String
+})
 
 </script>
 
 <template>
-  <h1>Hi</h1>
-  <img src="" >
+  <div>
+    <h1>{{ title }}</h1>
+    <img src="../assets/logo.svg" />
+  </div>
 </template>
 
 <style scoped>
-
 </style>

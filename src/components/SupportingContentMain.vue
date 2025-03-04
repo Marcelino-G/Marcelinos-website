@@ -1,15 +1,11 @@
 <script setup>
-
 </script>
 
 <template>
-    <section>
-        
-        pictures, skills, project list, handles
-        
-    </section>
+  <div>
+    <section>pictures, skills, project list, handles</section>
+  </div>
 </template>
 
 <style scoped>
-
 </style>

@@ -1,11 +1,11 @@
 <script setup>
-
 </script>
 
 <template>
-    <h2> I am a..., about me, project name</h2>
+  <div>
+    <h2>I am a..., about me, project name</h2>
+  </div>
 </template>
 
 <style scoped>
-
 </style>
