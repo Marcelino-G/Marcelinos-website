@@ -1,24 +1,43 @@
 <script setup>
-import TopicHeader from "../components/TopicHeader.vue";
-import NavHeader from "../components/NavHeader.vue";
-import TopicMain from "../components/TopicMain.vue";
-import ContentMain from "../components/ContentMain.vue";
-import SupportingContentMain from "../components/SupportingContentMain.vue";
-import SupportingContentHeader from "../components/SupportingContentHeader.vue";
+
+import { useHomeStore } from '@/stores/homeStore.js';
+const homeStore = useHomeStore();
+
+import TopicHeader from "@/components/header/TopicHeader.vue";
+import NavHeader from "@/components/header/NavHeader.vue";
+import SupportingContentHeader from "@/components/header/SupportingContentHeader.vue";
+import TopicMain from "@/components/main/TopicMain.vue";
+import ContentMain from "@/components/main/ContentMain.vue";
+import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
+
+
+import { ref } from 'vue';
+
+const headerTitle = ref(null);
+const headerImage = ref(null);
+const supportingContentHeader = ref(null);
+const topics = ref(null);
+
+
+
+headerTitle.value = homeStore.topicHeader.headerTitle;
+headerImage.value = homeStore.topicHeader.headerImage;
+supportingContentHeader.value = homeStore.supportingContentHeader;
+topics.value = homeStore.topic_content_supporting_Main;
 </script>
 
 <template>
   <div id="homeContainer">
     <header>
-      <topic-header id="topic-header" />
+      <topic-header id="topic-header" :headerTitle="headerTitle" :headerImage="headerImage" />
       <nav-header id="nav-header" />
-      <supporting-content-header id="supporting-content-header" />
+      <supporting-content-header id="supporting-content-header" :supportingContent="supportingContentHeader" />
     </header>
 
     <main>
-      <topic-main id="topic-main" />
-      <content-main id="content-main" />
-      <supporting-content-main id="supporting-content-main" />
+      <topic-main id="topic-main" :topics="topics" />
+      <content-main id="content-main" :content="topics" />
+      <supporting-content-main id="supporting-content-main" :supportingContent="topics" />
     </main>
 
     <footer>copyright</footer>

@@ -1,12 +1,4 @@
 <script setup>
-import TopicHeader from "./components/TopicHeader.vue";
-import NavHeader from "./components/NavHeader.vue";
-import TopicMain from "./components/TopicMain.vue";
-import ContentMain from "./components/ContentMain.vue";
-import SupportingContentMain from "./components/SupportingContentMain.vue";
-// import {useHomeStore} from '@/stores/home'
-
-
 </script>
 
 <template>

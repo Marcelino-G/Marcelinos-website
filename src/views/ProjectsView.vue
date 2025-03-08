@@ -1,9 +1,10 @@
 <script setup>
-import TopicHeader from "../components/TopicHeader.vue";
-import NavHeader from "../components/NavHeader.vue";
-import TopicMain from "../components/TopicMain.vue";
-import ContentMain from "../components/ContentMain.vue";
-import SupportingContentMain from "../components/SupportingContentMain.vue";
+import TopicHeader from "@/components/header/TopicHeader.vue";
+import NavHeader from "@/components/header/NavHeader.vue";
+import SupportingContentHeader from "@/components/header/SupportingContentHeader.vue";
+import TopicMain from "@/components/main/TopicMain.vue";
+import ContentMain from "@/components/main/ContentMain.vue";
+import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
 </script>
 
@@ -12,6 +13,7 @@ import SupportingContentMain from "../components/SupportingContentMain.vue";
     <header>
       <topic-header id="topic-header" />
       <nav-header id="nav-header" />
+      <supporting-content-header id="supporting-content-header" :supportingContent="supportingContentHeader" />
     </header>
 
     <main>
@@ -41,10 +43,11 @@ header {
   background-color: black;
   grid-area: header;
   display: grid;
+  grid-template-columns: 50% 50%;
   grid-template-rows: 90% 10%;
   grid-template-areas:
-    "topic-header"
-    "nav-header";
+    "topic-header topic-header"
+    "nav-header supporting-content-header";
 }
 
 #topic-header {
@@ -55,6 +58,11 @@ header {
 #nav-header {
   background-color: orange;
   grid-area: nav-header;
+}
+
+#supporting-content-header {
+  grid-area: supporting-content-header;
+  background-color: brown;
 }
 
 main {
