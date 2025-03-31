@@ -7,24 +7,36 @@
 // const mainStore = useMainStore();
 
 // onMounted(() => {
-//   mainStore.setMainTopic(route.fullPath);
+//   mainStore.setMainsupport(route.fullPath);
 // })
 
 // watch(route, (newRoute, oldRoute) => {
-//   mainStore.setMainTopic(newRoute.fullPath)
+//   mainStore.setMainsupport(newRoute.fullPath)
 // })
-import { defineProps } from 'vue';
+import { defineProps } from "vue";
 
 const props = defineProps({
-  topics: Object
-})
+  content: Object,
+});
 
+// import { useRoute } from "vue-router";
+// const route = useRoute();
 </script>
 
 <template>
-  <div>
-    <h2 v-for="(topic,index) in topics" :key="index">{{ topic.description }}</h2>
-  </div>
+
+    <div v-if="content.title === undefined">
+      <h2  v-for="(support, index) in content" :key="index">
+        {{ support.title }}
+      </h2>
+    </div>
+    <div v-else>
+      <h2>{{content.title}}</h2>
+    </div>
+<!-- 
+    <div v-if="route.fullPath === '/projects'">
+      <h2 v-for="(support, index) in supports" :key="index">{{ support.name }}</h2>
+    </div> -->
 </template>
 
 <style scoped>

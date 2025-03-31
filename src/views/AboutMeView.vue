@@ -1,63 +1,55 @@
 <script setup>
-import { useAboutStore } from '@/stores/aboutStore.js'
-const aboutStore = useAboutStore();
-import { ref } from 'vue';
-
-
-import TopicHeader from "@/components/header/TopicHeader.vue";
-import NavHeader from "@/components/header/NavHeader.vue";
-import SupportingContentHeader from "@/components/header/SupportingContentHeader.vue";
 import TopicMain from "@/components/main/TopicMain.vue";
 import ContentMain from "@/components/main/ContentMain.vue";
 import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
-const headerTitle = ref(null);
-const headerImage = ref(null);
-const supportingContentHeader = ref(null);
-const contentAboutMe = ref(null);
-const supportingContentMain = ref(null);
+import { ref } from "vue"
+import { useWebsiteStore } from '@/stores/websiteStore.js';
+const websiteStore = useWebsiteStore();
 
-headerTitle.value = aboutStore.topicHeader.headerTitle;
-headerImage.value = aboutStore.topicHeader.headerImage;
-supportingContentHeader.value = aboutStore.supportingContentHeader;
-contentAboutMe.value = aboutStore.contentMain;
-supportingContentMain.value = aboutStore.supportingContentMain;
+let content = ref(websiteStore.aboutMePage.main_content);
 
 
 </script>
 
 <template>
-  <div id="homeContainer">
-    <header>
-      <topic-header id="topic-header" :headerTitle="headerTitle" :headerImage="headerImage" />
-      <nav-header id="nav-header" />
-      <supporting-content-header id="supporting-content-header" :supportingContent="supportingContentHeader" />
-    </header>
+  <div id="aboutMeContainer">
+      <topic-main id="topic-main" :content="content"  />
+      <content-main id="content-main" :content="content" />
+      <supporting-content-main id="supporting-content-main" :content="content" />
 
-    <main>
-      <!-- <topic-main id="topic-main" /> -->
-      <content-main id="content-main" :content="contentAboutMe" />
-      <supporting-content-main id="supporting-content-main" :supportingContent="supportingContentMain" />
-    </main>
-
-    <footer>copyright</footer>
   </div>
 </template>
 
 <style scoped>
 
-#homeContainer{
-  width: 100%;
+ #aboutMeContainer{
   height: 100%;
+  background-color: blue;
   display: grid;
-  grid-template-columns: 40% 60%;
-  grid-template-rows: 95% auto;
+  grid-template-rows: 10% 80% 10%;
   grid-template-areas:
-    "header main"
-    "footer footer"; 
+    "topic-main"
+    "content-main"
+    "supporting-content-main"; 
 }
 
-header {
+ #topic-main {
+  background-color: red;
+  grid-area: topic-main;
+} 
+
+ #content-main {
+  background-color: gold;
+  grid-area: content-main;
+}
+
+#supporting-content-main {
+  background-color: aqua;
+  grid-area: supporting-content-main;
+}
+
+/* header {
   background-color: black;
   grid-area: header;
   display: grid;
@@ -93,12 +85,12 @@ main {
     "supporting-content-main";
 }
 
-/* #topic-main {
+ #topic-main {
   background-color: red;
   grid-area: topic-main;
-} */
+} 
 
-#content-main {
+ #content-main {
   background-color: gold;
   grid-area: content-main;
 }
@@ -111,5 +103,5 @@ main {
 footer {
   background-color: grey;
   grid-area: footer;
-}
+}  */
 </style>

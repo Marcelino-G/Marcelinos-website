@@ -1,45 +1,54 @@
 <script setup>
-import TopicHeader from "@/components/header/TopicHeader.vue";
-import NavHeader from "@/components/header/NavHeader.vue";
-import SupportingContentHeader from "@/components/header/SupportingContentHeader.vue";
 import TopicMain from "@/components/main/TopicMain.vue";
 import ContentMain from "@/components/main/ContentMain.vue";
 import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
+import { ref } from "vue"
+import { useWebsiteStore } from '@/stores/websiteStore.js';
+const websiteStore = useWebsiteStore();
+
+let mainContent = ref(websiteStore.projectsPage.main_content);
+
 </script>
 
 <template>
-  <div id="homeContainer">
-    <header>
-      <topic-header id="topic-header" />
-      <nav-header id="nav-header" />
-      <supporting-content-header id="supporting-content-header" :supportingContent="supportingContentHeader" />
-    </header>
-
-    <main>
-      <topic-main id="topic-main" />
-      <content-main id="content-main" />
-      <supporting-content-main id="supporting-content-main" />
-    </main>
-
-    <footer>copyright</footer>
+  <div id="projectsContainer">
+      <topic-main id="topic-main" :content="mainContent" />
+      <content-main id="content-main" :content="mainContent" />
+      <supporting-content-main id="supporting-content-main" :content="mainContent" />
   </div>
 </template>
 
 <style scoped>
 
-#homeContainer{
-  width: 100%;
+ #projectsContainer{
+
   height: 100%;
+  background-color: blue;
   display: grid;
-  grid-template-columns: 40% 60%;
-  grid-template-rows: 95% auto;
+  grid-template-rows: 10% 80% 10%;
   grid-template-areas:
-    "header main"
-    "footer footer"; 
+    "topic-main"
+    "content-main"
+    "supporting-content-main";
 }
 
-header {
+#topic-main {
+  background-color: red;
+  grid-area: topic-main;
+}
+
+#content-main {
+  background-color: gold;
+  grid-area: content-main;
+}
+
+#supporting-content-main {
+  background-color: aqua;
+  grid-area: supporting-content-main;
+}
+
+/* header {
   background-color: black;
   grid-area: header;
   display: grid;
@@ -94,5 +103,5 @@ main {
 footer {
   background-color: grey;
   grid-area: footer;
-}
+}  */
 </style>

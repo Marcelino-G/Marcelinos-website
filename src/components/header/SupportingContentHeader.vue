@@ -1,34 +1,15 @@
 <script setup>
-// import { watch, onMounted } from "vue";
-// import { useHomeStore } from "@/stores/homeStore";
-// import { useRoute } from "vue-router";
-
-// const headerStore = useHeaderStore();
-// const route = useRoute();
-
-// onMounted(() => {
-//   headerStore.setSupportingContent(route.fullPath);
-// })
-
-// watch(route, (newRoute, oldRoute) => {
-//   headerStore.setSupportingContent(newRoute.fullPath);
-// });
-
-import { defineProps } from 'vue';
-const props = defineProps({
-  supportingContent: Object
-})
+import { useWebsiteStore } from '@/stores/websiteStore.js';
+const websiteStore = useWebsiteStore();
 
 </script>
 
 <template>
   <div>
     <ul>
-      <li v-for="(support, index) in supportingContent" :key = "index">
-        <a :href="support.link">
+      <li v-for="(support, index) in websiteStore.projectsPage.supporting_content_header" :key = "index">
           <img :src="support.icon" >
           <p>{{ support.description }}</p>
-        </a>
       </li>
     </ul>
   </div>

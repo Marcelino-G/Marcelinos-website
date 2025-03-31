@@ -1,9 +1,17 @@
 <script setup>
+
+import { defineProps } from "vue";
+
+const props = defineProps({
+  videoDescription: String
+});
+
+
 </script>
 
 <template>
   <div>
-    <p>describes the project content..</p>
+    <p>{{ videoDescription }}</p>
   </div>
 </template>
 

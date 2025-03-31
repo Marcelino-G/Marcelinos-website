@@ -7,33 +7,54 @@
 // const route = useRoute();
 
 // onMounted(() => {
-//   mainStore.setMainTopic(route.fullPath);
+//   mainStore.setMainsupport(route.fullPath);
 // })
 
 // watch(route, (newRouter, oldRouter) => {
-//   mainStore.setMainTopic(newRouter.fullPath)
+//   mainStore.setMainsupport(newRouter.fullPath)
 // })
 
 import { defineProps } from "vue";
+// import VideoDescriptionMain from "@/components/main/VideoDescriptionMain.vue"
 
 const props = defineProps({
   content: Object,
 });
 
-import { useRoute } from "vue-router";
-const route = useRoute();
+// import { useRoute } from "vue-router";
+// const route = useRoute();
 </script>
 
 <template>
   <div>
-    <section>
-      <div v-if="route.fullPath === '/'">
-        <img v-for="(topic, index) in content" :src="topic.img" :key="index" />
+    <div v-if="content.aboutMe === undefined">
+      <div v-for="(support, index) in content" :key="index">
+        <img v-if="support.img !== undefined" :src="support.img" />
+        <p v-if="support.description !== undefined">
+          {{ support.description }}
+        </p>
+      </div>
+    </div>
+
+    <div v-else>
+      <p>{{content.aboutMe}}</p>
+    </div>
+
+    <!-- <div v-if="route.fullPath === '/'">
+        <img v-for="(support, index) in content" :src="support.img" :key="index" />
       </div>
       <div v-if="route.fullPath === '/about'">
-        <p v-for="(aboutMe, index) in content" :key="index" >{{ aboutMe }}</p>
+        <p v-for="(aboutMe, index) in content" :key="index">{{ aboutMe }}</p>
       </div>
-    </section>
+      <div v-if="route.fullPath === '/projects'">
+
+        <div v-for="(support, index) in content" :key="index" >
+          <img  :src="support.img"  />
+          <p>{{ support.description }}</p>
+          <video-description-main :videoDescription="support.description"  />
+        </div>
+        
+      </div> -->
   </div>
 </template>
 

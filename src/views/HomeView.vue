@@ -1,62 +1,56 @@
 <script setup>
-
-import { useHomeStore } from '@/stores/homeStore.js';
-const homeStore = useHomeStore();
-
-import TopicHeader from "@/components/header/TopicHeader.vue";
-import NavHeader from "@/components/header/NavHeader.vue";
-import SupportingContentHeader from "@/components/header/SupportingContentHeader.vue";
 import TopicMain from "@/components/main/TopicMain.vue";
 import ContentMain from "@/components/main/ContentMain.vue";
 import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
+import { ref } from "vue"
+import { useWebsiteStore } from '@/stores/websiteStore.js';
+const websiteStore = useWebsiteStore();
 
-import { ref } from 'vue';
+let content = ref(websiteStore.homePage.main_content);
 
-const headerTitle = ref(null);
-const headerImage = ref(null);
-const supportingContentHeader = ref(null);
-const topics = ref(null);
-
-
-
-headerTitle.value = homeStore.topicHeader.headerTitle;
-headerImage.value = homeStore.topicHeader.headerImage;
-supportingContentHeader.value = homeStore.supportingContentHeader;
-topics.value = homeStore.topic_content_supporting_Main;
 </script>
 
 <template>
   <div id="homeContainer">
-    <header>
-      <topic-header id="topic-header" :headerTitle="headerTitle" :headerImage="headerImage" />
-      <nav-header id="nav-header" />
-      <supporting-content-header id="supporting-content-header" :supportingContent="supportingContentHeader" />
-    </header>
 
-    <main>
-      <topic-main id="topic-main" :topics="topics" />
-      <content-main id="content-main" :content="topics" />
-      <supporting-content-main id="supporting-content-main" :supportingContent="topics" />
-    </main>
-
-    <footer>copyright</footer>
+    
+      <topic-main id="topic-main" :content="content" />
+      <content-main id="content-main" :content="content" />
+      <supporting-content-main id="supporting-content-main" :content="content" />
+    
   </div>
 </template>
 
 <style scoped>
-#homeContainer {
-  width: 100%;
+ #homeContainer {
+
   height: 100%;
+  background-color: blue;
   display: grid;
-  grid-template-columns: 40% 60%;
-  grid-template-rows: 95% auto;
+  grid-template-rows: 10% 80% 10%;
   grid-template-areas:
-    "header main"
-    "footer footer";
+    "topic-main"
+    "content-main"
+    "supporting-content-main";
 }
 
-header {
+#topic-main {
+  background-color: red;
+  grid-area: topic-main;
+}
+
+#content-main {
+  background-color: gold;
+  grid-area: content-main;
+}
+
+#supporting-content-main {
+  background-color: aqua;
+  grid-area: supporting-content-main;
+}
+
+/* header {
   background-color: black;
   grid-area: header;
   display: grid;
@@ -111,5 +105,5 @@ main {
 footer {
   background-color: grey;
   grid-area: footer;
-}
+} */
 </style>
