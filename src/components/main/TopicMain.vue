@@ -1,42 +1,26 @@
 <script setup>
-// import { useMainStore } from '@/stores/mainStore';
-// import{ watch, onMounted } from 'vue';
-// import { useRoute } from 'vue-router';
-
-// const route = useRoute();
-// const mainStore = useMainStore();
-
-// onMounted(() => {
-//   mainStore.setMainsupport(route.fullPath);
-// })
-
-// watch(route, (newRoute, oldRoute) => {
-//   mainStore.setMainsupport(newRoute.fullPath)
-// })
 import { defineProps } from "vue";
-
 const props = defineProps({
   content: Object,
 });
+import { motion, AnimatePresence } from "motion-v";
 
-// import { useRoute } from "vue-router";
-// const route = useRoute();
 </script>
 
 <template>
-
-    <div v-if="content.title === undefined">
-      <h2  v-for="(support, index) in content" :key="index">
-        {{ support.title }}
-      </h2>
-    </div>
-    <div v-else>
-      <h2>{{content.title}}</h2>
-    </div>
-<!-- 
-    <div v-if="route.fullPath === '/projects'">
-      <h2 v-for="(support, index) in supports" :key="index">{{ support.name }}</h2>
-    </div> -->
+  <div>
+    <AnimatePresence>
+      <motion.h2
+        :initial="{ opacity: 0 }"
+        :animate="{ opacity: 1 }"
+        :transition="{ duration: 5 }"
+        :key="content.currentIndex"
+      >
+        {{content.currentTitle}}
+      </motion.h2>
+    </AnimatePresence>
+    <!-- <p @click="content.forwardTitle">next</p> -->
+  </div>
 </template>
 
 <style scoped>

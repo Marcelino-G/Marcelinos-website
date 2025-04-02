@@ -1,8 +1,8 @@
 <script setup>
-import linkedInImage from '@/assets/linkedIn.jpg';
-import githubImage from '@/assets/github.jpg';
-import resumeImage from '@/assets/file-earmark-person.jpg';
-import envelopeImage from '@/assets/envelope.jpg'
+import linkedInImage from '@/assets/linkImgs/linkedIn.jpg';
+import githubImage from '@/assets/linkImgs/github.jpg';
+import resumeImage from '@/assets/linkImgs/file-earmark-person.jpg';
+import envelopeImage from '@/assets/linkImgs/envelope.jpg'
 </script>
 
 <template>

@@ -3,11 +3,20 @@ import TopicMain from "@/components/main/TopicMain.vue";
 import ContentMain from "@/components/main/ContentMain.vue";
 import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
-import { ref } from "vue"
+import { reactive } from "vue"
+
+
+// let content = ref(websiteStore.homePage.main_content);
+
+import { useSlide } from "@/composables/slide.js";
 import { useWebsiteStore } from '@/stores/websiteStore.js';
 const websiteStore = useWebsiteStore();
+const { currentIndex, currentTitle, currentTopicDetail, supportingDetails, setCurrentIndex} = useSlide(websiteStore.homePage.main_content);
 
-let content = ref(websiteStore.homePage.main_content);
+let titleContent = reactive({ currentTitle, currentIndex });
+let mainContent = reactive({currentTopicDetail, currentIndex});
+let supportingContent = { supportingDetails, setCurrentIndex };
+
 
 </script>
 
@@ -15,9 +24,9 @@ let content = ref(websiteStore.homePage.main_content);
   <div id="homeContainer">
 
     
-      <topic-main id="topic-main" :content="content" />
-      <content-main id="content-main" :content="content" />
-      <supporting-content-main id="supporting-content-main" :content="content" />
+      <topic-main id="topic-main" :content="titleContent"/>
+      <content-main id="content-main" :content="mainContent" :isHome="true" />
+      <supporting-content-main id="supporting-content-main" :content="supportingContent" />
     
   </div>
 </template>

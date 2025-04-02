@@ -1,6 +1,11 @@
 import { defineStore } from 'pinia';
-import mainImage from "@/assets/m1.jpg"
-import animatedImage from '@/assets/m2.jpg';
+import mainImage from "@/assets/profileImgs/m1.jpg"
+import animatedImage from '@/assets/profileImgs/m2.jpg';
+
+import sonicImage from '@/assets/homeImgs/sonic.jpg';
+import dodgersImage from '@/assets/homeImgs/dodgers.jpg';
+import yosemiteImage from '@/assets/homeImgs/yosemite.jpg';
+import disneyImage from '@/assets/homeImgs/disney.jpg';
 
 
 export const useWebsiteStore = defineStore('websiteStore', {
@@ -8,20 +13,25 @@ export const useWebsiteStore = defineStore('websiteStore', {
     state: () => {
         return {
 
+            currentTitle: null,
             homePage: {
                 headerImage: mainImage,
                 main_content: {
-                    softwareDeveloper: {
-                        title: "I am a software developer",
-                        img: "../"
+                    dodgerBlue: {
+                        title: "I bleed dodger blue",
+                        img: dodgersImage
                     },
                     adventurer: {
                         title: "I am an adventurer",
-                        img: "...//"
+                        img: yosemiteImage
                     },
                     magicHolder: {
                         title: "I am a magic holder",
-                        img: "..../"
+                        img: disneyImage
+                    },
+                    movieGoer: {
+                        title: "I am a movie goer",
+                        img: sonicImage
                     }
                 }
             },
@@ -81,6 +91,11 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
                 }
             }
+        }
+    },
+    actions: {
+        setCurrentTitle(title){
+            this.currentTitle = title;
         }
     }
 })

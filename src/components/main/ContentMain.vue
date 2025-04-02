@@ -19,14 +19,29 @@ import { defineProps } from "vue";
 
 const props = defineProps({
   content: Object,
+  isHome: Boolean
 });
 
 // import { useRoute } from "vue-router";
 // const route = useRoute();
+import { motion, AnimatePresence } from "motion-v";
 </script>
 
 <template>
   <div>
+    <AnimatePresence>
+      <motion.div
+        v-if="isHome === true"
+        :initial="{ opacity: 0 }"
+        :animate="{ opacity: 1 }"
+        :transition="{ duration: 5 }"
+        :key="content.currentIndex"
+      >
+        <img :alt="content.currentIndex" :src="content.currentTopicDetail" />
+      </motion.div>
+    </AnimatePresence>
+  </div>
+  <!-- <div>
     <div v-if="content.aboutMe === undefined">
       <div v-for="(support, index) in content" :key="index">
         <img v-if="support.img !== undefined" :src="support.img" />
@@ -38,9 +53,9 @@ const props = defineProps({
 
     <div v-else>
       <p>{{content.aboutMe}}</p>
-    </div>
+    </div> -->
 
-    <!-- <div v-if="route.fullPath === '/'">
+  <!-- <div v-if="route.fullPath === '/'">
         <img v-for="(support, index) in content" :src="support.img" :key="index" />
       </div>
       <div v-if="route.fullPath === '/about'">
@@ -55,8 +70,11 @@ const props = defineProps({
         </div>
         
       </div> -->
-  </div>
 </template>
 
 <style scoped>
+img{
+  max-width: 1200px;
+  max-height: 800px;
+}
 </style>
