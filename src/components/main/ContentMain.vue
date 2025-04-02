@@ -29,7 +29,18 @@ import { motion, AnimatePresence } from "motion-v";
 
 <template>
   <div>
-    <AnimatePresence>
+    <div v-if="isHome === true">
+      <AnimatePresence>
+        <motion.img
+        :initial="{ opacity: 0 }"
+        :animate="{ opacity: 1 }"
+        :transition="{ duration: 2 }"
+        :key="content.currentIndex"
+        :src="content.currentTopicDetail"
+        />
+      </AnimatePresence>
+    </div>
+    <!-- <AnimatePresence>
       <motion.div
         v-if="isHome === true"
         :initial="{ opacity: 0 }"
@@ -37,9 +48,9 @@ import { motion, AnimatePresence } from "motion-v";
         :transition="{ duration: 5 }"
         :key="content.currentIndex"
       >
-        <img :alt="content.currentIndex" :src="content.currentTopicDetail" />
+        <img :src="content.currentTopicDetail" />
       </motion.div>
-    </AnimatePresence>
+    </AnimatePresence> -->
   </div>
   <!-- <div>
     <div v-if="content.aboutMe === undefined">
@@ -74,7 +85,16 @@ import { motion, AnimatePresence } from "motion-v";
 
 <style scoped>
 img{
-  max-width: 1200px;
-  max-height: 800px;
+  max-width: 900px;
+  max-height: 700px;
+}
+
+div{
+  /* background-color: black; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

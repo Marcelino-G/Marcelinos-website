@@ -46,7 +46,7 @@ import envelopeImage from '@/assets/linkImgs/envelope.jpg'
 }
 
 ul{
-  background-color: yellow;
+  /* background-color: yellow; */
   height: 100%;
   width: 15%; 
   display: flex;
@@ -57,7 +57,7 @@ ul{
 }
 
 li{
-  background-color: pink;
+  /* background-color: pink; */
   display: flex;
   flex-direction: column;
   text-align: center;

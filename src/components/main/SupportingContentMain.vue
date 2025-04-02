@@ -7,23 +7,53 @@ const props = defineProps({
 // import { useRoute } from "vue-router";
 // const route = useRoute();
 import { motion, AnimatePresence } from "motion-v";
+import rightFinger from "@/assets/arrow-right.png";
+import leftFinger from "@/assets/arrow-left.png"
 </script>
 
 <template>
   <div>
-    <ul>
-      <AnimatePresence v-for="(detail, index) in content.supportingDetails" :key="index">
-        <motion.li
-        :initial="{ opacity: .5, rotateX: 20 }"
-        :animate="{ opacity: 1, rotateX: -20 }"
-        :transition="{ duration: 3 }"
-        :key="index"
-        @click="content.setCurrentIndex(index)">
-          <img :src="detail"/>
-        </motion.li>
-      </AnimatePresence>
-    </ul>
-    
+    <div id="isHomeContainer">
+     
+     <motion.button @click="content.backwardIndex" :whilePress="{ scale: 0.8 }">
+      <img :src="leftFinger" />
+
+     </motion.button>
+        
+      
+      <ul>
+        <AnimatePresence
+          v-for="(detail, index) in content.supportingDetails"
+          :key="index"
+        >
+          <motion.li
+            :initial="{ opacity: 0.75, rotateX: 10, rotateY: 65, zIndex: 0 }"
+            :whileHover="{
+              opacity: 1,
+              rotateX: 0,
+              rotateY: 0,
+              scale: 1.2,
+              zIndex: 1,
+            }"
+            :transition="{ duration: 1 }"
+            :key="index"
+            @click="content.setCurrentIndex(index)"
+          >
+            <img :src="detail" />
+          </motion.li>
+        </AnimatePresence>
+      </ul>
+      
+      <motion.button @click="content.forwardIndex" :whilePress="{ scale: 0.8 }">
+        <img :src="rightFinger"  />
+
+
+
+
+      </motion.button>
+        
+      
+    </div>
 
     <!-- <div v-if="content.funFacts === undefined">
       <div v-for="(support, index) in content" :key="index">
@@ -43,10 +73,8 @@ import { motion, AnimatePresence } from "motion-v";
         <li v-for="(support, index) in content.funFacts.games" :key="index">{{support}}</li>
       </ul>
     </div> -->
-      
 
-
-      <!-- <div v-if="route.fullPath === '/'">
+    <!-- <div v-if="route.fullPath === '/'">
         <img
           v-for="(topic, index) in supportingContent"
           :src="topic.img"
@@ -67,15 +95,35 @@ import { motion, AnimatePresence } from "motion-v";
 </template>
 
 <style scoped>
-img{
-  max-width: 150px;
-  max-height: 100px;
+/* div{
+  height: 100%;
+} */
+
+#isHomeContainer{
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 200px;
 }
 
-ul{
+
+img {
+  max-width: 200px;
+  max-height: 150px;
+}
+
+ul {
   display: flex;
   justify-content: center;
-  gap: 5px;
+  align-items: center;
   list-style: none;
+  height: 100%;
+  /* background-color: red; */
+}
+
+li {
+  display: flex;
+  margin: 0 -20px;
 }
 </style>

@@ -27,11 +27,52 @@ export function useSlide(webStore){
 
 
 
-  return {currentIndex, currentTitle, currentTopicDetail, supportingDetails, setCurrentIndex}
+  const forwardIndex = () => {
+    if(!isCleared){
+      clearInterval(indexIntervalId);
+      isCleared = true;
+      console.log("ll")
 
-    // const forwardTitle = () => {
-  //   currentIndex.value = currentIndex.value + 1;
-  // }
+    }
+    
+    if(currentIndex.value === titles.length -1){
+      currentIndex.value = 0
+    } else {
+      currentIndex.value = currentIndex.value + 1;
+    }
+  }
+
+  const backwardIndex = () => {
+
+    if(!isCleared){
+      clearInterval(indexIntervalId);
+      isCleared = true;
+      console.log("ll")
+
+    }
+
+    if(currentIndex.value === 0){
+      currentIndex.value = titles.length -1
+    } else {
+      currentIndex.value = currentIndex.value - 1;
+    }
+  }
+
+  let isCleared = false;
+  let indexIntervalId = setInterval(() => {
+    if(currentIndex.value === titles.length -1){
+      currentIndex.value = 0
+    } else {
+      currentIndex.value = currentIndex.value + 1;
+    }
+  }, 10000);
+  
+
+
+
+  return {currentIndex, currentTitle, currentTopicDetail, supportingDetails, setCurrentIndex, forwardIndex, backwardIndex}
+
+
 
 
 

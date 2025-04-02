@@ -25,13 +25,13 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         title: "I am an adventurer",
                         img: yosemiteImage
                     },
-                    magicHolder: {
-                        title: "I am a magic holder",
-                        img: disneyImage
-                    },
                     movieGoer: {
                         title: "I am a movie goer",
                         img: sonicImage
+                    },
+                    magicHolder: {
+                        title: "I am a magic holder",
+                        img: disneyImage
                     }
                 }
             },

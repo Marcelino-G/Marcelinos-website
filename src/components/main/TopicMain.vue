@@ -13,15 +13,21 @@ import { motion, AnimatePresence } from "motion-v";
       <motion.h2
         :initial="{ opacity: 0 }"
         :animate="{ opacity: 1 }"
-        :transition="{ duration: 5 }"
+        :transition="{ duration: 2 }"
         :key="content.currentIndex"
       >
         {{content.currentTitle}}
       </motion.h2>
     </AnimatePresence>
-    <!-- <p @click="content.forwardTitle">next</p> -->
   </div>
 </template>
 
 <style scoped>
+
+div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 </style>

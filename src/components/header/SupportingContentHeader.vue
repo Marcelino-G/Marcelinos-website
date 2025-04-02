@@ -17,7 +17,7 @@ const websiteStore = useWebsiteStore();
 
 <style scoped>
 ul{
-  background-color: yellow;
+  /* background-color: yellow; */
   height: 100%;
   width: 100%;
   display: flex;

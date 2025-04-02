@@ -32,17 +32,17 @@ import HeaderComponentVue from "./components/header/HeaderComponent.vue";
 }
 
 header {
-  background-color: black;
+  /* background-color: black; */
   grid-area: header;
 }
 
 main {
-  background-color: red;
+  /* background-color: red; */
   grid-area: main;
 }
 
 footer {
-  background-color: grey;
+  /* background-color: grey; */
   grid-area: footer;
 }
 </style>

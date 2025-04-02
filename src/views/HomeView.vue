@@ -11,11 +11,11 @@ import { reactive } from "vue"
 import { useSlide } from "@/composables/slide.js";
 import { useWebsiteStore } from '@/stores/websiteStore.js';
 const websiteStore = useWebsiteStore();
-const { currentIndex, currentTitle, currentTopicDetail, supportingDetails, setCurrentIndex} = useSlide(websiteStore.homePage.main_content);
+const { currentIndex, currentTitle, currentTopicDetail, supportingDetails, setCurrentIndex, forwardIndex, backwardIndex, forwardIndexInterval} = useSlide(websiteStore.homePage.main_content);
 
 let titleContent = reactive({ currentTitle, currentIndex });
 let mainContent = reactive({currentTopicDetail, currentIndex});
-let supportingContent = { supportingDetails, setCurrentIndex };
+let supportingContent = { supportingDetails, setCurrentIndex, forwardIndex, backwardIndex };
 
 
 </script>
@@ -35,9 +35,9 @@ let supportingContent = { supportingDetails, setCurrentIndex };
  #homeContainer {
 
   height: 100%;
-  background-color: blue;
+  /* background-color: blue; */
   display: grid;
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows: 10% 70% 20%;
   grid-template-areas:
     "topic-main"
     "content-main"
@@ -45,17 +45,17 @@ let supportingContent = { supportingDetails, setCurrentIndex };
 }
 
 #topic-main {
-  background-color: red;
+  /* background-color: red; */
   grid-area: topic-main;
 }
 
 #content-main {
-  background-color: gold;
+  /* background-color: gold; */
   grid-area: content-main;
 }
 
 #supporting-content-main {
-  background-color: aqua;
+  /* background-color: aqua; */
   grid-area: supporting-content-main;
 }
 
