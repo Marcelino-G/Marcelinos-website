@@ -24,14 +24,17 @@ watch(route, (newRoute, oldRoute) => {
   <div id="headerContainer">
     <h1>Marcelino's Website</h1>
     <img alt="ll" :src="headerImage" />
-    <nav>
-      <router-link :to="{ name: 'home' }">Home</router-link>
-      <router-link :to="{ name: 'about' }">About me</router-link>
-      <router-link :to="{ name: 'projects' }">Projects</router-link>
-    </nav>
-    <supporting-content-header
-      v-if="projectsPage === true"
-    ></supporting-content-header>
+    <div id="navAndSupportingContainer">
+      <nav>
+        <router-link :to="{ name: 'home' }">Home</router-link>
+        <router-link :to="{ name: 'about' }">About me</router-link>
+        <router-link :to="{ name: 'projects' }">Projects</router-link>
+      </nav>
+      <supporting-content-header
+        id="supportingContentContainer"
+        v-if="projectsPage === true"
+      ></supporting-content-header>
+    </div>
   </div>
 </template>
 
@@ -40,16 +43,17 @@ watch(route, (newRoute, oldRoute) => {
   height: 100%;
   /* background-color: brown; */
   display: grid;
-  grid-template-columns: 40% 60%;
+  /* grid-template-columns: 40% 60%; */
   grid-template-rows: 10% 70% 20%;
   grid-template-areas:
-    "h1 h1"
-    "img img"
-    "nav supporting-content-header";
+    "h1"
+    "img"
+    "navAndSupporting";
 }
 
 h1 {
   grid-area: h1;
+  text-align: center;
   /* background-color: pink; */
 }
 img {
@@ -57,6 +61,19 @@ img {
   max-width: 100%;
   grid-area: img;
   /* background-color: blue; */
+}
+
+#navAndSupportingContainer{
+  grid-area: navAndSupporting;
+  border: solid gray 5px;
+  border-radius: 10px;
+  background: radial-gradient(at 150% 100%, black, blue);
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-areas: "nav supportingContent";
+  width: 97%;
+  margin: 0 auto;
+
 }
 
 nav {
@@ -67,11 +84,17 @@ nav {
   grid-area: nav;
   /* background-color: orange; */
 }
+
+#supportingContentContainer{
+  grid-area: supportingContent;
+}
+
 a {
   text-align: center;
   width: 50%;
   text-decoration: none;
   font-size: 1.5em;
+  color: #F8F8FF;
 }
 
 @keyframes rainbow {

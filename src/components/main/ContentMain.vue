@@ -85,8 +85,8 @@ import { motion, AnimatePresence } from "motion-v";
 
 <style scoped>
 img{
-  max-width: 900px;
-  max-height: 700px;
+  max-width: 850px;
+  max-height: 650px;
 }
 
 div{

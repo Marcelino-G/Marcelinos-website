@@ -42,6 +42,7 @@ let supportingContent = { supportingDetails, setCurrentIndex, forwardIndex, back
     "topic-main"
     "content-main"
     "supporting-content-main";
+    
 }
 
 #topic-main {
@@ -57,6 +58,11 @@ let supportingContent = { supportingDetails, setCurrentIndex, forwardIndex, back
 #supporting-content-main {
   /* background-color: aqua; */
   grid-area: supporting-content-main;
+  /* border: solid gray 5px;
+  border-radius: 10px;
+  background: radial-gradient(at 150% 100%, black, blue);
+  width: 97%;
+  margin: 0 auto; */
 }
 
 /* header {

@@ -7,17 +7,16 @@ const props = defineProps({
 // import { useRoute } from "vue-router";
 // const route = useRoute();
 import { motion, AnimatePresence } from "motion-v";
-import rightFinger from "@/assets/arrow-right.png";
-import leftFinger from "@/assets/arrow-left.png"
+import leftFinger from "@/assets/icons/arrow-left.png"
+import rightFinger from "@/assets/icons/arrow-right.png"
 </script>
 
 <template>
   <div>
     <div id="isHomeContainer">
      
-     <motion.button @click="content.backwardIndex" :whilePress="{ scale: 0.8 }">
+     <motion.button @click="content.backwardIndex" :whilePress="{ scale: 0.9 }">
       <img :src="leftFinger" />
-
      </motion.button>
         
       
@@ -44,12 +43,8 @@ import leftFinger from "@/assets/arrow-left.png"
         </AnimatePresence>
       </ul>
       
-      <motion.button @click="content.forwardIndex" :whilePress="{ scale: 0.8 }">
+      <motion.button @click="content.forwardIndex" :whilePress="{ scale: 0.9 }">
         <img :src="rightFinger"  />
-
-
-
-
       </motion.button>
         
       
@@ -99,12 +94,26 @@ import leftFinger from "@/assets/arrow-left.png"
   height: 100%;
 } */
 
+ #supporting-content-main {
+  /* background-color: aqua; */
+  /* grid-area: supporting-content-main; */
+  border: solid gray 5px;
+  border-radius: 10px;
+  background: radial-gradient(at 150% 100%, black, blue);
+  width: 97%;
+  margin: 0 auto;
+}
+
 #isHomeContainer{
   height: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 200px;
+}
+
+button{
+  background: none;
 }
 
 
@@ -126,4 +135,6 @@ li {
   display: flex;
   margin: 0 -20px;
 }
+
+
 </style>
