@@ -56,6 +56,6 @@ footer {
   border: solid gray 5px;
   border-radius: 10px;
   background: radial-gradient(at 150% 100%, black, blue);
-  padding: 10px 25px;
+  padding: 0 25px;
 }
 </style>

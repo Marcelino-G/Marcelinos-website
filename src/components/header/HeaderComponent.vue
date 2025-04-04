@@ -60,6 +60,7 @@ img {
   max-height: 100%;
   max-width: 100%;
   grid-area: img;
+  margin: auto;
   /* background-color: blue; */
 }
 
@@ -127,5 +128,16 @@ a {
   );
   animation: rainbow 1.5s infinite linear;
   background-size: 200% 200%;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1440px){
+  a{
+    font-size: 1.25em;
+  }
+  img{
+    max-height: 90%;
+  max-width: 90%;
+    
+  }
 }
 </style>

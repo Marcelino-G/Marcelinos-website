@@ -136,5 +136,11 @@ li {
   margin: 0 -20px;
 }
 
+@media screen and (min-width: 1024px) and (max-width: 1440px){
+  #isHomeContainer{
+    gap: 10%;
+  }
+}
+
 
 </style>

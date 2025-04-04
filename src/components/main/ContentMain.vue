@@ -97,4 +97,12 @@ div{
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1440px){
+  img{
+    max-width: 750px;
+  max-height: 550px;
+  }
+}
+
 </style>
