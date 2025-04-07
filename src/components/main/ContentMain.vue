@@ -85,8 +85,10 @@ import { motion, AnimatePresence } from "motion-v";
 
 <style scoped>
 img{
-  max-width: 850px;
-  max-height: 650px;
+  /* max-width: 850px;
+  max-height: 650px; */
+   max-width: 95%;
+  max-height: 95%;
 }
 
 div{
@@ -96,13 +98,6 @@ div{
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1440px){
-  img{
-    max-width: 750px;
-  max-height: 550px;
-  }
 }
 
 </style>

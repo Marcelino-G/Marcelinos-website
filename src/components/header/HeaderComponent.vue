@@ -41,9 +41,8 @@ watch(route, (newRoute, oldRoute) => {
 <style scoped>
 #headerContainer {
   height: 100%;
-  /* background-color: brown; */
   display: grid;
-  /* grid-template-columns: 40% 60%; */
+  /* gap: 1%; */
   grid-template-rows: 10% 70% 20%;
   grid-template-areas:
     "h1"
@@ -54,14 +53,12 @@ watch(route, (newRoute, oldRoute) => {
 h1 {
   grid-area: h1;
   text-align: center;
-  /* background-color: pink; */
 }
 img {
   max-height: 100%;
   max-width: 100%;
   grid-area: img;
   margin: auto;
-  /* background-color: blue; */
 }
 
 #navAndSupportingContainer{
@@ -74,7 +71,6 @@ img {
   grid-template-areas: "nav supportingContent";
   width: 97%;
   margin: 0 auto;
-
 }
 
 nav {
@@ -83,7 +79,6 @@ nav {
   justify-content: space-evenly;
   align-items: center;
   grid-area: nav;
-  /* background-color: orange; */
 }
 
 #supportingContentContainer{
@@ -134,10 +129,10 @@ a {
   a{
     font-size: 1.25em;
   }
-  img{
-    max-height: 90%;
+  /* img{
+  max-height: 90%;
   max-width: 90%;
     
-  }
+  } */
 }
 </style>

@@ -60,52 +60,83 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
 <style scoped>
 #footerContainer {
   height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-p{
+p {
   align-self: flex-end;
-
 }
 
 #iconContainer {
   display: flex;
+  align-items: flex-end;
   flex-direction: column;
+  width: 45%;
+  height: 100%;
 }
 
-ul {
-
+#icons {
   display: flex;
-
-  justify-content: space-between;
-  gap: 15px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 70%;
 }
+
+#icons li {
+  margin: 0 15px 0 0;
+  height: 85%;
+  width: 10%;
+}
+
+#icons li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#icons li a img {
+  width: 50%;
+  height: 75%;
+}
+
+#icons li a p {
+  align-self: initial;
+  font-size: .75em;
+}
+
+
 
 #materia {
-  position: relative;
   display: flex;
-  justify-content: center;
+  position: relative;
+  height: 30%;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 15px 0 0;
 }
 
-
+#materia li {
+  z-index: 2;
+  /* background: grey; */
+}
 
 #materia li img {
-  width: 35%;
-  padding-top: 5px;
-
+  width: 40%;
 }
 
-#materia li  {
-  z-index: 2;
 
-}
 
 li {
   list-style: none;
   text-align: center;
-  width: 60px;
+  
 }
 
 a {
@@ -117,7 +148,7 @@ a {
   position: absolute;
   background: #9c98a2;
   height: 20%;
-  width: 85%;
-  top: 40%;
+  width: 13%;
+  right: 3.5%;
 }
 </style>

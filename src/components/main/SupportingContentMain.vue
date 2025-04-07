@@ -90,13 +90,7 @@ import rightFinger from "@/assets/icons/arrow-right.png"
 </template>
 
 <style scoped>
-/* div{
-  height: 100%;
-} */
-
  #supporting-content-main {
-  /* background-color: aqua; */
-  /* grid-area: supporting-content-main; */
   border: solid gray 5px;
   border-radius: 10px;
   background: radial-gradient(at 150% 100%, black, blue);
@@ -107,39 +101,38 @@ import rightFinger from "@/assets/icons/arrow-right.png"
 #isHomeContainer{
   height: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  gap: 200px;
-}
-
-button{
-  background: none;
+  padding: 0 5%;
 }
 
 
-img {
-  max-width: 200px;
-  max-height: 150px;
-}
 
 ul {
   display: flex;
   justify-content: center;
-  align-items: center;
   list-style: none;
   height: 100%;
-  /* background-color: red; */
 }
 
 li {
+  max-height: 100%;
+  margin: 0 -2.5%;
   display: flex;
-  margin: 0 -20px;
+  justify-content: center;
+  align-items: center;
+ 
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1440px){
-  #isHomeContainer{
-    gap: 10%;
-  }
+ul li img{
+  max-width: 90%;
+  max-height: 90%;
+  
+
+}
+
+button{
+  background: none;
 }
 
 
