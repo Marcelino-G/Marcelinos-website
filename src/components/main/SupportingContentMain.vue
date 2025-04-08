@@ -3,26 +3,27 @@ import { defineProps } from "vue";
 const props = defineProps({
   content: Object,
   isHome: Boolean,
-  isAbout: Boolean
+  isAbout: Boolean,
 });
 
 // import { useRoute } from "vue-router";
 // const route = useRoute();
 import { motion, AnimatePresence } from "motion-v";
-import leftFinger from "@/assets/icons/arrow-left.png"
-import rightFinger from "@/assets/icons/arrow-right.png"
+import leftFinger from "@/assets/icons/arrow-left.png";
+import rightFinger from "@/assets/icons/arrow-right.png";
 </script>
 
 <template>
   <div>
     <div id="isHomeContainer" v-if="isHome === true">
-     
-     <motion.button @click="content.backwardIndex" :whilePress="{ scale: 0.9 }">
-      <img :src="leftFinger" />
-     </motion.button>
-        
-      
-      <ul>
+      <motion.button
+        @click="content.backwardIndex"
+        :whilePress="{ scale: 0.9 }"
+      >
+        <img :src="leftFinger" />
+      </motion.button>
+
+      <ul id="isHomeUl">
         <AnimatePresence
           v-for="(detail, index) in content.supportingDetails"
           :key="index"
@@ -44,15 +45,119 @@ import rightFinger from "@/assets/icons/arrow-right.png"
           </motion.li>
         </AnimatePresence>
       </ul>
-      
-      <motion.button @click="content.forwardIndex" :whilePress="{ scale: 0.9 }">
-        <img :src="rightFinger"  />
-      </motion.button>
-        
-      
-    </div>
-    <div v-if="isAbout === true">
 
+      <motion.button @click="content.forwardIndex" :whilePress="{ scale: 0.9 }">
+        <img :src="rightFinger" />
+      </motion.button>
+    </div>
+    <div v-if="isAbout === true" id="isAboutContainer">
+      <ul id="isAboutUl">
+        <li id="stack">tech stack</li>
+        <li id="faq">
+          <ul>
+            <li>
+              <p>
+                If you could live in any fictional universe, where would it be?
+              </p>
+              <p>
+                hi
+              </p>
+            </li>
+            <li>
+              <p>
+                What’s your favorite nostalgic TV show from childhood?
+              </p>
+              <p>
+                malcolm
+              </p>
+            </li>
+            <li>
+              <p>
+                Which character death in a show or movie hurt the most?
+              </p>
+              <p>
+                aot
+              </p>
+            </li>
+            <li>
+              <p>
+                Who is the most underrated animated character of all time?
+              </p>
+              <p>
+                kuw
+              </p>
+            </li>
+            <li>
+              <p>
+                What book terrified you
+              </p>
+              <p>
+                rose
+              </p>
+            </li>
+            <li>
+              <p>
+                Who do you main in overwatch
+              </p>
+              <p>
+                rein
+              </p>
+            </li>
+            <li>
+              <p>
+                Who do you main in super smash
+              </p>
+              <p>
+                zelda
+              </p>
+            </li>
+            <li>
+              <p>
+                What’s the first album you ever bought?
+              </p>
+              <p>
+                mcr
+              </p>
+            </li>
+            <li>
+              <p>
+                What’s the best opening cutscene in a game?
+              </p>
+              <p>
+                tenchu
+              </p>
+            </li>
+            <li>
+              <p>
+                Best anime outro
+              </p>
+              <p>
+                inyuasha
+              </p>
+            </li>
+            <li>
+              <p>
+                What video game has best soundtrack
+              </p>
+              <p>
+                inyuasha
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li id="spotify">
+          <iframe
+            style="border-radius: 12px"
+            src="https://open.spotify.com/embed/playlist/7y8S1cGlXAeLRRmWk85Nud?utm_source=generator"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </li>
+      </ul>
     </div>
 
     <!-- <div v-if="content.funFacts === undefined">
@@ -95,7 +200,7 @@ import rightFinger from "@/assets/icons/arrow-right.png"
 </template>
 
 <style scoped>
- #supporting-content-main {
+#supporting-content-main {
   border: solid gray 5px;
   border-radius: 10px;
   background: radial-gradient(at 150% 100%, black, blue);
@@ -103,7 +208,7 @@ import rightFinger from "@/assets/icons/arrow-right.png"
   margin: 0 auto; */
 }
 
-#isHomeContainer{
+#isHomeContainer {
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -111,36 +216,56 @@ import rightFinger from "@/assets/icons/arrow-right.png"
   padding: 0 5%;
 }
 
-
-
-ul {
+#isHomeUl {
   display: flex;
   justify-content: center;
   list-style: none;
   height: 100%;
 }
 
-li {
+#isHomeUl li {
   max-height: 100%;
   margin: 0 -2.5%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
- 
 }
 
-ul li img{
+#isHomeUl li img {
   max-width: 90%;
   max-height: 90%;
-  
-
 }
 
-button{
+button {
   background: none;
   cursor: pointer;
 }
 
+#isAboutContainer {
+  /* background: red; */
+  height: 100%;
+  width: 100%;
+}
 
+#isAboutUl {
+  height: 100%;
+  width: 100%;
+  /* display: flex; */
+  /* background: blue; */
+  /* justify-content: space-evenly; */
+  list-style: none;
+  display: grid;
+  grid-template-columns: 25% 25% 50%;
+  grid-template-areas: "stack faq spotify";
+}
+
+#isAboutUl li {
+  background: red;
+  /* width: 100%; */
+  /* overflow: auto; */
+  /* overflow-y: auto; */
+  /* scrollbar-width: auto;
+  scrollbar-color: #A9A9A9 rgba(0,0,0,0.4); */
+}
 </style>

@@ -70,7 +70,7 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
 }
 
 p{
-  font-size: .65em;
+  font-size: .80em;
 }
 
 #iconContainer {
@@ -90,9 +90,9 @@ p{
 }
 
 #icons li {
-  margin: 0 5px 0 0;
+  margin: 0 10px 0 0;
   height: 85%;
-  width: 10%;
+  width: 5%;
 }
 
 #icons li:last-child {

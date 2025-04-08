@@ -41,8 +41,21 @@ export const useWebsiteStore = defineStore('websiteStore', {
                     title: "About me",
                     aboutMe: "lorem",
                     funFacts: {
-                        technical: ["JavaScript", "CSS", "HTML"],
-                        games: ["ff13", "healer main", "thess"]
+                        technical: {
+                            languages: [],
+                            frameworks: [],
+                            tools: []
+                        },
+                        faq: {
+                            question1: {
+                                question: "",
+                                answer: ""
+                            },
+                            question2:{
+                                question: "",
+                                answer: ""
+                            }
+                        }
                     }
                     
                     

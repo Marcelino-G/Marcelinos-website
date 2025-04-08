@@ -16,7 +16,7 @@ let content = ref(websiteStore.aboutMePage.main_content);
   <div id="aboutMeContainer">
       <topic-main id="topic-main" :content="content" :isAbout="true" />
       <content-main id="content-main" :content="content" :isAbout="true" />
-      <supporting-content-main id="supporting-content-main" :content="content" />
+      <supporting-content-main id="supporting-content-main" :content="content" :isAbout="true" />
 
   </div>
 </template>
