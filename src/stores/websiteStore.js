@@ -39,7 +39,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
             aboutMePage: {
                 main_content: {
                     title: "About me",
-                    aboutMe: "one day in a land far faar waya",
+                    aboutMe: "lorem",
                     funFacts: {
                         technical: ["JavaScript", "CSS", "HTML"],
                         games: ["ff13", "healer main", "thess"]

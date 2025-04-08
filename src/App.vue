@@ -38,7 +38,7 @@ header {
   border: solid gray 5px;
   border-radius: 10px;
   background: radial-gradient(at 150% 100%, black, blue);
-  padding: 25px 0;
+  padding: 25px 25px;
 }
 
 main {
@@ -47,7 +47,7 @@ main {
   border: solid gray 5px;
   border-radius: 10px;
   background: radial-gradient(at 150% 100%, black, blue);
-  padding: 25px 0;
+  padding: 25px 25px;
 }
 
 footer {

@@ -58,7 +58,7 @@ img {
   max-height: 100%;
   max-width: 100%;
   grid-area: img;
-  margin: auto;
+  margin: auto 0;
 }
 
 #navAndSupportingContainer{
@@ -69,8 +69,8 @@ img {
   display: grid;
   grid-template-columns: 40% 60%;
   grid-template-areas: "nav supportingContent";
-  width: 97%;
-  margin: 0 auto;
+  /* width: 97%;
+  margin: 0 auto; */
 }
 
 nav {
@@ -87,7 +87,7 @@ nav {
 
 a {
   text-align: center;
-  width: 50%;
+  width: 60%;
   text-decoration: none;
   font-size: 1.5em;
   color: #F8F8FF;

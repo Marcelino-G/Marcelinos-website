@@ -24,9 +24,9 @@ let supportingContent = { supportingDetails, setCurrentIndex, forwardIndex, back
   <div id="homeContainer">
 
     
-      <topic-main id="topic-main" :content="titleContent"/>
+      <topic-main id="topic-main" :content="titleContent" :isHome="true"/>
       <content-main id="content-main" :content="mainContent" :isHome="true" />
-      <supporting-content-main id="supporting-content-main" :content="supportingContent" />
+      <supporting-content-main id="supporting-content-main" :content="supportingContent" :isHome="true" />
     
   </div>
 </template>

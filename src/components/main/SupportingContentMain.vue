@@ -2,6 +2,8 @@
 import { defineProps } from "vue";
 const props = defineProps({
   content: Object,
+  isHome: Boolean,
+  isAbout: Boolean
 });
 
 // import { useRoute } from "vue-router";
@@ -13,7 +15,7 @@ import rightFinger from "@/assets/icons/arrow-right.png"
 
 <template>
   <div>
-    <div id="isHomeContainer">
+    <div id="isHomeContainer" v-if="isHome === true">
      
      <motion.button @click="content.backwardIndex" :whilePress="{ scale: 0.9 }">
       <img :src="leftFinger" />
@@ -48,6 +50,9 @@ import rightFinger from "@/assets/icons/arrow-right.png"
       </motion.button>
         
       
+    </div>
+    <div v-if="isAbout === true">
+
     </div>
 
     <!-- <div v-if="content.funFacts === undefined">
@@ -94,8 +99,8 @@ import rightFinger from "@/assets/icons/arrow-right.png"
   border: solid gray 5px;
   border-radius: 10px;
   background: radial-gradient(at 150% 100%, black, blue);
-  width: 97%;
-  margin: 0 auto;
+  /* width: 97%;
+  margin: 0 auto; */
 }
 
 #isHomeContainer{
@@ -121,6 +126,7 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
  
 }
 
@@ -133,6 +139,7 @@ ul li img{
 
 button{
   background: none;
+  cursor: pointer;
 }
 
 

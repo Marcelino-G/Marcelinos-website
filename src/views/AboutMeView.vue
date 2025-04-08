@@ -14,8 +14,8 @@ let content = ref(websiteStore.aboutMePage.main_content);
 
 <template>
   <div id="aboutMeContainer">
-      <topic-main id="topic-main" :content="content"  />
-      <content-main id="content-main" :content="content" />
+      <topic-main id="topic-main" :content="content" :isAbout="true" />
+      <content-main id="content-main" :content="content" :isAbout="true" />
       <supporting-content-main id="supporting-content-main" :content="content" />
 
   </div>
@@ -25,9 +25,8 @@ let content = ref(websiteStore.aboutMePage.main_content);
 
  #aboutMeContainer{
   height: 100%;
-  background-color: blue;
   display: grid;
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows: 10% 70% 20%;
   grid-template-areas:
     "topic-main"
     "content-main"
@@ -35,17 +34,14 @@ let content = ref(websiteStore.aboutMePage.main_content);
 }
 
  #topic-main {
-  background-color: red;
   grid-area: topic-main;
 } 
 
  #content-main {
-  background-color: gold;
   grid-area: content-main;
 }
 
 #supporting-content-main {
-  background-color: aqua;
   grid-area: supporting-content-main;
 }
 

@@ -19,7 +19,8 @@ import { defineProps } from "vue";
 
 const props = defineProps({
   content: Object,
-  isHome: Boolean
+  isHome: Boolean,
+  isAbout: Boolean
 });
 
 // import { useRoute } from "vue-router";
@@ -32,15 +33,28 @@ import { motion, AnimatePresence } from "motion-v";
     <div v-if="isHome === true">
       <AnimatePresence>
         <motion.img
-        :initial="{ opacity: 0 }"
-        :animate="{ opacity: 1 }"
-        :transition="{ duration: 2 }"
-        :key="content.currentIndex"
-        :src="content.currentTopicDetail"
+          :initial="{ opacity: 0 }"
+          :animate="{ opacity: 1 }"
+          :transition="{ duration: 2 }"
+          :key="content.currentIndex"
+          :src="content.currentTopicDetail"
         />
       </AnimatePresence>
     </div>
-    <!-- <AnimatePresence>
+    <div v-if="isAbout === true">
+      <AnimatePresence>
+        <motion.p
+          :initial="{ opacity: 0 }"
+          :animate="{ opacity: 1 }"
+          :transition="{ duration: 2 }"
+        >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto illo, dolores asperiores exercitationem a autem suscipit similique non cumque ad, delectus nam excepturi facilis labore optio ratione. Repellat, doloremque necessitatibus?
+        </motion.p>
+      </AnimatePresence>
+    </div>
+
+  </div>
+  <!-- <AnimatePresence>
       <motion.div
         v-if="isHome === true"
         :initial="{ opacity: 0 }"
@@ -51,7 +65,7 @@ import { motion, AnimatePresence } from "motion-v";
         <img :src="content.currentTopicDetail" />
       </motion.div>
     </AnimatePresence> -->
-  </div>
+
   <!-- <div>
     <div v-if="content.aboutMe === undefined">
       <div v-for="(support, index) in content" :key="index">
@@ -84,14 +98,14 @@ import { motion, AnimatePresence } from "motion-v";
 </template>
 
 <style scoped>
-img{
+img {
   /* max-width: 850px;
   max-height: 650px; */
-   max-width: 95%;
+  max-width: 95%;
   max-height: 95%;
 }
 
-div{
+div {
   /* background-color: black; */
   width: 100%;
   height: 100%;
@@ -99,5 +113,4 @@ div{
   justify-content: center;
   align-items: center;
 }
-
 </style>

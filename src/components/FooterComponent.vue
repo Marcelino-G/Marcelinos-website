@@ -14,25 +14,25 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
     <div id="iconContainer">
       <ul id="icons">
         <li>
-          <a href="../">
+          <a href="https://www.linkedin.com/in/marcelino-gamino/" target="_blank">
             <img :src="linkedInImage" />
             <p>LinkedIn</p>
           </a>
         </li>
         <li>
-          <a href="../">
+          <a href="https://github.com/Marcelino-G" target="_blank">
             <img :src="githubImage" />
             <p>GitHub</p>
           </a>
         </li>
         <li>
-          <a href="../">
+          <a href="../" target="_blank">
             <img :src="resumeImage" />
             <p>Resume</p>
           </a>
         </li>
         <li>
-          <a href="../">
+          <a href="mailto:marcelino.gamino11@gmail.com">
             <img :src="envelopeImage" />
             <p>Email</p>
           </a>
@@ -65,8 +65,12 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
   justify-content: space-between;
 }
 
-p {
+#footerContainer > p {
   align-self: flex-end;
+}
+
+p{
+  font-size: .65em;
 }
 
 #iconContainer {
@@ -86,9 +90,13 @@ p {
 }
 
 #icons li {
-  margin: 0 15px 0 0;
+  margin: 0 5px 0 0;
   height: 85%;
   width: 10%;
+}
+
+#icons li:last-child {
+  margin: 0;
 }
 
 #icons li a {
@@ -101,13 +109,8 @@ p {
 }
 
 #icons li a img {
-  width: 50%;
-  height: 75%;
-}
-
-#icons li a p {
-  align-self: initial;
-  font-size: .75em;
+  max-width: 55%;
+  max-height: 55%;
 }
 
 
@@ -116,19 +119,16 @@ p {
   display: flex;
   position: relative;
   height: 30%;
-  width: 100%;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  padding: 0 15px 0 0;
 }
 
 #materia li {
   z-index: 2;
-  /* background: grey; */
 }
 
 #materia li img {
-  width: 40%;
+  width: 35%;
 }
 
 
@@ -148,7 +148,7 @@ a {
   position: absolute;
   background: #9c98a2;
   height: 20%;
-  width: 13%;
-  right: 3.5%;
+  width: 80%;
+  /* right: 3.5%; */
 }
 </style>
