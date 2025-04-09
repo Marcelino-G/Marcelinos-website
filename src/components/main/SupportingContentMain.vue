@@ -52,96 +52,19 @@ import rightFinger from "@/assets/icons/arrow-right.png";
     </div>
     <div v-if="isAbout === true" id="isAboutContainer">
       <ul id="isAboutUl">
-        <li id="stack">tech stack</li>
+        <li id="stack">
+          <ul v-for="(skillCategory, index) in content.funFacts.technical" :key="index">
+            <h4>{{index}}</h4>
+            <li v-for="(skill, index) in skillCategory" :key="index">
+              {{skill}}
+            </li>
+          </ul>
+        </li>
         <li id="faq">
           <ul>
-            <li>
-              <p>
-                If you could live in any fictional universe, where would it be?
-              </p>
-              <p>
-                hi
-              </p>
-            </li>
-            <li>
-              <p>
-                What’s your favorite nostalgic TV show from childhood?
-              </p>
-              <p>
-                malcolm
-              </p>
-            </li>
-            <li>
-              <p>
-                Which character death in a show or movie hurt the most?
-              </p>
-              <p>
-                aot
-              </p>
-            </li>
-            <li>
-              <p>
-                Who is the most underrated animated character of all time?
-              </p>
-              <p>
-                kuw
-              </p>
-            </li>
-            <li>
-              <p>
-                What book terrified you
-              </p>
-              <p>
-                rose
-              </p>
-            </li>
-            <li>
-              <p>
-                Who do you main in overwatch
-              </p>
-              <p>
-                rein
-              </p>
-            </li>
-            <li>
-              <p>
-                Who do you main in super smash
-              </p>
-              <p>
-                zelda
-              </p>
-            </li>
-            <li>
-              <p>
-                What’s the first album you ever bought?
-              </p>
-              <p>
-                mcr
-              </p>
-            </li>
-            <li>
-              <p>
-                What’s the best opening cutscene in a game?
-              </p>
-              <p>
-                tenchu
-              </p>
-            </li>
-            <li>
-              <p>
-                Best anime outro
-              </p>
-              <p>
-                inyuasha
-              </p>
-            </li>
-            <li>
-              <p>
-                What video game has best soundtrack
-              </p>
-              <p>
-                inyuasha
-              </p>
+            <li v-for="(question,index) in content.funFacts.questions" :key="index">
+              <p>{{question.question}}</p>
+              <p>{{question.answer}}</p>
             </li>
           </ul>
         </li>

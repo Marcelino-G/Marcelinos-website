@@ -42,18 +42,38 @@ export const useWebsiteStore = defineStore('websiteStore', {
                     aboutMe: "lorem",
                     funFacts: {
                         technical: {
-                            languages: [],
-                            frameworks: [],
-                            tools: []
+                            Languages: ["Java", "SQL", "JavaScript", "HTML/CSS"],
+                            Frameworks: ["Spring Boot", "Vue.js"],
+                            Tools: ["VS Code", "IntelliJ"]
                         },
-                        faq: {
-                            question1: {
-                                question: "",
-                                answer: ""
+                        questions: {
+                            1:{
+                                question: "What’s the greatest TV show of all time?",
+                                answer: "Malcolm in the Middle"
                             },
-                            question2:{
-                                question: "",
-                                answer: ""
+                            2: {
+                                question: "What's the most heartbreaking video game death?",
+                                answer: "Aerith Gainsborough - Final Fantasy 7"
+                            },
+                            3:{
+                                question: "Who's the greatest anime character of all time?",
+                                answer: "Kazuma Kuwabara - YuYu Hakusho"
+                            },
+                            4: {
+                                question: "What book terrified you?",
+                                answer: "Rosemary's Baby"
+                            },
+                            5:{
+                                question: "Who do you main in Overwatch?",
+                                answer: "Reinhardt, at your service!"
+                            },
+                            6:{
+                                question: "What’s the first album you ever bought?",
+                                answer: "I Brought You My Bullets, You Brought Me Your Love - My Chemical Romance"
+                            },
+                            7:{
+                                question: "What do you miss the most from older video games that modern ones just don't do anymore?",
+                                answer: "The music video intros before the start menu."
                             }
                         }
                     }
