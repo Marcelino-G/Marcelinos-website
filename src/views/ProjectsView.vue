@@ -24,9 +24,8 @@ let mainContent = ref(websiteStore.projectsPage.main_content);
  #projectsContainer{
 
   height: 100%;
-  background-color: blue;
   display: grid;
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows: 10% 60% 30%;
   grid-template-areas:
     "topic-main"
     "content-main"
@@ -34,17 +33,15 @@ let mainContent = ref(websiteStore.projectsPage.main_content);
 }
 
 #topic-main {
-  background-color: red;
   grid-area: topic-main;
 }
 
 #content-main {
-  background-color: gold;
+
   grid-area: content-main;
 }
 
 #supporting-content-main {
-  background-color: aqua;
   grid-area: supporting-content-main;
 }
 

@@ -26,7 +26,7 @@ let content = ref(websiteStore.aboutMePage.main_content);
  #aboutMeContainer{
   height: 100%;
   display: grid;
-  grid-template-rows: 10% 70% 20%;
+  grid-template-rows: 10% 60% 30%;
   grid-template-areas:
     "topic-main"
     "content-main"

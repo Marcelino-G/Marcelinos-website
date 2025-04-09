@@ -24,7 +24,7 @@ import HeaderComponentVue from "./components/header/HeaderComponent.vue";
   height: 90%;
   
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 30% 70%;
   grid-template-rows: 90% 10%;
   grid-template-areas:
     "header main"

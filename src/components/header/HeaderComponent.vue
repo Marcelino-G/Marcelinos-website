@@ -43,7 +43,7 @@ watch(route, (newRoute, oldRoute) => {
   height: 100%;
   display: grid;
   /* gap: 1%; */
-  grid-template-rows: 10% 70% 20%;
+  grid-template-rows: 10% 60% 30%;
   grid-template-areas:
     "h1"
     "img"
@@ -67,7 +67,7 @@ img {
   border-radius: 10px;
   background: radial-gradient(at 150% 100%, black, blue);
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 50% 50%;
   grid-template-areas: "nav supportingContent";
   /* width: 97%;
   margin: 0 auto; */
