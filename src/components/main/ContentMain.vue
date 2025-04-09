@@ -20,7 +20,8 @@ import { defineProps } from "vue";
 const props = defineProps({
   content: Object,
   isHome: Boolean,
-  isAbout: Boolean
+  isAbout: Boolean,
+  isProject: Boolean,
 });
 
 // import { useRoute } from "vue-router";
@@ -48,11 +49,50 @@ import { motion, AnimatePresence } from "motion-v";
           :animate="{ opacity: 1 }"
           :transition="{ duration: 2 }"
         >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto illo, dolores asperiores exercitationem a autem suscipit similique non cumque ad, delectus nam excepturi facilis labore optio ratione. Repellat, doloremque necessitatibus?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto illo,
+          dolores asperiores exercitationem a autem suscipit similique non
+          cumque ad, delectus nam excepturi facilis labore optio ratione.
+          Repellat, doloremque necessitatibus?
         </motion.p>
       </AnimatePresence>
     </div>
+    <div v-if="isProject === true">
+      <AnimatePresence>
+        <motion.ul
+          :initial="{ opacity: 0 }"
+          :animate="{ opacity: 1 }"
+          :transition="{ duration: 2 }"
+          :key="content.currentIndex"
+        >
+          <li>
+            <video>
+              <source :src="content.currentMedia" type="video/mp4" />
+            </video>
+          </li>
+          <li>
+            {{content.currentDate}}
+          </li>
+          <li>
+            {{content.currentDescription}}
+          </li>
+          <li>
+            {{content.currentGithub}}
+          </li>
+          <li>
+            {{content.currentApplication}}
+          </li>
+        </motion.ul>
 
+        <!-- <motion.video
+          :initial="{ opacity: 0 }"
+          :animate="{ opacity: 1 }"
+          :transition="{ duration: 2 }"
+          :key="content.currentIndex"
+        >
+          <source :src="content.currentMedia" type="video/mp4" />
+        </motion.video> -->
+      </AnimatePresence>
+    </div>
   </div>
   <!-- <AnimatePresence>
       <motion.div
@@ -103,6 +143,11 @@ img {
   max-height: 650px; */
   max-width: 95%;
   max-height: 95%;
+}
+
+video {
+  max-width: 75%;
+  max-height: 75%;
 }
 
 div {

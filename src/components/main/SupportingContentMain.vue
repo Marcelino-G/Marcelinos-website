@@ -4,6 +4,7 @@ const props = defineProps({
   content: Object,
   isHome: Boolean,
   isAbout: Boolean,
+  isProject: Boolean
 });
 
 // import { useRoute } from "vue-router";
@@ -90,6 +91,14 @@ import rightFinger from "@/assets/icons/arrow-right.png";
           ></iframe>
         </li>
       </ul>
+    </div>
+    <div id="isProjectsContainer" v-if="isProject === true">
+      <ul>
+        <li v-for="(title, index) in content.titles" :key="index" @click="content.setCurrentIndex(index)">
+          {{title}}
+        </li>
+      </ul>
+
     </div>
 
     <!-- <div v-if="content.funFacts === undefined">

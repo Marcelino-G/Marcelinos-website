@@ -3,19 +3,24 @@ import TopicMain from "@/components/main/TopicMain.vue";
 import ContentMain from "@/components/main/ContentMain.vue";
 import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
-import { ref } from "vue"
+import { reactive } from "vue";
+import { useProjectSelector } from "@/composables/projectSelector.js";
 import { useWebsiteStore } from '@/stores/websiteStore.js';
 const websiteStore = useWebsiteStore();
+const {setCurrentIndex, currentIndex, currentTitle, titles, currentMedia, currentDate, currentGithub, currentApplication, currentDescription} = useProjectSelector(websiteStore.projectsPage.main_content);
 
-let mainContent = ref(websiteStore.projectsPage.main_content);
+let titleContent = reactive({currentIndex, currentTitle});
+let mainContent = reactive({currentIndex, currentMedia, currentDate, currentGithub, currentApplication, currentDescription});
+let supportingContent = reactive({titles, setCurrentIndex, currentIndex});
+
 
 </script>
 
 <template>
   <div id="projectsContainer">
-      <topic-main id="topic-main" :content="mainContent" />
-      <content-main id="content-main" :content="mainContent" />
-      <supporting-content-main id="supporting-content-main" :content="mainContent" />
+      <topic-main id="topic-main" :content="titleContent" :isProject = "true" />
+      <content-main id="content-main" :content="mainContent" :isProject = "true" />
+      <supporting-content-main id="supporting-content-main" :content="supportingContent" :isProject = "true" />
   </div>
 </template>
 

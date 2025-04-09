@@ -96,40 +96,40 @@ export const useWebsiteStore = defineStore('websiteStore', {
                     1: {
                         title: "Roll for Pokemon",
                         video: "../",
-                        dateCompleted: "..",
-                        gitHub: "",
+                        dateCompleted: "Jan, 2025",
+                        github: "",
                         application: "",
                         description: "this does that"
                     },
                     2: {
                         title: "3,000 Meters Above",
                         video: metersGameVideo,
-                        dateCompleted: "..",
-                        gitHub: "",
+                        dateCompleted: "Feb, 2023",
+                        github: "",
                         application: "",
                         description: "this does this"
                     },
                     3: {
-                        title: "ReplicatVideo, Soft Revival",
+                        title: "Replicat, Soft Revival",
                         video: replicatVideo,
-                        dateCompleted: "..",
-                        gitHub: "",
+                        dateCompleted: "Oct, 2022",
+                        github: "",
                         application: "",
                         description: "this does what"
                     },
                     4: {
                         title: "Movie Pals",
                         video: moviePalsVideo,
-                        dateCompleted: "..",
-                        gitHub: "",
+                        dateCompleted: "Aug, 2022",
+                        github: "",
                         application: "",
                         description: "this does what"
                     },
                     5: {
                         title: "Who's that Monstermon?",
                         video: "../",
-                        dateCompleted: "..",
-                        gitHub: "",
+                        dateCompleted: "May, 2022",
+                        github: "",
                         application: "",
                         description: "this does what"
                     },

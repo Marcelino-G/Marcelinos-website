@@ -4,10 +4,6 @@ import ContentMain from "@/components/main/ContentMain.vue";
 import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
 import { reactive } from "vue"
-
-
-// let content = ref(websiteStore.homePage.main_content);
-
 import { useSlide } from "@/composables/slide.js";
 import { useWebsiteStore } from '@/stores/websiteStore.js';
 const websiteStore = useWebsiteStore();
