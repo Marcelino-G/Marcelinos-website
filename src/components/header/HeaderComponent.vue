@@ -68,6 +68,7 @@ img {
   background: radial-gradient(at 150% 100%, black, blue);
   display: grid;
   grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
   grid-template-areas: "nav supportingContent";
   /* width: 97%;
   margin: 0 auto; */

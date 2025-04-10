@@ -56,7 +56,8 @@ import { motion, AnimatePresence } from "motion-v";
         </motion.p>
       </AnimatePresence>
     </div>
-    <div v-if="isProject === true">
+
+    <div v-if="isProject === true" id="isProjectContainer">
       <AnimatePresence>
         <motion.ul
           :initial="{ opacity: 0 }"
@@ -65,32 +66,30 @@ import { motion, AnimatePresence } from "motion-v";
           :key="content.currentIndex"
         >
           <li>
-            <video>
-              <source :src="content.currentMedia" type="video/mp4" />
-            </video>
+            {{ content.currentDescription }}
           </li>
           <li>
-            {{content.currentDate}}
+            Completed: {{ content.currentDate }}
           </li>
           <li>
-            {{content.currentDescription}}
+            <a :href="content.currentGithub" target="_blank">GitHub repository</a>
           </li>
-          <li>
-            {{content.currentGithub}}
-          </li>
-          <li>
-            {{content.currentApplication}}
+          <li v-if="content.currentApplication !== ''">
+            <a :href="content.currentApplication" target="_blank">Application</a>
           </li>
         </motion.ul>
-
-        <!-- <motion.video
+        <motion.div
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
           :transition="{ duration: 2 }"
           :key="content.currentIndex"
+          id="videoContainer"
         >
-          <source :src="content.currentMedia" type="video/mp4" />
-        </motion.video> -->
+          <video autoplay muted loop controls poster="" controlsList="nodownload noplaybackrate" >
+            <source :src="content.currentMedia" type="video/mp4" />
+          </video>
+          <img :src="content.currentHitImage" :alt="content.currentHitImage">
+        </motion.div>
       </AnimatePresence>
     </div>
   </div>
@@ -157,5 +156,47 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* padding: 25px; */
 }
+
+#isProjectContainer{
+  display: grid;
+  /* background: red; */
+  grid-auto-columns: 50% 50%;
+  grid-template-areas: "ul video";
+}
+
+#isProjectContainer ul{
+  grid-area: ul;
+  /* background: green; */
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 25px;
+}
+
+#videoContainer{
+  grid-area: video;
+  background: blue;
+  /* position: relative; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+#videoContainer video{
+/* margin: auto; */
+}
+
+#videoContainer img{
+  position: absolute;
+}
+
+
+
+
 </style>

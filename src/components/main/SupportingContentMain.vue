@@ -92,7 +92,9 @@ import rightFinger from "@/assets/icons/arrow-right.png";
         </li>
       </ul>
     </div>
-    <div id="isProjectsContainer" v-if="isProject === true">
+
+
+    <div id="isProjectContainer" v-if="isProject === true">
       <ul>
         <li v-for="(title, index) in content.titles" :key="index" @click="content.setCurrentIndex(index)">
           {{title}}
@@ -101,42 +103,6 @@ import rightFinger from "@/assets/icons/arrow-right.png";
 
     </div>
 
-    <!-- <div v-if="content.funFacts === undefined">
-      <div v-for="(support, index) in content" :key="index">
-        <img v-if='support.img !== undefined' :src="support.img"/>
-        <p v-if='support.description !== undefined'>{{ support.description }}</p>
-      </div>
-
-    </div>
-
-    <div v-else>
-      
-      <ul>
-        <li v-for="(support, index) in content.funFacts.technical" :key="index">{{support}}</li>
-      </ul>
-
-      <ul>
-        <li v-for="(support, index) in content.funFacts.games" :key="index">{{support}}</li>
-      </ul>
-    </div> -->
-
-    <!-- <div v-if="route.fullPath === '/'">
-        <img
-          v-for="(topic, index) in supportingContent"
-          :src="topic.img"
-          :key="index"
-        />
-      </div>
-      <div v-if="route.fullPath === '/about'">
-        <p v-for="(topic, index) in supportingContent.frontEnd" :key="index">
-          {{ topic }}
-        </p>
-      </div>
-      <div v-if="route.fullPath === '/projects'">
-        <p v-for="(topic, index) in supportingContent" :key="index">
-          {{ topic.name }}
-        </p>
-      </div> -->
   </div>
 </template>
 
@@ -154,7 +120,7 @@ import rightFinger from "@/assets/icons/arrow-right.png";
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5%;
+  padding: 10px 5%;
 }
 
 ul{
@@ -221,7 +187,7 @@ button {
   /* overflow-y: auto; */
   /* scrollbar-width: auto;
   scrollbar-color: #A9A9A9 rgba(0,0,0,0.4); */
-  padding: 10px;
+  padding: 10px 5%;
   gap: 10px;
   display: flex;
   
@@ -272,11 +238,35 @@ button {
   width: 75%;
   border-radius: 5%;
   padding: 5px;
-  background: rgba(163, 177, 138, 0.5);
+  background: rgba(163, 177, 138, 0.4);
 }
 
 #spotify{
   flex-direction: column;
+}
+
+#isProjectContainer{
+  /* background: red; */
+  height: 100%;
+  padding: 10px 5%;
+  
+}
+
+#isProjectContainer ul{
+  /* background: green; */
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#isProjectContainer ul li{
+  border-radius: 5%;
+  padding: 5px;
+  background: rgba(240, 160, 130, 0.4);
+  cursor: pointer;
 }
 
 </style>

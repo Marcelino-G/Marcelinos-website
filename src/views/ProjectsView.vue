@@ -5,12 +5,14 @@ import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
 import { reactive } from "vue";
 import { useProjectSelector } from "@/composables/projectSelector.js";
+import { useWeaponSelector } from "@/composables/weaponSelector.js";
 import { useWebsiteStore } from '@/stores/websiteStore.js';
 const websiteStore = useWebsiteStore();
 const {setCurrentIndex, currentIndex, currentTitle, titles, currentMedia, currentDate, currentGithub, currentApplication, currentDescription} = useProjectSelector(websiteStore.projectsPage.main_content);
+const { setCurrentWeaponIndex, currentWeaponIndex, currentSound, currentHitImage } = useWeaponSelector(websiteStore.projectsPage.supporting_content_header);
 
 let titleContent = reactive({currentIndex, currentTitle});
-let mainContent = reactive({currentIndex, currentMedia, currentDate, currentGithub, currentApplication, currentDescription});
+let mainContent = reactive({currentIndex, currentMedia, currentDate, currentGithub, currentApplication, currentDescription, currentWeaponIndex, currentSound, currentHitImage});
 let supportingContent = reactive({titles, setCurrentIndex, currentIndex});
 
 

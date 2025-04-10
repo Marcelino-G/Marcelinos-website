@@ -13,8 +13,8 @@ export function useSlide(webStore){
 
   for (let topic in content.value) {
     titles.push(content.value[topic].title);
-    topicDetails.push(content.value[topic].img);
-    supportingDetails.push(content.value[topic].img);
+    topicDetails.push(content.value[topic].image);
+    supportingDetails.push(content.value[topic].image);
   }
 
   

@@ -11,6 +11,19 @@ import disneyImage from '@/assets/home_images/disney.jpg';
 import metersGameVideo from '@/assets/project_videos/metersGame.mp4';
 import moviePalsVideo from '@/assets/project_videos/moviePals.mp4';
 import replicatVideo from '@/assets/project_videos/replicat.mp4';
+import rollPokemonVideo from '@/assets/project_videos/rollForPokemon.mp4';
+import whosMonsterVideo from '@/assets/project_videos/whosThatMonster.mp4';
+
+import swordImage from '@/assets/game_images/busterSword.png';
+import swordHitImage from '@/assets/game_images/swordHit.png';
+import stickImage from '@/assets/game_images/guardStick.png';
+import stickHitImage from '@/assets/game_images/stickHit.png';
+import glovesImage from '@/assets/game_images/leatherGloves.png';
+import gloveHitImage from '@/assets/game_images/gloveHit.png';
+
+import magicSound from '@/assets/game_sounds/magicSound.mp3';
+import punchSound from '@/assets/game_sounds/punchSound.mp3';
+import slashSound from '@/assets/game_sounds/slashSound.mp3';
 
 
 export const useWebsiteStore = defineStore('websiteStore', {
@@ -23,19 +36,19 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 main_content: {
                     dodgerBlue: {
                         title: "I bleed dodger blue",
-                        img: dodgersImage
+                        image: dodgersImage
                     },
                     adventurer: {
                         title: "I am an adventurer",
-                        img: yosemiteImage
+                        image: yosemiteImage
                     },
                     movieGoer: {
                         title: "I am a movie goer",
-                        img: sonicImage
+                        image: sonicImage
                     },
                     magicHolder: {
                         title: "I am a magic holder",
-                        img: disneyImage
+                        image: disneyImage
                     }
                 }
             },
@@ -95,66 +108,66 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 main_content: {
                     1: {
                         title: "Roll for Pokemon",
-                        video: "../",
-                        dateCompleted: "Jan, 2025",
-                        github: "",
+                        video: rollPokemonVideo,
+                        dateCompleted: "Jan 2025",
+                        github: "https://github.com/Marcelino-G/Roll-for-Pokemon",
                         application: "",
                         description: "this does that"
                     },
                     2: {
                         title: "3,000 Meters Above",
                         video: metersGameVideo,
-                        dateCompleted: "Feb, 2023",
-                        github: "",
-                        application: "",
+                        dateCompleted: "Feb 2023",
+                        github: "https://github.com/Marcelino-G/3-000-Meters-Above",
+                        application: "https://marcelino-g.github.io/3-000-Meters-Above/",
                         description: "this does this"
                     },
                     3: {
                         title: "Replicat, Soft Revival",
                         video: replicatVideo,
-                        dateCompleted: "Oct, 2022",
-                        github: "",
-                        application: "",
+                        dateCompleted: "Oct 2022",
+                        github: "https://github.com/Marcelino-G/Replicat-Soft-Revival",
+                        application: "https://marcelino-g.github.io/Replicat-Soft-Revival/",
                         description: "this does what"
                     },
                     4: {
                         title: "Movie Pals",
                         video: moviePalsVideo,
-                        dateCompleted: "Aug, 2022",
-                        github: "",
+                        dateCompleted: "Aug 2022",
+                        github: "https://github.com/Marcelino-G/Movie-Pals",
                         application: "",
                         description: "this does what"
                     },
                     5: {
                         title: "Who's that Monstermon?",
-                        video: "../",
-                        dateCompleted: "May, 2022",
-                        github: "",
-                        application: "",
+                        video: whosMonsterVideo,
+                        dateCompleted: "May 2022",
+                        github: "https://github.com/Marcelino-G/Who-s-that-Monstermon",
+                        application: "https://marcelino-g.github.io/Who-s-that-Monstermon/",
                         description: "this does what"
                     },
                 },
 
                 supporting_content_header: {
                     busterSword: {
-                        icon: "../",
+                        image: swordImage,
                         description: 'Buster Sword',
-                        sound: "../",
-                        hitImage: "..//"
-                    },
-                    leatherGloves: {
-                        icon: ".../",
-                        description: 'Leather Gloves',
-                        sound: "../",
-                        hitImage: "..//"
+                        sound: slashSound,
+                        hitImage: swordHitImage
                     },
                     guardStick: {
-                        icon: ".../",
+                        image: stickImage,
                         description: 'Guard Stick',
-                        sound: "../",
-                        hitImage: "..//"
+                        sound: magicSound,
+                        hitImage: stickHitImage
+                    },
+                    leatherGloves: {
+                        image: glovesImage,
+                        description: 'Leather Gloves',
+                        sound: punchSound,
+                        hitImage: gloveHitImage
                     }
-
+                    
                 }
             }
         }
