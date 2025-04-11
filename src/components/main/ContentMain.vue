@@ -1,4 +1,6 @@
 <script setup>
+import { useWebsiteStore } from '@/stores/websiteStore.js';
+const websiteStore = useWebsiteStore();
 // import { useRoute } from 'vue-router';
 // import { watch, onMounted } from 'vue';
 // import { useMainStore } from '@/stores/mainStore';
@@ -88,7 +90,7 @@ import { motion, AnimatePresence } from "motion-v";
           <video autoplay muted loop controls poster="" controlsList="nodownload noplaybackrate" >
             <source :src="content.currentMedia" type="video/mp4" />
           </video>
-          <img :src="content.currentHitImage" :alt="content.currentHitImage">
+          <img :src="websiteStore.projectsPage.currentHitImage" :alt="content.currentHitImage" :key="content.currentWeaponIndex">
         </motion.div>
       </AnimatePresence>
     </div>
@@ -194,6 +196,8 @@ div {
 
 #videoContainer img{
   position: absolute;
+  max-height: 20%;
+  max-width: 20%;
 }
 
 

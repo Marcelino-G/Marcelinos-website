@@ -33,6 +33,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
             homePage: {
                 headerImage: mainImage,
+                currentTitle: "",
+                currentImage: "",
                 main_content: {
                     dodgerBlue: {
                         title: "I bleed dodger blue",
@@ -105,6 +107,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
             projectsPage: {
                 headerImage: animatedImage,
+                currentSound: slashSound,
+                currentHitImage: swordHitImage,
                 main_content: {
                     1: {
                         title: "Roll for Pokemon",
@@ -149,20 +153,20 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 },
 
                 supporting_content_header: {
-                    busterSword: {
-                        image: swordImage,
+                    0: {
+                        weaponImage: swordImage,
                         description: 'Buster Sword',
                         sound: slashSound,
                         hitImage: swordHitImage
                     },
-                    guardStick: {
-                        image: stickImage,
+                    1: {
+                        weaponImage: stickImage,
                         description: 'Guard Stick',
                         sound: magicSound,
                         hitImage: stickHitImage
                     },
-                    leatherGloves: {
-                        image: glovesImage,
+                    2: {
+                        weaponImage: glovesImage,
                         description: 'Leather Gloves',
                         sound: punchSound,
                         hitImage: gloveHitImage
@@ -173,8 +177,39 @@ export const useWebsiteStore = defineStore('websiteStore', {
         }
     },
     actions: {
-        setCurrentTitle(title) {
-            this.currentTitle = title;
+        setCurrentTitleAndImage(key){
+            this.homePage.currentTitle = this.homePage.main_content[key].title;
+            this.homePage.currentImage = this.homePage.main_content[key].image;
+
+        },
+        setCurrentHitImageAndSound(key) {
+            this.projectsPage.currentHitImage = this.projectsPage.supporting_content_header[key].hitImage;
+            this.projectsPage.currentSound = this.projectsPage.supporting_content_header[key].currentSound;
+        }
+    },
+    getters:{
+        getImages(){
+            let images = [];
+            for (let key in this.homePage.main_content) {
+                images.push(this.homePage.main_content[key].image);
+              }
+
+              return images;
+
+        },
+        getHitImagesAndDescriptions(){
+              let weaponImages = [];
+              let descriptions = [];
+
+
+            
+              for (let key in this.projectsPage.supporting_content_header) {
+                weaponImages.push(this.projectsPage.supporting_content_header[key].weaponImage);
+                descriptions.push(this.projectsPage.supporting_content_header[key].description);
+              }
+
+              return {weaponImages, descriptions};
+
         }
     }
 })

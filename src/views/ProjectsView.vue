@@ -9,10 +9,12 @@ import { useWeaponSelector } from "@/composables/weaponSelector.js";
 import { useWebsiteStore } from '@/stores/websiteStore.js';
 const websiteStore = useWebsiteStore();
 const {setCurrentIndex, currentIndex, currentTitle, titles, currentMedia, currentDate, currentGithub, currentApplication, currentDescription} = useProjectSelector(websiteStore.projectsPage.main_content);
-const { setCurrentWeaponIndex, currentWeaponIndex, currentSound, currentHitImage } = useWeaponSelector(websiteStore.projectsPage.supporting_content_header);
+const {currentWeaponIndex, currentSound } = useWeaponSelector();
+
+// let currentHitImage = websiteStore.projectsPage.currentHitImage
 
 let titleContent = reactive({currentIndex, currentTitle});
-let mainContent = reactive({currentIndex, currentMedia, currentDate, currentGithub, currentApplication, currentDescription, currentWeaponIndex, currentSound, currentHitImage});
+let mainContent = reactive({currentIndex, currentMedia, currentDate, currentGithub, currentApplication, currentDescription, currentWeaponIndex, currentSound});
 let supportingContent = reactive({titles, setCurrentIndex, currentIndex});
 
 

@@ -1,15 +1,21 @@
 <script setup>
+import { reactive } from "vue";
+import { useWeaponSelector } from "@/composables/weaponSelector.js";
 import { useWebsiteStore } from '@/stores/websiteStore.js';
+
 const websiteStore = useWebsiteStore();
+const weaponImages = websiteStore.getHitImagesAndDescriptions.weaponImages;
+const descriptions = websiteStore.getHitImagesAndDescriptions.descriptions;
+
 
 </script>
 
 <template>
   <div>
     <ul>
-      <li v-for="(support, index) in websiteStore.projectsPage.supporting_content_header" :key = "index">
-          <img :src="support.image" >
-          <p>{{ support.description }}</p>
+      <li v-for="(weaponImage, index) in weaponImages" :key="index" @click="websiteStore.setCurrentHitImageAndSound(index)">
+          <img :src="weaponImage" >
+          <p>{{ descriptions[index] }}</p>
       </li>
     </ul>
   </div>
