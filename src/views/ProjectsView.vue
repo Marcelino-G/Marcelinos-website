@@ -3,35 +3,61 @@ import TopicMain from "@/components/main/TopicMain.vue";
 import ContentMain from "@/components/main/ContentMain.vue";
 import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
-import { reactive } from "vue";
-import { useProjectSelector } from "@/composables/projectSelector.js";
-import { useWeaponSelector } from "@/composables/weaponSelector.js";
-import { useWebsiteStore } from '@/stores/websiteStore.js';
+import { computed } from "vue";
+// import { useProjectSelector } from "@/composables/projectSelector.js";
+// import { useWeaponSelector } from "@/composables/weaponSelector.js";
+import { useWebsiteStore } from "@/stores/websiteStore.js";
 const websiteStore = useWebsiteStore();
-const {setCurrentIndex, currentIndex, currentTitle, titles, currentMedia, currentDate, currentGithub, currentApplication, currentDescription} = useProjectSelector(websiteStore.projectsPage.main_content);
-const {currentWeaponIndex, currentSound } = useWeaponSelector();
+// const {setCurrentIndex, currentIndex, currentTitle, titles, currentMedia, currentDate, currentGithub, currentApplication, currentDescription} = useProjectSelector(websiteStore.projectsPage.main_content);
+// const {currentWeaponIndex, currentSound } = useWeaponSelector();
 
 // let currentHitImage = websiteStore.projectsPage.currentHitImage
 
-let titleContent = reactive({currentIndex, currentTitle});
-let mainContent = reactive({currentIndex, currentMedia, currentDate, currentGithub, currentApplication, currentDescription, currentWeaponIndex, currentSound});
-let supportingContent = reactive({titles, setCurrentIndex, currentIndex});
+// let titleContent = reactive({currentIndex, currentTitle});
+// let mainContent = reactive({currentIndex, currentMedia, currentDate, currentGithub, currentApplication, currentDescription, currentWeaponIndex, currentSound});
+// let supportingContent = reactive({titles, setCurrentIndex, currentIndex});
 
+let titleContent = computed(() => ({
+  currentProjectTitle: websiteStore.projectsPage.currentProjectTitle,
+  currentProjectIndex: websiteStore.projectsPage.currentProjectIndex,
+}));
+let mainContent = computed(() => ({
+  currentProjectVideo: websiteStore.projectsPage.currentProjectVideo,
+  currentProjectDate: websiteStore.projectsPage.currentProjectDate,
+  currentProjectGithub: websiteStore.projectsPage.currentProjectGithub,
+  currentProjectApplication:
+    websiteStore.projectsPage.currentProjectApplication,
+  currentProjectDescription:
+    websiteStore.projectsPage.currentProjectDescription,
 
+  currentProjectHitImage: websiteStore.projectsPage.currentProjectHitImage,
+  currenProjecttSound: websiteStore.projectsPage.currentProjectSound,
+  currentProjectWeaponIndex:
+    websiteStore.projectsPage.currentProjectWeaponIndex,
+
+  currentProjectIndex: websiteStore.projectsPage.currentProjectIndex,
+}));
+let supportingContent = {
+  titles: websiteStore.getProjectTitles,
+  setCurrentProject: websiteStore.setCurrentProject,
+
+};
 </script>
 
 <template>
   <div id="projectsContainer">
-      <topic-main id="topic-main" :content="titleContent" :isProject = "true" />
-      <content-main id="content-main" :content="mainContent" :isProject = "true" />
-      <supporting-content-main id="supporting-content-main" :content="supportingContent" :isProject = "true" />
+    <topic-main id="topic-main" :content="titleContent" :isProject="true" />
+    <content-main id="content-main" :content="mainContent" :isProject="true" />
+    <supporting-content-main
+      id="supporting-content-main"
+      :content="supportingContent"
+      :isProject="true"
+    />
   </div>
 </template>
 
 <style scoped>
-
- #projectsContainer{
-
+#projectsContainer {
   height: 100%;
   display: grid;
   grid-template-rows: 10% 60% 30%;
@@ -46,12 +72,12 @@ let supportingContent = reactive({titles, setCurrentIndex, currentIndex});
 }
 
 #content-main {
-
   grid-area: content-main;
 }
 
 #supporting-content-main {
   grid-area: supporting-content-main;
+  overflow: auto;
 }
 
 /* header {

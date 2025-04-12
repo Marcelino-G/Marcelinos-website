@@ -7,16 +7,20 @@ import { ref } from "vue"
 import { useWebsiteStore } from '@/stores/websiteStore.js';
 const websiteStore = useWebsiteStore();
 
-let content = ref(websiteStore.aboutMePage.main_content);
+// let content = ref(websiteStore.aboutMePage.main_content);
+
+let titleContent = { currentAboutTitle: websiteStore.aboutMePage.main_content.currentAboutTitle };
+let mainContent = {currentBiography: websiteStore.aboutMePage.main_content.currentBiography };
+let supportingContent = {technicalSkills: websiteStore.getAboutTechnicalSkills, questionsAndAnswers: websiteStore.getAboutQuestionsAndAnswers}
 
 
 </script>
 
 <template>
   <div id="aboutMeContainer">
-      <topic-main id="topic-main" :content="content" :isAbout="true" />
-      <content-main id="content-main" :content="content" :isAbout="true" />
-      <supporting-content-main id="supporting-content-main" :content="content" :isAbout="true" />
+      <topic-main id="topic-main" :content="titleContent" :isAbout="true" />
+      <content-main id="content-main" :content="mainContent" :isAbout="true" />
+      <supporting-content-main id="supporting-content-main" :content="supportingContent" :isAbout="true" />
 
   </div>
 </template>

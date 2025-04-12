@@ -3,33 +3,42 @@ import TopicMain from "@/components/main/TopicMain.vue";
 import ContentMain from "@/components/main/ContentMain.vue";
 import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
-import { reactive } from "vue"
-import { useSlide } from "@/composables/slide.js";
-import { useWebsiteStore } from '@/stores/websiteStore.js';
+import { computed } from "vue";
+import { useWebsiteStore } from "@/stores/websiteStore.js";
 const websiteStore = useWebsiteStore();
-const { currentIndex, currentTitle, currentTopicDetail, supportingDetails, setCurrentIndex, forwardIndex, backwardIndex, forwardIndexInterval} = useSlide(websiteStore.homePage.main_content);
 
-let titleContent = reactive({ currentTitle, currentIndex });
-let mainContent = reactive({currentTopicDetail, currentIndex});
-let supportingContent = { supportingDetails, setCurrentIndex, forwardIndex, backwardIndex };
+let titleContent = computed(() => ({
+  currentHomeTitle: websiteStore.homePage.currentHomeTitle,
+  currentHomeIndex: websiteStore.homePage.currentHomeIndex,
+}));
 
+let mainContent = computed(() => ({
+  currentHomeImage: websiteStore.homePage.currentHomeImage,
+  currentHomeIndex: websiteStore.homePage.currentHomeIndex,
+}));
 
+let supportingContent = {
+  homeImages: websiteStore.getHomeImages,
+  setCurrentHomeTitleAndImage: websiteStore.setCurrentHomeTitleAndImage,
+  forwardHomeTitleAndImage: websiteStore.forwardHomeTitleAndImage,
+  backwardHomeTitleAndImage: websiteStore.backwardHomeTitleAndImage,
+};
 </script>
 
 <template>
   <div id="homeContainer">
-
-    
-      <topic-main id="topic-main" :content="titleContent" :isHome="true"/>
-      <content-main id="content-main" :content="mainContent" :isHome="true" />
-      <supporting-content-main id="supporting-content-main" :content="supportingContent" :isHome="true" />
-    
+    <topic-main id="topic-main" :content="titleContent" :isHome="true" />
+    <content-main id="content-main" :content="mainContent" :isHome="true" />
+    <supporting-content-main
+      id="supporting-content-main"
+      :content="supportingContent"
+      :isHome="true"
+    />
   </div>
 </template>
 
 <style scoped>
- #homeContainer {
-
+#homeContainer {
   height: 100%;
   /* background-color: blue; */
   display: grid;
@@ -38,7 +47,6 @@ let supportingContent = { supportingDetails, setCurrentIndex, forwardIndex, back
     "topic-main"
     "content-main"
     "supporting-content-main";
-    
 }
 
 #topic-main {

@@ -12,13 +12,14 @@ const props = defineProps({
 import { motion, AnimatePresence } from "motion-v";
 import leftFinger from "@/assets/icons/arrow-left.png";
 import rightFinger from "@/assets/icons/arrow-right.png";
+import handPointerImage from "@/assets/icons/hand-pointer.png";
 </script>
 
 <template>
   <div>
     <div id="isHomeContainer" v-if="isHome === true">
       <motion.button
-        @click="content.backwardIndex"
+        @click="content.backwardHomeTitleAndImage"
         :whilePress="{ scale: 0.9 }"
       >
         <img :src="leftFinger" />
@@ -26,7 +27,7 @@ import rightFinger from "@/assets/icons/arrow-right.png";
 
       <ul id="isHomeUl">
         <AnimatePresence
-          v-for="(detail, index) in content.supportingDetails"
+          v-for="(detail, index) in content.homeImages"
           :key="index"
         >
           <motion.li
@@ -40,23 +41,26 @@ import rightFinger from "@/assets/icons/arrow-right.png";
             }"
             :transition="{ duration: 1 }"
             :key="index"
-            @click="content.setCurrentIndex(index)"
+            @click="content.setCurrentHomeTitleAndImage(index)"
           >
             <img :src="detail" />
           </motion.li>
         </AnimatePresence>
       </ul>
 
-      <motion.button @click="content.forwardIndex" :whilePress="{ scale: 0.9 }">
+      <motion.button @click="content.forwardHomeTitleAndImage" :whilePress="{ scale: 0.9 }">
         <img :src="rightFinger" />
       </motion.button>
     </div>
+
+
+
     <div v-if="isAbout === true" id="isAboutContainer">
       <ul id="isAboutUl">
         <li id="stack">
           <h3>Tech Stack</h3>
           <ul
-            v-for="(skillCategory, index) in content.funFacts.technical"
+            v-for="(skillCategory, index) in content.technicalSkills"
             :key="index"
           >
             <h4>{{ index }}:</h4>
@@ -69,11 +73,11 @@ import rightFinger from "@/assets/icons/arrow-right.png";
           <h3>FAQ</h3>
           <ul>
             <li
-              v-for="(question, index) in content.funFacts.questions"
+              v-for="(question, index) in content.questionsAndAnswers.questions"
               :key="index"
             >
-              <p>{{ question.question }}</p>
-              <p>{{ question.answer }}</p>
+              <p>{{ question }}</p>
+              <p>{{ content.questionsAndAnswers.answers[index] }}</p>
             </li>
           </ul>
         </li>
@@ -94,11 +98,17 @@ import rightFinger from "@/assets/icons/arrow-right.png";
     </div>
 
 
+
+
+
+
     <div id="isProjectContainer" v-if="isProject === true">
       <ul>
-        <li v-for="(title, index) in content.titles" :key="index" @click="content.setCurrentIndex(index)">
-          {{title}}
+        <li v-for="(title, index) in content.titles" :key="index" @click="content.setCurrentProject(index)">
+          <p>{{title}}</p>
+          <!-- <img :class="{isHidden: index !== content.currentProjectIndex}"  :src="handPointerImage"/> -->
         </li>
+        
       </ul>
 
     </div>
@@ -260,13 +270,19 @@ button {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
+  text-align: center;
 }
 
-#isProjectContainer ul li{
+#isProjectContainer ul li p{
   border-radius: 5%;
   padding: 5px;
   background: rgba(240, 160, 130, 0.4);
   cursor: pointer;
+  margin-bottom: 5%;
+}
+
+.isHidden{
+  visibility: hidden;
 }
 
 </style>

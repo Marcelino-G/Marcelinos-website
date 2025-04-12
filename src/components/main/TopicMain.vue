@@ -17,12 +17,16 @@ import { motion, AnimatePresence } from "motion-v";
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
           :transition="{ duration: 2 }"
-          :key="content.currentIndex"
+          :key="content.currentHomeIndex"
         >
-          {{ content.currentTitle }}
+          {{ content.currentHomeTitle }}
         </motion.h2>
       </AnimatePresence>
     </div>
+
+
+
+
     <div v-if="isAbout === true">
       <AnimatePresence>
         <motion.h2
@@ -30,7 +34,7 @@ import { motion, AnimatePresence } from "motion-v";
           :animate="{ opacity: 1 }"
           :transition="{ duration: 2 }"
         >
-          {{ content.title }}
+          {{ content.currentAboutTitle }}
         </motion.h2>
       </AnimatePresence>
     </div>
@@ -41,8 +45,9 @@ import { motion, AnimatePresence } from "motion-v";
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
           :transition="{ duration: 2 }"
+          :key="content.currentProjectIndex"
         >
-          {{ content.currentTitle }}
+          {{ content.currentProjectTitle }}
         </motion.h2>
       </AnimatePresence>
     </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { useWebsiteStore } from '@/stores/websiteStore.js';
+import { useWebsiteStore } from "@/stores/websiteStore.js";
 const websiteStore = useWebsiteStore();
 // import { useRoute } from 'vue-router';
 // import { watch, onMounted } from 'vue';
@@ -29,6 +29,12 @@ const props = defineProps({
 // import { useRoute } from "vue-router";
 // const route = useRoute();
 import { motion, AnimatePresence } from "motion-v";
+
+let isProjectClicked = false;
+const toggleHitImage = () => {
+  isProjectClicked = true;
+  isProjectClicked = false;
+};
 </script>
 
 <template>
@@ -39,11 +45,12 @@ import { motion, AnimatePresence } from "motion-v";
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
           :transition="{ duration: 2 }"
-          :key="content.currentIndex"
-          :src="content.currentTopicDetail"
+          :key="content.currentHomeIndex"
+          :src="content.currentHomeImage"
         />
       </AnimatePresence>
     </div>
+
     <div v-if="isAbout === true">
       <AnimatePresence>
         <motion.p
@@ -51,49 +58,92 @@ import { motion, AnimatePresence } from "motion-v";
           :animate="{ opacity: 1 }"
           :transition="{ duration: 2 }"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto illo,
-          dolores asperiores exercitationem a autem suscipit similique non
-          cumque ad, delectus nam excepturi facilis labore optio ratione.
-          Repellat, doloremque necessitatibus?
+          {{ content.currentBiography }}
         </motion.p>
       </AnimatePresence>
     </div>
 
     <div v-if="isProject === true" id="isProjectContainer">
-      <AnimatePresence>
-        <motion.ul
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :transition="{ duration: 2 }"
-          :key="content.currentIndex"
-        >
-          <li>
-            {{ content.currentDescription }}
-          </li>
-          <li>
-            Completed: {{ content.currentDate }}
-          </li>
-          <li>
-            <a :href="content.currentGithub" target="_blank">GitHub repository</a>
-          </li>
-          <li v-if="content.currentApplication !== ''">
-            <a :href="content.currentApplication" target="_blank">Application</a>
-          </li>
-        </motion.ul>
-        <motion.div
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :transition="{ duration: 2 }"
-          :key="content.currentIndex"
+      <motion.ul :key="content.currentProjectIndex">
+        <li>
+          {{ content.currentProjectDescription }}
+        </li>
+        <li>Completed: {{ content.currentProjectDate }}</li>
+        <li>
+          <a :href="content.currentProjectGithub" target="_blank"
+            >GitHub repository</a
+          >
+        </li>
+        <li v-if="content.currentProjectApplication !== ''">
+          <a :href="content.currentProjectApplication" target="_blank"
+            >Application</a
+          >
+        </li>
+      </motion.ul>
+
+      <div id="videoHitContainer">
+        <div id="videoContainer">
+          <AnimatePresence>
+            <motion.video
+              autoplay
+              muted
+              loop
+              controls
+              poster=""
+              controlsList="nodownload noplaybackrate"
+              :key="content.currentProjectIndex"
+              :initial="{ opacity: 0 }"
+              :animate="{ opacity: 1 }"
+              :transition="{ delay: 0.5 }"
+            >
+              <source :src="content.currentProjectVideo" type="video/mp4" />
+            </motion.video>
+          </AnimatePresence>
+        </div>
+        <AnimatePresence>
+          <motion.img
+            :src="content.currentProjectHitImage"
+            :alt="content.currentProjectHitImage"
+            :key="content.currentProjectIndex"
+            :initial="{ opacity: 0 }"
+            :exit="{ opacity: 1 }"
+          />
+        </AnimatePresence>
+      </div>
+    </div>
+
+    <!-- <AnimatePresence>
+        <motion.img
+          :src="content.currentProjectHitImage"
+          :alt="content.currentProjectHitImage"
+          :key="content.currentProjectIndex"
+          :initial="{ opacity: 1 }"
+          :exit="{ opacity: 1 }"
+        />
+      </AnimatePresence> -->
+
+    <!-- <motion.div
+
+          
+          
           id="videoContainer"
         >
           <video autoplay muted loop controls poster="" controlsList="nodownload noplaybackrate" >
-            <source :src="content.currentMedia" type="video/mp4" />
+            <source :src="content.currentProjectVideo" type="video/mp4" />
           </video>
-          <img :src="websiteStore.projectsPage.currentHitImage" :alt="content.currentHitImage" :key="content.currentWeaponIndex">
-        </motion.div>
-      </AnimatePresence>
-    </div>
+
+          <AnimatePresence>
+          <motion.img 
+          :src="content.currentProjectHitImage" 
+          :alt="content.currentProjectHitImage" 
+          :key="content.currentProjectIndex"
+          :initial="{ opacity: 0}"
+          :exit="{ opacity: 1,}"
+          />
+
+          </AnimatePresence>
+   
+        </motion.div> -->
   </div>
   <!-- <AnimatePresence>
       <motion.div
@@ -161,16 +211,53 @@ div {
   /* padding: 25px; */
 }
 
-#isProjectContainer{
+#isProjectContainer {
   display: grid;
-  /* background: red; */
+
+  grid-auto-columns: 55% 45%;
+  grid-template-areas: "ul video";
+  /* position: relative;
+  display: flex;
+  justify-content: flex-end; */
+  /* align-items: center; */
+}
+
+#isProjectContainer > div {
+  /* display: grid;
+  grid-auto-columns: 50% 50%;
+  grid-template-areas: "ul video"; */
+}
+
+#isProjectContainer > img {
+  /* position: absolute;
+  background: purple;
+  max-height: 40%;
+  max-width: 40%;
+  right: 15%; */
+  /* justify-self: flex-end; */
+}
+
+/* #contentContainer {
+  background: red;
+  width: 100%;
+  display: grid;
   grid-auto-columns: 50% 50%;
   grid-template-areas: "ul video";
 }
 
-#isProjectContainer ul{
+#contentContainer ul {
   grid-area: ul;
-  /* background: green; */
+  background: green;
+}
+
+#contentContainer video {
+  grid-area: video;
+  margin: auto;
+
+} */
+
+#isProjectContainer ul {
+  grid-area: ul;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -180,9 +267,10 @@ div {
   padding: 25px;
 }
 
-#videoContainer{
+#videoHitContainer {
   grid-area: video;
-  background: blue;
+  margin-bottom: 10%;
+  /* background: blue; */
   /* position: relative; */
   /* display: flex; */
   /* justify-content: center; */
@@ -190,17 +278,22 @@ div {
   /* justify-content: center; */
 }
 
-#videoContainer video{
-/* margin: auto; */
+#videoContainer  {
+  /* margin: auto; */
+  background: rgba(128, 128, 128, 0.8);
+  border-radius: 5%;
+  max-width: 90%;
+  max-height: 80%;
 }
 
-#videoContainer img{
+#videoContainer video  {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+#videoHitContainer img {
   position: absolute;
-  max-height: 20%;
-  max-width: 20%;
+  max-height: 25%;
+  max-width: 25%;
 }
-
-
-
-
 </style>
