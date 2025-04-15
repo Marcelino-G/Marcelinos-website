@@ -4,7 +4,7 @@ const props = defineProps({
   content: Object,
   isHome: Boolean,
   isAbout: Boolean,
-  isProject: Boolean
+  isProject: Boolean,
 });
 
 // import { useRoute } from "vue-router";
@@ -48,12 +48,13 @@ import handPointerImage from "@/assets/icons/hand-pointer.png";
         </AnimatePresence>
       </ul>
 
-      <motion.button @click="content.forwardHomeTitleAndImage" :whilePress="{ scale: 0.9 }">
+      <motion.button
+        @click="content.forwardHomeTitleAndImage"
+        :whilePress="{ scale: 0.9 }"
+      >
         <img :src="rightFinger" />
       </motion.button>
     </div>
-
-
 
     <div v-if="isAbout === true" id="isAboutContainer">
       <ul id="isAboutUl">
@@ -77,11 +78,26 @@ import handPointerImage from "@/assets/icons/hand-pointer.png";
               :key="index"
             >
               <p>{{ question }}</p>
-              <p>{{ content.questionsAndAnswers.answers[index] }}</p>
+              <p
+                v-if="content.questionsAndAnswers.answers[index] !== 'spotify'"
+              >
+                {{ content.questionsAndAnswers.answers[index] }}
+              </p>
+              <iframe
+                v-else
+                style="border-radius: 12px"
+                src="https://open.spotify.com/embed/playlist/7y8S1cGlXAeLRRmWk85Nud?utm_source=generator"
+                width="100%"
+                height="100px"
+                frameBorder="0"
+                allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              ></iframe>
             </li>
           </ul>
         </li>
-        <li id="spotify">
+        <!-- <li id="spotify">
           <h3>Spotify Playlist</h3>
           <iframe
             style="border-radius: 12px"
@@ -93,26 +109,39 @@ import handPointerImage from "@/assets/icons/hand-pointer.png";
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
           ></iframe>
-        </li>
+        </li> -->
       </ul>
     </div>
-
-
-
-
-
 
     <div id="isProjectContainer" v-if="isProject === true">
       <ul>
-        <li v-for="(title, index) in content.titles" :key="index" @click="content.setCurrentProject(index)">
-          <p>{{title}}</p>
-          <!-- <img :class="{isHidden: index !== content.currentProjectIndex}"  :src="handPointerImage"/> -->
+        <li
+          v-for="(title, index) in content.titles"
+          :key="index"
+          @click="content.setCurrentProject(index)"
+        >
+          <p>{{ title }}</p>
+
+          <div class="titleBackground">
+            <div
+              :class="{
+                backgroundCircleOne: content.currentProjectIndex === index,
+              }"
+            ></div>
+            <div
+              :class="{
+                backgroundCircleTwo: content.currentProjectIndex === index,
+              }"
+            ></div>
+            <div
+              :class="{
+                backgroundCircleThree: content.currentProjectIndex === index,
+              }"
+            ></div>
+          </div>
         </li>
-        
       </ul>
-
     </div>
-
   </div>
 </template>
 
@@ -133,7 +162,7 @@ import handPointerImage from "@/assets/icons/hand-pointer.png";
   padding: 10px 5%;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
@@ -177,8 +206,8 @@ button {
   /* justify-content: space-evenly; */
   list-style: none;
   display: grid;
-  grid-template-columns: 30% 40% 30%;
-  grid-template-areas: "stack faq spotify";
+  grid-template-columns: 45% 55%;
+  grid-template-areas: "stack faq";
   text-align: center;
 }
 
@@ -190,7 +219,7 @@ button {
 #isAboutUl > li {
   overflow: auto;
   scrollbar-color: #a9a9a9 rgba(0, 0, 0, 0.4);
-  
+
   /* scrollbar-width: thin; */
   /* width: 100%; */
   /* overflow: auto; */
@@ -200,7 +229,6 @@ button {
   padding: 10px 5%;
   gap: 10px;
   display: flex;
-  
 }
 
 #isAboutUl > li:last-child {
@@ -213,7 +241,6 @@ button {
   /* text-align: center; */
   flex-wrap: wrap;
   /* gap: 10px; */
-  
 }
 #stack ul {
   display: flex;
@@ -230,59 +257,137 @@ button {
   background: rgba(244, 208, 63, 0.4);
 }
 
-#faq{
+#faq {
   flex-direction: column;
 }
 
-#faq ul{
+#faq ul {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-#faq ul p{
- margin: 0 auto;
+#faq ul p {
+  margin: 0 auto;
 }
 
-#faq ul li p:last-child{
+#faq ul li p:last-child {
   width: 75%;
   border-radius: 5%;
   padding: 5px;
   background: rgba(163, 177, 138, 0.4);
 }
 
-#spotify{
+/* #spotify {
   flex-direction: column;
-}
+} */
 
-#isProjectContainer{
+#isProjectContainer {
   /* background: red; */
   height: 100%;
   padding: 10px 5%;
-  
 }
 
-#isProjectContainer ul{
+#isProjectContainer ul {
   /* background: green; */
+
   height: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 15px;
   text-align: center;
 }
 
-#isProjectContainer ul li p{
-  border-radius: 5%;
-  padding: 5px;
-  background: rgba(240, 160, 130, 0.4);
+#isProjectContainer ul li {
   cursor: pointer;
-  margin-bottom: 5%;
+  position: relative;
 }
 
-.isHidden{
-  visibility: hidden;
+#isProjectContainer ul li p {
+  position: relative;
+  z-index: 2;
 }
 
+.titleBackground {
+  /* background: green; */
+
+  padding-top: 5px;
+  min-height: 20px;
+  /* display: flex; */
+  /* justify-content: center; */
+  width: 100%;
+  position: absolute;
+  /* top: 0px; */
+  /* top: 10px; */
+  /* z-index: 5; */
+}
+
+.titleBackground div {
+  width: 0;
+  height: 0;
+  /* bottom: 0px; */
+  position: absolute;
+}
+
+@keyframes poweringUpSides {
+  0% {
+    border-bottom: 15px solid rgba(128, 0, 128, 0.6);
+  }
+  33% {
+    border-bottom: 15px solid rgba(128, 0, 128, 0.8);
+  }
+  66% {
+    border-bottom: 15px solid rgba(128, 0, 128, 1);
+  }
+  100% {
+    border-bottom: 15px solid rgba(128, 0, 128, 0.6);
+  }
+}
+
+@keyframes poweringUpMiddle {
+  0% {
+    border-bottom: 20px solid rgba(128, 0, 128, 0.6);
+  }
+  33% {
+    border-bottom: 20px solid rgba(128, 0, 128, 0.8);
+  }
+  66% {
+    border-bottom: 20px solid rgba(128, 0, 128, 1);
+  }
+  100% {
+    border-bottom: 20px solid rgba(128, 0, 128, 0.6);
+  }
+}
+
+.backgroundCircleOne {
+  animation: poweringUpSides 2.5s infinite ease-in-out;
+  /* z-index: 1; */
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+
+  left: 0px;
+}
+
+.backgroundCircleTwo {
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  animation: poweringUpMiddle 2.5s infinite ease-in-out;
+  animation-delay: 0.33s;
+}
+
+.backgroundCircleThree {
+  animation: poweringUpSides 2.5s infinite ease-in-out;
+  animation-delay: 0.66s;
+  right: 0px;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+  /* border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid rgba(128, 0, 128, 0.6); */
+}
 </style>

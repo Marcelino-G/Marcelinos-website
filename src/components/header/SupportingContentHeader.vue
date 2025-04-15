@@ -3,13 +3,20 @@ import { reactive, computed } from "vue";
 import { useWeaponSelector } from "@/composables/weaponSelector.js";
 import { useWebsiteStore } from "@/stores/websiteStore.js";
 import handPointerImage from "@/assets/icons/hand-pointer.png";
+import { motion, AnimatePresence } from "motion-v";
+
+
+import leftFinger from "@/assets/icons/arrow-left.png";
+import rightFinger from "@/assets/icons/arrow-right.png";
 
 const websiteStore = useWebsiteStore();
 // const weaponImages = websiteStore.getHitImagesAndDescriptions.weaponImages;
 // const descriptions = websiteStore.getHitImagesAndDescriptions.descriptions;
 let weaponsAndDescriptions = websiteStore.getProjectWeaponImagesAndDescriptions;
 let currentProjectWeaponIndex = computed(() => ({
-  currentProjectWeaponIndex: websiteStore.projectsPage.currentProjectWeaponIndex
+  currentProjectWeaponIndex: websiteStore.projectsPage.currentProjectWeaponIndex,
+  forwardProjectWeapon: websiteStore.forwardProjectWeapon,
+  backwardProjectWeapon: websiteStore.backwardProjectWeapon,
 }))
   
   
@@ -19,85 +26,91 @@ let currentProjectWeaponIndex = computed(() => ({
 
 <template>
   <div>
-    <ul>
+    <div id="contentContainer">
+
+       <motion.button
+        @click="currentProjectWeaponIndex.backwardProjectWeapon"
+        :whilePress="{ scale: 0.9 }"
+      >
+        <img :src="leftFinger" />
+      </motion.button>
+
+      <div id="weaponContainer">
+      <img id="weaponImg" :src="weaponsAndDescriptions.weaponImages[currentProjectWeaponIndex.currentProjectWeaponIndex]"/>
+      <p>{{ weaponsAndDescriptions.descriptions[currentProjectWeaponIndex.currentProjectWeaponIndex] }}</p>
+      </div>
+
+       <motion.button
+        @click="currentProjectWeaponIndex.forwardProjectWeapon"
+        :whilePress="{ scale: 0.9 }"
+      >
+        <img :src="rightFinger" />
+      </motion.button>
+      
+    </div>
+    <!-- <ul>
       <li
         v-for="(weaponImage, index) in weaponsAndDescriptions.weaponImages"
         :key="index"
         @click="websiteStore.setCurrentProjectHitImageAndSound(index)"
       >
-        <img :src="weaponImage"/>
+        <img class="weaponImg" :src="weaponImage"/>
         <p>{{ weaponsAndDescriptions.descriptions[index] }}</p>
         <img :class="{isHidden: index !== currentProjectWeaponIndex.currentProjectWeaponIndex}" class="pointer" :src="handPointerImage"/>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
 <style scoped>
-ul {
-  background-color: yellow;
+
+#contentContainer{
+  /* background: red; */
   height: 100%;
   width: 100%;
+  margin: auto;
   display: flex;
   justify-content: space-evenly;
-  /* align-items: center; */
-  list-style: none;
-  gap: 10px;
-  padding: 15px;
+  align-items: flex-end;
+  padding-bottom: 25px;
 }
-li {
-  background-color: red;
-  /* margin: auto; */
-  text-align: center;
-  /* height: 100%; */
+
+#weaponContainer{
+  /* background: green; */
+  /* text-align: center; */
+  height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between;
-  align-items: center; */
-  cursor: pointer;
-  /* gap: 2%; */
+  justify-content: center;
+  align-items: center;
 
-
-  /* gap: 10px; */
 }
 
-li img{
-  flex-basis: 50%;
-  /* height: 100%; */
-  width: 100%;
-  height: 100%;
-  background: blue;
-  margin: 0 auto;
+#weaponImg{
+  /* flex-basis: 50%; */
+  /* max-height: 40%; */
+  max-width: 65%;
+  max-height: 50%;
+  margin: auto;
+  /* background: blue; */
+  /* margin: 0 auto; */
   /* flex-grow: 1; */
 }
 
-li p{
-  /* margin: 15px 0; */
-  flex-basis: 30%;
-  /* height: 100%; */
-  background: blue;
-  width: 100%;
-  height: 100%;
-  /* padding-top: 20%; */
-  margin: auto;
+#weaponContainer p{
+  /* align-self: flex-end; */
+  text-align: center;
 }
 
-.pointer{
-  flex-basis: 20%;
-  width: 100%;
-  height: 100%;
-  background: blue;
-  /* margin: 0 auto; */
-  
+button{
+  background: none;
+  cursor: pointer;
 }
 
-img {
-  max-height: 40%;
-  max-width: 40%;
-  /* background: green; */
+button img{
+  width: 18px;
+  height: 18px;
 }
 
-.isHidden{
-  visibility: hidden;
-}
 </style>

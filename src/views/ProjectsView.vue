@@ -37,11 +37,14 @@ let mainContent = computed(() => ({
 
   currentProjectIndex: websiteStore.projectsPage.currentProjectIndex,
 }));
-let supportingContent = {
+
+
+
+let supportingContent = computed(() => ({
   titles: websiteStore.getProjectTitles,
   setCurrentProject: websiteStore.setCurrentProject,
-
-};
+  currentProjectIndex: websiteStore.projectsPage.currentProjectIndex,
+})) 
 </script>
 
 <template>

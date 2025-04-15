@@ -26,12 +26,6 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
           </a>
         </li>
         <li>
-          <a href="../" target="_blank">
-            <img :src="resumeImage" />
-            <p>Resume</p>
-          </a>
-        </li>
-        <li>
           <a href="mailto:marcelino.gamino11@gmail.com">
             <img :src="envelopeImage" />
             <p>Email</p>
@@ -43,15 +37,12 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
           <img :src="greenMateria" />
         </li>
         <li>
-          <img :src="greenMateria" />
-        </li>
-        <li>
           <img :src="blueMateria" />
         </li>
         <li>
           <img :src="purpleMateria" />
         </li>
-        <div id="background"></div>
+        <div id="iconBackground"></div>
       </ul>
     </div>
   </div>
@@ -63,22 +54,27 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
   width: 100%;
   display: flex;
   justify-content: space-between;
+  /* background: green; */
 }
 
 #footerContainer > p {
   align-self: flex-end;
+  /* background: purple; */
 }
 
 p{
-  font-size: .80em;
+  font-size: .65em;
 }
 
 #iconContainer {
   display: flex;
   align-items: flex-end;
+  justify-content: space-evenly;
   flex-direction: column;
-  width: 45%;
+  width: 50%;
+  /* flex-grow: 1; */
   height: 100%;
+  /* background: red; */
 }
 
 #icons {
@@ -86,13 +82,18 @@ p{
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  height: 70%;
+  /* height: 70%; */
+
 }
 
 #icons li {
-  margin: 0 10px 0 0;
-  height: 85%;
-  width: 5%;
+  margin: 0 20px 0 0;
+  /* padding: 5px; */
+  /* height: 20%; */
+  /* width: 5%; */
+  /* background: grey; */
+  /* flex-grow: 1; */
+  
 }
 
 #icons li:last-child {
@@ -104,13 +105,26 @@ p{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  /* padding: 5px; */
+  /* width: 100%;
+  height: 100%; */
 }
 
 #icons li a img {
-  max-width: 55%;
-  max-height: 55%;
+  /* max-width: 55%;
+  max-height: 55%; */
+  /* width: 50%;
+  height: 50%; */
+  /* flex-grow: 1; */
+  /* width: 100%; */
+  width: 25px;
+  height: 25px
+}
+
+#icons li a p {
+  /* max-width: 55%;
+  max-height: 55%; */
+  /* flex-grow: 1; */
 }
 
 
@@ -118,9 +132,10 @@ p{
 #materia {
   display: flex;
   position: relative;
-  height: 30%;
+  height: 15%;
   justify-content: center;
   align-items: center;
+
 }
 
 #materia li {
@@ -144,11 +159,11 @@ a {
   color: #f8f8ff;
 }
 
-#background {
+#iconBackground {
   position: absolute;
   background: #9c98a2;
   height: 20%;
-  width: 80%;
+  width: 60%;
   /* right: 3.5%; */
 }
 </style>

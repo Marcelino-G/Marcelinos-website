@@ -98,6 +98,10 @@ export const useWebsiteStore = defineStore('websiteStore', {
                             7: {
                                 question: "Who's the greatest anime character of all time?",
                                 answer: "Kazuma Kuwabara - YuYu Hakusho"
+                            },
+                            8: {
+                                question: "What music do you  recommend?",
+                                answer: "spotify"
                             }
                         }
                     }
@@ -212,7 +216,6 @@ export const useWebsiteStore = defineStore('websiteStore', {
         setCurrentProjectHitImageAndSound(key) {
             this.projectsPage.currentProjectHitImage = this.projectsPage.supporting_content_header[key].hitImage;
             this.projectsPage.currentProjectSound = this.projectsPage.supporting_content_header[key].currentSound;
-            this.projectsPage.currentProjectWeaponIndex = key
         },
         setCurrentProject(key) {
             this.projectsPage.currentProjectTitle = this.projectsPage.main_content[key].title;
@@ -223,7 +226,29 @@ export const useWebsiteStore = defineStore('websiteStore', {
             this.projectsPage.currentProjectDescription = this.projectsPage.main_content[key].description;
             this.projectsPage.currentProjectIndex = key
 
+        },
+        forwardProjectWeapon() {
+            if (this.projectsPage.currentProjectWeaponIndex === Object.keys(this.projectsPage.supporting_content_header).length - 1) {
+                this.projectsPage.currentProjectWeaponIndex = 0
+            } else {
+                this.projectsPage.currentProjectWeaponIndex = this.projectsPage.currentProjectWeaponIndex + 1;
+            }
+            this.setCurrentProjectHitImageAndSound(this.projectsPage.currentProjectWeaponIndex)
+        },
+        backwardProjectWeapon() {
+            if (this.projectsPage.currentProjectWeaponIndex === 0) {
+                this.projectsPage.currentProjectWeaponIndex = Object.keys(this.projectsPage.supporting_content_header).length - 1;
+            } else {
+                this.projectsPage.currentProjectWeaponIndex = this.projectsPage.currentProjectWeaponIndex - 1;
+            }
+            this.setCurrentProjectHitImageAndSound(this.projectsPage.currentProjectWeaponIndex)
         }
+
+
+
+
+
+
     },
     getters: {
         getHomeImages(state) {

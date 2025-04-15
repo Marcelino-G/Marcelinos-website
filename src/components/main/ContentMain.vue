@@ -265,11 +265,16 @@ div {
   align-items: center;
   height: 100%;
   padding: 25px;
+  
 }
 
 #videoHitContainer {
   grid-area: video;
-  margin-bottom: 10%;
+  height: 100%;
+  width: 100%;
+  /* margin: 2px auto; */
+  /* margin: auto; */
+  /* margin-bottom: 10%; */
   /* background: blue; */
   /* position: relative; */
   /* display: flex; */
@@ -282,18 +287,23 @@ div {
   /* margin: auto; */
   background: rgba(128, 128, 128, 0.8);
   border-radius: 5%;
-  max-width: 90%;
-  max-height: 80%;
+  height: 80%;
+  width: 100%;
+  /* max-width: 95%; */
+  /* max-height: 95%; */
+  /* max-height: 95%;
+  width: 100%; */
 }
 
 #videoContainer video  {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 95%;
+  max-height: 100%;
+  /* max-height: 95%; */
 }
 
 #videoHitContainer img {
   position: absolute;
   max-height: 25%;
-  max-width: 25%;
+  max-width: 20%;
 }
 </style>
