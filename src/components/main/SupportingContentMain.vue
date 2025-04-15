@@ -190,6 +190,7 @@ ul {
 button {
   background: none;
   cursor: pointer;
+  display: flex;
 }
 
 #isAboutContainer {
@@ -285,7 +286,7 @@ button {
 #isProjectContainer {
   /* background: red; */
   height: 100%;
-  padding: 10px 5%;
+  padding: 25px 5%;
 }
 
 #isProjectContainer ul {
@@ -389,5 +390,31 @@ button {
   /* border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-bottom: 30px solid rgba(128, 0, 128, 0.6); */
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+#isHomeContainer button img{
+  width: 20px;
+  height: 20px;
+}
+
+#isAboutUl {
+  grid-template-columns: 40% 60%;
+}
+
+
+
+}
+
+@media only screen and (min-width: 768px) {
+
+  #isHomeContainer button img{
+  width: 20px;
+  height: 20px;
+}
+
+
+
 }
 </style>

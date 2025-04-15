@@ -63,7 +63,7 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
 }
 
 p{
-  font-size: .65em;
+  font-size: .85em;
 }
 
 #iconContainer {
@@ -74,7 +74,7 @@ p{
   width: 50%;
   /* flex-grow: 1; */
   height: 100%;
-  /* background: red; */
+ 
 }
 
 #icons {
@@ -83,6 +83,7 @@ p{
   justify-content: flex-end;
   width: 100%;
   /* height: 70%; */
+
 
 }
 
@@ -110,6 +111,16 @@ p{
   height: 100%; */
 }
 
+#icons li a p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 5px; */
+  /* width: 100%;
+  height: 100%; */
+}
+
 #icons li a img {
   /* max-width: 55%;
   max-height: 55%; */
@@ -122,9 +133,7 @@ p{
 }
 
 #icons li a p {
-  /* max-width: 55%;
-  max-height: 55%; */
-  /* flex-grow: 1; */
+  font-size: .75em;
 }
 
 
@@ -140,6 +149,9 @@ p{
 
 #materia li {
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #materia li img {
@@ -165,5 +177,20 @@ a {
   height: 20%;
   width: 60%;
   /* right: 3.5%; */
+}
+
+@media only screen and (min-width: 992px) {
+
+  #materia li img {
+  width: 25%;
+}
+
+#icons li a img {
+  width: 16px;
+  height: 16px
+}
+
+
+
 }
 </style>

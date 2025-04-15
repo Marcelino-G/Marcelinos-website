@@ -5,7 +5,6 @@ import { useWebsiteStore } from "@/stores/websiteStore.js";
 import handPointerImage from "@/assets/icons/hand-pointer.png";
 import { motion, AnimatePresence } from "motion-v";
 
-
 import leftFinger from "@/assets/icons/arrow-left.png";
 import rightFinger from "@/assets/icons/arrow-right.png";
 
@@ -14,21 +13,17 @@ const websiteStore = useWebsiteStore();
 // const descriptions = websiteStore.getHitImagesAndDescriptions.descriptions;
 let weaponsAndDescriptions = websiteStore.getProjectWeaponImagesAndDescriptions;
 let currentProjectWeaponIndex = computed(() => ({
-  currentProjectWeaponIndex: websiteStore.projectsPage.currentProjectWeaponIndex,
+  currentProjectWeaponIndex:
+    websiteStore.projectsPage.currentProjectWeaponIndex,
   forwardProjectWeapon: websiteStore.forwardProjectWeapon,
   backwardProjectWeapon: websiteStore.backwardProjectWeapon,
-}))
-  
-  
-  
-  
+}));
 </script>
 
 <template>
   <div>
     <div id="contentContainer">
-
-       <motion.button
+      <motion.button
         @click="currentProjectWeaponIndex.backwardProjectWeapon"
         :whilePress="{ scale: 0.9 }"
       >
@@ -36,17 +31,29 @@ let currentProjectWeaponIndex = computed(() => ({
       </motion.button>
 
       <div id="weaponContainer">
-      <img id="weaponImg" :src="weaponsAndDescriptions.weaponImages[currentProjectWeaponIndex.currentProjectWeaponIndex]"/>
-      <p>{{ weaponsAndDescriptions.descriptions[currentProjectWeaponIndex.currentProjectWeaponIndex] }}</p>
+        <img
+          id="weaponImg"
+          :src="
+            weaponsAndDescriptions.weaponImages[
+              currentProjectWeaponIndex.currentProjectWeaponIndex
+            ]
+          "
+        />
+        <p>
+          {{
+            weaponsAndDescriptions.descriptions[
+              currentProjectWeaponIndex.currentProjectWeaponIndex
+            ]
+          }}
+        </p>
       </div>
 
-       <motion.button
+      <motion.button
         @click="currentProjectWeaponIndex.forwardProjectWeapon"
         :whilePress="{ scale: 0.9 }"
       >
         <img :src="rightFinger" />
       </motion.button>
-      
     </div>
     <!-- <ul>
       <li
@@ -63,8 +70,7 @@ let currentProjectWeaponIndex = computed(() => ({
 </template>
 
 <style scoped>
-
-#contentContainer{
+#contentContainer {
   /* background: red; */
   height: 100%;
   width: 100%;
@@ -72,22 +78,22 @@ let currentProjectWeaponIndex = computed(() => ({
   display: flex;
   justify-content: space-evenly;
   align-items: flex-end;
-  padding-bottom: 25px;
+  /* padding-bottom: 25px; */
 }
 
-#weaponContainer{
+#weaponContainer {
   /* background: green; */
   /* text-align: center; */
-  height: 100%;
+  align-self: flex-start;
+  height: 80%;
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
-#weaponImg{
+#weaponImg {
   /* flex-basis: 50%; */
   /* max-height: 40%; */
   max-width: 65%;
@@ -98,19 +104,27 @@ let currentProjectWeaponIndex = computed(() => ({
   /* flex-grow: 1; */
 }
 
-#weaponContainer p{
+#weaponContainer p {
   /* align-self: flex-end; */
   text-align: center;
 }
 
-button{
+button {
   background: none;
   cursor: pointer;
+  display: flex;
+  margin-bottom: 10px;
 }
 
-button img{
+button img {
   width: 18px;
   height: 18px;
 }
 
+@media only screen and (min-width: 992px) {
+  button img {
+    width: 15px;
+    height: 15px;
+  }
+}
 </style>

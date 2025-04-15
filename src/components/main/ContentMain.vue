@@ -306,4 +306,6 @@ div {
   max-height: 25%;
   max-width: 20%;
 }
+
+
 </style>

@@ -56,7 +56,7 @@ watch(route, (newRoute, oldRoute) => {
 h1 {
   grid-area: h1;
   text-align: center;
-  /* border: solid black 1px; */
+  border: solid black 1px;
   
 }
 img {
@@ -130,5 +130,54 @@ a {
   );
   animation: rainbow 1.5s infinite linear;
   background-size: 200% 200%;
+}
+
+/* @media only screen and (min-width: 992px){
+
+#navAndSupportingContainer{
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "nav supportingContent";
+
+}
+
+#supportingContentContainer{
+  display: block;
+}
+
+#headerContainer {
+
+  grid-template-rows: 10% 60% 30%;
+
+}
+
+h1{font-size: 32px}
+
+ 
+} */
+
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+  #navAndSupportingContainer{
+  grid-template-columns: 100%;
+  grid-template-areas: "nav";
+}
+
+#supportingContentContainer{
+  display: none;
+}
+
+#headerContainer {
+
+  grid-template-rows: 20% 50% 30%;
+
+}
+
+h1 {
+  font-size: 28px;
+  
+}
+
+ 
 }
 </style>
