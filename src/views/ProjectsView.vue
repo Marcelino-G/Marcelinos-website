@@ -68,6 +68,7 @@ let supportingContent = computed(() => ({
     "topic-main"
     "content-main"
     "supporting-content-main";
+    /* gap: 10px; */
 }
 
 #topic-main {
@@ -76,11 +77,13 @@ let supportingContent = computed(() => ({
 
 #content-main {
   grid-area: content-main;
+  /* padding: 25px; */
 }
 
 #supporting-content-main {
   grid-area: supporting-content-main;
   overflow: auto;
+  /* padding: 25px; */
 }
 
 /* header {

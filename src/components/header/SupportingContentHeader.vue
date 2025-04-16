@@ -76,9 +76,10 @@ let currentProjectWeaponIndex = computed(() => ({
   width: 100%;
   margin: auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: flex-end;
   /* padding-bottom: 25px; */
+  padding: 0 15px;
 }
 
 #weaponContainer {
@@ -121,10 +122,10 @@ button img {
   height: 18px;
 }
 
-@media only screen and (min-width: 992px) {
+/* @media only screen and (max-width: 1200px) {
   button img {
     width: 15px;
     height: 15px;
   }
-}
+} */
 </style>

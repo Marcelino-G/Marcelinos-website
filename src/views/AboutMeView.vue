@@ -49,6 +49,8 @@ let supportingContent = {technicalSkills: websiteStore.getAboutTechnicalSkills, 
   grid-area: supporting-content-main;
 }
 
+
+
 /* header {
   background-color: black;
   grid-area: header;

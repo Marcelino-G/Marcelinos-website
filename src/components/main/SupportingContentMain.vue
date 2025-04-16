@@ -13,6 +13,16 @@ import { motion, AnimatePresence } from "motion-v";
 import leftFinger from "@/assets/icons/arrow-left.png";
 import rightFinger from "@/assets/icons/arrow-right.png";
 import handPointerImage from "@/assets/icons/hand-pointer.png";
+import { ref } from 'vue';
+
+let browserWidth = ref(window.innerWidth);
+
+
+window.addEventListener("resize", (() => {
+  browserWidth.value = window.innerWidth
+}))
+
+
 </script>
 
 <template>
@@ -25,7 +35,7 @@ import handPointerImage from "@/assets/icons/hand-pointer.png";
         <img :src="leftFinger" />
       </motion.button>
 
-      <ul id="isHomeUl">
+      <ul id="isHomeUlMedium">
         <AnimatePresence
           v-for="(detail, index) in content.homeImages"
           :key="index"
@@ -47,6 +57,35 @@ import handPointerImage from "@/assets/icons/hand-pointer.png";
           </motion.li>
         </AnimatePresence>
       </ul>
+
+      <ul id="isHomeUlSmall">
+        <AnimatePresence
+          v-for="(detail, index) in content.homeImages"
+          :key="index"
+        >
+          <motion.li
+            :initial="{ opacity: 0.4, scale: 0.75}"
+            :key="index"
+            v-if="index !== content.currentHomeIndex"
+          >
+          </motion.li>
+          <motion.li
+            :initial="{ opacity: 0.4, scale: 0.75}"
+            :animate="{ opacity: 1, scale: 1}"
+            :key="index"
+            :exit="{ opacity: 0.4, scale: 0.75}"
+            :transition="{duration: 1}"
+            v-if="index === content.currentHomeIndex"
+          >
+          </motion.li>
+        </AnimatePresence>
+      </ul>
+
+
+
+
+
+
 
       <motion.button
         @click="content.forwardHomeTitleAndImage"
@@ -166,23 +205,23 @@ ul {
   list-style: none;
 }
 
-#isHomeUl {
-  display: flex;
+#isHomeUlMedium {
+  /* display: flex; */
   justify-content: center;
   /* list-style: none; */
   height: 100%;
 }
 
-#isHomeUl li {
+#isHomeUlMedium li {
   max-height: 100%;
-  margin: 0 -2.5%;
+  /* margin: 0 -2.5%; */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 }
 
-#isHomeUl li img {
+#isHomeUlMedium li img {
   max-width: 90%;
   max-height: 90%;
 }
@@ -286,7 +325,8 @@ button {
 #isProjectContainer {
   /* background: red; */
   height: 100%;
-  padding: 25px 5%;
+  
+ 
 }
 
 #isProjectContainer ul {
@@ -297,8 +337,11 @@ button {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
   text-align: center;
+   overflow: auto;
+   padding: 25px 5%;
+  /* background: red; */
 }
 
 #isProjectContainer ul li {
@@ -390,9 +433,118 @@ button {
   /* border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-bottom: 30px solid rgba(128, 0, 128, 0.6); */
+
+  
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+
+
+@media only screen and (max-width: 992px) {
+
+
+#isHomeContainer button img{
+  /* width: 20px;
+  height: 20px; */
+}
+
+
+
+#isHomeUlMedium {
+  display: none;
+ 
+}
+
+.titleBackground {
+ display: none;
+}
+
+#isProjectContainer {
+  /* padding: 100px 5%; */
+}
+
+#isHomeUlSmall{
+  display: flex;
+  gap: 10px;
+}
+
+#isHomeUlSmall li{
+  width: 20px;
+  height: 20px;
+  background: rgba(245, 245, 240);
+}
+
+/* #isHomeUlMedium li {
+  margin: 0;
+} */
+
+
+}
+
+@media only screen and (max-width: 1200px){
+  #isHomeUlMedium li {
+  margin: 0;
+}
+
+iframe{
+  width: 80px;
+}
+}
+
+@media only screen and (min-width: 768px) {
+
+  #isHomeUlSmall{
+  display: none;
+}
+
+#isHomeUlMedium {
+  display: flex;
+}
+
+
+
+}
+
+@media only screen and (min-width: 992px) {
+
+.titleBackground {
+ display: block;
+}
+
+
+
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+#isHomeUlMedium li {
+  margin: 0 -2%;
+}
+
+iframe{
+  width: initial;
+}
+
+}
+
+/* @media only screen and (max-width: 410px) {
+
+#isHomeUlMedium {
+  display: none;
+ 
+}
+
+
+
+
+} */
+
+
+
+
+
+/* @media only screen and (min-width: 992px) and (max-width: 1199px) {
 
 #isHomeContainer button img{
   width: 20px;
@@ -412,9 +564,9 @@ button {
   #isHomeContainer button img{
   width: 20px;
   height: 20px;
-}
+} */
 
 
 
-}
+/* } */
 </style>

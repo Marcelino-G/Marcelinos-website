@@ -9,8 +9,7 @@ import HeaderComponentVue from "./components/header/HeaderComponent.vue";
       <header-component-vue></header-component-vue>
     </header>
     <main>
-      <router-view/>
-
+      <router-view />
     </main>
     <footer>
       <footer-component-vue></footer-component-vue>
@@ -22,7 +21,7 @@ import HeaderComponentVue from "./components/header/HeaderComponent.vue";
 #mainContainer {
   width: 90%;
   height: 90%;
-  
+
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: 90% 10%;
@@ -57,5 +56,29 @@ footer {
   border-radius: 10px;
   background: radial-gradient(at 150% 100%, black, blue);
   padding: 0 25px;
+}
+
+
+
+
+@media only screen and (max-width: 992px) {
+  #mainContainer {
+    grid-template-columns: 100%;
+    grid-template-rows: 30% 60% 10%;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #mainContainer {
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 90% 10%;
+  grid-template-areas:
+    "header main"
+    "footer footer";
+}
 }
 </style>

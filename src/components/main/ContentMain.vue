@@ -216,6 +216,7 @@ div {
 
   grid-auto-columns: 55% 45%;
   grid-template-areas: "ul video";
+  padding: 25px;
   /* position: relative;
   display: flex;
   justify-content: flex-end; */
@@ -264,7 +265,7 @@ div {
   justify-content: flex-start;
   align-items: center;
   height: 100%;
-  padding: 25px;
+  /* padding: 25px; */
   
 }
 
@@ -287,7 +288,7 @@ div {
   /* margin: auto; */
   background: rgba(128, 128, 128, 0.8);
   border-radius: 5%;
-  height: 80%;
+  height: 50%;
   width: 100%;
   /* max-width: 95%; */
   /* max-height: 95%; */
@@ -297,7 +298,7 @@ div {
 
 #videoContainer video  {
   max-width: 95%;
-  max-height: 100%;
+  max-height: 95%;
   /* max-height: 95%; */
 }
 
@@ -306,6 +307,122 @@ div {
   max-height: 25%;
   max-width: 20%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+  #isProjectContainer {
+  grid-template-columns: 100%;
+  grid-template-rows: 70% 30%;
+  grid-template-areas: 
+  "ul"
+  "video";
+}
+
+#videoHitContainer img {
+  max-height: 15%;
+  max-width: 10%;
+}
+
+#videoContainer  {
+  height: 100%;
+  width: 30%;
+
+}
+
+#isProjectContainer {
+  padding: 10px;
+
+}
+
+  
+
+  
+
+}
+
+@media only screen and (min-width: 768px) {
+
+
+#videoContainer  {
+  height: 100%;
+  width: 100%;
+
+}
+
+#isProjectContainer {
+  /* grid-template-columns: 55% 45%;
+  grid-template-rows: 100%;
+  grid-template-areas: "ul video";
+  padding: 25px; */
+
+}
+
+#videoHitContainer img {
+  max-height: 18%;
+  max-width: 13%;
+}
+
+#isProjectContainer {
+
+
+  grid-auto-columns: 70% 30%;
+}
+  
+
+  
+
+}
+
+@media only screen and (min-width: 992px) {
+
+  
+#videoContainer  {
+  height: 50%;
+  width: 100%;
+
+}
+
+#isProjectContainer {
+  grid-auto-columns: 55% 45%;
+}
+
+
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+  
+#videoHitContainer img {
+  /* max-height: 25%;
+  max-width: 20%; */
+}
+
+}
+
+
+
+
+
+
+
+
 
 
 </style>

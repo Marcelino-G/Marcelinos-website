@@ -17,12 +17,14 @@ let mainContent = computed(() => ({
   currentHomeIndex: websiteStore.homePage.currentHomeIndex,
 }));
 
-let supportingContent = {
+let supportingContent = computed(() => ({
   homeImages: websiteStore.getHomeImages,
   setCurrentHomeTitleAndImage: websiteStore.setCurrentHomeTitleAndImage,
   forwardHomeTitleAndImage: websiteStore.forwardHomeTitleAndImage,
   backwardHomeTitleAndImage: websiteStore.backwardHomeTitleAndImage,
-};
+  currentHomeIndex: websiteStore.homePage.currentHomeIndex
+
+}));
 </script>
 
 <template>

@@ -23,7 +23,10 @@ watch(route, (newRoute, oldRoute) => {
 <template>
   <div id="headerContainer">
     <h1>Marcelino's Website</h1>
-    <img alt="ll" :src="headerImage" />
+    <div id="imageContainer">
+      <img alt="ll" :src="headerImage" />
+    </div>
+    
     <div id="navAndSupportingContainer">
       <nav>
         <router-link :to="{ name: 'home' }">Home</router-link>
@@ -44,13 +47,19 @@ watch(route, (newRoute, oldRoute) => {
   height: 100%;
   /* width: 100%; */
   display: grid;
-  /* gap: 1%; */
-  grid-template-rows: 10% 60% 30%;
+  grid-template-rows: 20% 50% 30%;
   grid-auto-columns: 100%;
   grid-template-areas:
     "h1"
-    "img"
+    "imageContainer"
     "navAndSupporting";
+  /* gap: 1%; */
+  /* grid-template-rows: 20% 50% 30%;
+  grid-auto-columns: 100%;
+  grid-template-areas:
+    "h1"
+    "imageContainer"
+    "navAndSupporting"; */
 }
 
 h1 {
@@ -59,14 +68,25 @@ h1 {
   border: solid black 1px;
   
 }
+
+#imageContainer{
+  grid-area: imageContainer;
+  border: solid green 2px;
+  width: 100%;
+  height: 70%;
+  margin: auto;
+  text-align: center;
+
+}
+
 img {
   max-height: 100%;
   max-width: 100%;
-  grid-area: img;
-  margin: auto 0;
+  /* margin: auto 0; */
+  /* margin: auto; */
 }
 
-#navAndSupportingContainer{
+#navAndSupportingContainer {
   /* width: 100%; */
   grid-area: navAndSupporting;
   border: solid gray 5px;
@@ -88,7 +108,7 @@ nav {
   grid-area: nav;
 }
 
-#supportingContentContainer{
+#supportingContentContainer {
   grid-area: supportingContent;
 }
 
@@ -97,7 +117,7 @@ a {
   width: 60%;
   text-decoration: none;
   /* font-size: 1.5em; */
-  color: #F8F8FF;
+  color: #f8f8ff;
 }
 
 @keyframes rainbow {
@@ -132,6 +152,106 @@ a {
   background-size: 200% 200%;
 }
 
+@media only screen and (max-width: 410px) {
+  #headerContainer {
+    grid-template-rows: 50% 50%;
+  }
+
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  
+
+  #navAndSupportingContainer {
+    grid-template-areas: "nav nav";
+  }
+
+  #supportingContentContainer {
+    display: none;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 992px) {
+  
+  #headerContainer {
+    grid-template-rows: 30% 70%;
+    grid-template-columns: 40% 60%;
+    grid-template-areas:
+      "h1 h1"
+      "imageContainer navAndSupporting";
+  }
+  #imageContainer{
+
+  width: 100%;
+  height: 80%;
+}
+}
+
+@media only screen and (min-width: 992px) {
+  
+ #headerContainer {
+  grid-template-rows: 20% 50% 30%;
+  grid-template-columns: 100%;
+  grid-template-areas:
+    "h1"
+    "imageContainer"
+    "navAndSupporting";
+}
+
+#imageContainer{
+  width: 100%;
+  height: 70%;
+}
+
+}
+
+
+@media only screen and (min-width: 768px) {
+
+  
+
+  #navAndSupportingContainer {
+  grid-template-areas: "nav supportingContent";
+
+}
+
+  #supportingContentContainer {
+    display: block;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media only screen and (max-width: 410px) {
+  #headerContainer {
+    grid-template-rows: 55% 45%;
+  }
+} */
+
 /* @media only screen and (min-width: 992px){
 
 #navAndSupportingContainer{
@@ -155,8 +275,7 @@ h1{font-size: 32px}
  
 } */
 
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+/* @media only screen and (min-width: 768px) and (max-width: 991px) {
 
   #navAndSupportingContainer{
   grid-template-columns: 100%;
@@ -179,5 +298,5 @@ h1 {
 }
 
  
-}
+} */
 </style>

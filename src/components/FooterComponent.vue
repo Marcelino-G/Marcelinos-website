@@ -59,12 +59,13 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
 
 #footerContainer > p {
   align-self: flex-end;
+  padding-left: 5px;
   /* background: purple; */
 }
 
-p{
-  font-size: .85em;
-}
+/* p{
+  font-size: .75em;
+} */
 
 #iconContainer {
   display: flex;
@@ -132,9 +133,9 @@ p{
   height: 25px
 }
 
-#icons li a p {
+/* #icons li a p {
   font-size: .75em;
-}
+} */
 
 
 
@@ -179,7 +180,40 @@ a {
   /* right: 3.5%; */
 }
 
+@media only screen and (max-width: 992px) {
+
+  p{
+  font-size: .65em;
+}
+
+
+
+}
+
 @media only screen and (min-width: 992px) {
+
+  p{
+  font-size: .75em;
+}
+
+
+
+}
+
+/* @media only screen and (max-width: 410px) {
+
+#icons li a img {
+
+  width: 18px;
+  height: 18px
+}
+
+
+
+
+} */
+
+/* @media only screen and (min-width: 992px) {
 
   #materia li img {
   width: 25%;
@@ -192,5 +226,5 @@ a {
 
 
 
-}
+} */
 </style>
