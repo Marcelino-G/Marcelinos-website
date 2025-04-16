@@ -304,8 +304,8 @@ div {
 
 #videoHitContainer img {
   position: absolute;
-  max-height: 25%;
-  max-width: 20%;
+  max-height: 15%;
+  max-width: 10%;
 }
 
 
@@ -335,8 +335,8 @@ div {
 }
 
 #videoHitContainer img {
-  max-height: 15%;
-  max-width: 10%;
+  /* max-height: 15%;
+  max-width: 10%; */
 }
 
 #videoContainer  {
@@ -374,8 +374,8 @@ div {
 }
 
 #videoHitContainer img {
-  max-height: 18%;
-  max-width: 13%;
+  /* max-height: 18%; */
+  /* max-width: 15%; */
 }
 
 #isProjectContainer {
@@ -407,6 +407,10 @@ div {
 }
 
 @media only screen and (min-width: 1200px) {
+
+  #videoContainer  {
+  width: 80%;
+}
 
   
 #videoHitContainer img {

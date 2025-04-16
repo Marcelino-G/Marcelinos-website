@@ -31,6 +31,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
     state: () => {
         return {
 
+            isCredits: false,
             homePage: {
                 headerImage: mainImage,
                 currentHomeTitle: "I bleed dodger blue",
@@ -121,7 +122,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
 
 
-                currentProjectSound: slashSound,
+                currentProjectSound: new Audio(slashSound) ,
+                isMuted: false,
                 currentProjectHitImage: swordHitImage,
                 currentProjectWeaponIndex: 0,
                 main_content: {
@@ -215,17 +217,25 @@ export const useWebsiteStore = defineStore('websiteStore', {
         },
         setCurrentProjectHitImageAndSound(key) {
             this.projectsPage.currentProjectHitImage = this.projectsPage.supporting_content_header[key].hitImage;
-            this.projectsPage.currentProjectSound = this.projectsPage.supporting_content_header[key].currentSound;
+            this.projectsPage.currentProjectSound = new Audio(this.projectsPage.supporting_content_header[key].sound) ;
         },
         setCurrentProject(key) {
-            this.projectsPage.currentProjectTitle = this.projectsPage.main_content[key].title;
+            if(key !== this.projectsPage.currentProjectIndex){
+
+                this.projectsPage.currentProjectTitle = this.projectsPage.main_content[key].title;
             this.projectsPage.currentProjectVideo = this.projectsPage.main_content[key].video;
             this.projectsPage.currentProjectDate = this.projectsPage.main_content[key].dateCompleted;
             this.projectsPage.currentProjectGithub = this.projectsPage.main_content[key].github;
             this.projectsPage.currentProjectApplication = this.projectsPage.main_content[key].application;
             this.projectsPage.currentProjectDescription = this.projectsPage.main_content[key].description;
-            this.projectsPage.currentProjectIndex = key
+            this.projectsPage.currentProjectIndex = key;
 
+            if(this.projectsPage.isMuted === false){
+                this.projectsPage.currentProjectSound.currentTime = 0;
+                this.projectsPage.currentProjectSound.play();
+            }
+
+            }  
         },
         forwardProjectWeapon() {
             if (this.projectsPage.currentProjectWeaponIndex === Object.keys(this.projectsPage.supporting_content_header).length - 1) {
@@ -242,6 +252,9 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 this.projectsPage.currentProjectWeaponIndex = this.projectsPage.currentProjectWeaponIndex - 1;
             }
             this.setCurrentProjectHitImageAndSound(this.projectsPage.currentProjectWeaponIndex)
+        },
+        setMute(){
+            this.projectsPage.isMuted = !this.projectsPage.isMuted;
         }
 
 

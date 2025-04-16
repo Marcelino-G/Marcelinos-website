@@ -10,7 +10,11 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
 
 <template>
   <div id="footerContainer">
-    <p>Copyright © 2025 Marcelino Gamino. All Rights Reserved.</p>
+    <div id="rights">
+      <button>Source Materials</button>
+      <p>Copyright © 2025 Marcelino Gamino. All Rights Reserved.</p>
+    </div>
+    
     <div id="iconContainer">
       <ul id="icons">
         <li>
@@ -57,11 +61,23 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
   /* background: green; */
 }
 
-#footerContainer > p {
-  align-self: flex-end;
-  padding-left: 5px;
+#rights {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* align-self: flex-end; */
+  /* padding-left: 5px; */
   /* background: purple; */
 }
+
+#rights button {
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+
 
 /* p{
   font-size: .75em;
@@ -129,8 +145,8 @@ import purpleMateria from "@/assets/icons/circle-purple.png";
   height: 50%; */
   /* flex-grow: 1; */
   /* width: 100%; */
-  width: 25px;
-  height: 25px
+  width: 16px;
+  height: 16px
 }
 
 /* #icons li a p {

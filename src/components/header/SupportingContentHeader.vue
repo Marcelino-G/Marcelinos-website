@@ -13,8 +13,7 @@ const websiteStore = useWebsiteStore();
 // const descriptions = websiteStore.getHitImagesAndDescriptions.descriptions;
 let weaponsAndDescriptions = websiteStore.getProjectWeaponImagesAndDescriptions;
 let currentProjectWeaponIndex = computed(() => ({
-  currentProjectWeaponIndex:
-    websiteStore.projectsPage.currentProjectWeaponIndex,
+  currentProjectWeaponIndex: websiteStore.projectsPage.currentProjectWeaponIndex,
   forwardProjectWeapon: websiteStore.forwardProjectWeapon,
   backwardProjectWeapon: websiteStore.backwardProjectWeapon,
 }));
@@ -23,6 +22,10 @@ let currentProjectWeaponIndex = computed(() => ({
 <template>
   <div>
     <div id="contentContainer">
+      <!-- <div id="muteContainer">
+        <label for="mute">Mute</label>
+        <input type="checkbox" id="mute" name="mute" @click="websiteStore.setMute" />
+      </div> -->
       <motion.button
         @click="currentProjectWeaponIndex.backwardProjectWeapon"
         :whilePress="{ scale: 0.9 }"
@@ -79,7 +82,13 @@ let currentProjectWeaponIndex = computed(() => ({
   justify-content: center;
   align-items: flex-end;
   /* padding-bottom: 25px; */
-  padding: 0 15px;
+  padding: 0 10px;
+}
+
+#muteContainer{
+  align-self: flex-start;
+  text-align: center;
+  margin-top: 5px;
 }
 
 #weaponContainer {
