@@ -1,21 +1,19 @@
 <script setup>
 import SupportingContentHeader from "./SupportingContentHeader.vue";
 import { useRoute } from "vue-router";
+import { watch } from "vue";
 import { useWebsiteStore } from "@/stores/websiteStore.js";
-import { ref, watch } from "vue";
 
 const route = useRoute();
 const websiteStore = useWebsiteStore();
-let headerImage = ref(websiteStore.homePage.headerImage);
-let projectsPage = false;
 
 watch(route, (newRoute, oldRoute) => {
   if (newRoute.name === "projects") {
-    headerImage.value = websiteStore.projectsPage.headerImage;
-    projectsPage = true;
+    websiteStore.setCurrentHeaderImage(websiteStore.projectsPage.headerImage);
+    websiteStore.setProjectPage(true);
   } else {
-    headerImage.value = websiteStore.homePage.headerImage;
-    projectsPage = false;
+    websiteStore.setCurrentHeaderImage(websiteStore.homePage.headerImage);
+    websiteStore.setProjectPage(false);
   }
 });
 </script>
@@ -24,9 +22,9 @@ watch(route, (newRoute, oldRoute) => {
   <div id="headerContainer">
     <h1>Marcelino's Website</h1>
     <div id="imageContainer">
-      <img alt="ll" :src="headerImage" />
+      <img alt="ll" :src="websiteStore.getCurrentHeaderImage" />
     </div>
-    
+
     <div id="navAndSupportingContainer">
       <nav>
         <router-link :to="{ name: 'home' }">Home</router-link>
@@ -35,7 +33,7 @@ watch(route, (newRoute, oldRoute) => {
       </nav>
       <supporting-content-header
         id="supportingContentContainer"
-        v-if="projectsPage === true"
+        v-if="websiteStore.getProjectPage"
       ></supporting-content-header>
     </div>
   </div>
@@ -43,9 +41,7 @@ watch(route, (newRoute, oldRoute) => {
 
 <style scoped>
 #headerContainer {
-  /* width: 100%; */
   height: 100%;
-  /* width: 100%; */
   display: grid;
   grid-template-rows: 20% 50% 30%;
   grid-auto-columns: 100%;
@@ -53,41 +49,27 @@ watch(route, (newRoute, oldRoute) => {
     "h1"
     "imageContainer"
     "navAndSupporting";
-  /* gap: 1%; */
-  /* grid-template-rows: 20% 50% 30%;
-  grid-auto-columns: 100%;
-  grid-template-areas:
-    "h1"
-    "imageContainer"
-    "navAndSupporting"; */
 }
 
 h1 {
   grid-area: h1;
   text-align: center;
-  border: solid black 1px;
-  
 }
 
-#imageContainer{
+#imageContainer {
   grid-area: imageContainer;
-  border: solid green 2px;
   width: 100%;
   height: 70%;
   margin: auto;
   text-align: center;
-
 }
 
 img {
   max-height: 100%;
   max-width: 100%;
-  /* margin: auto 0; */
-  /* margin: auto; */
 }
 
 #navAndSupportingContainer {
-  /* width: 100%; */
   grid-area: navAndSupporting;
   border: solid gray 5px;
   border-radius: 10px;
@@ -96,8 +78,6 @@ img {
   grid-template-columns: 50% 50%;
   grid-template-rows: 100%;
   grid-template-areas: "nav supportingContent";
-  /* width: 97%;
-  margin: 0 auto; */
 }
 
 nav {
@@ -116,7 +96,6 @@ a {
   text-align: center;
   width: 60%;
   text-decoration: none;
-  /* font-size: 1.5em; */
   color: #f8f8ff;
 }
 
@@ -156,14 +135,9 @@ a {
   #headerContainer {
     grid-template-rows: 50% 50%;
   }
-
-
 }
 
 @media only screen and (max-width: 768px) {
-
-  
-
   #navAndSupportingContainer {
     grid-template-areas: "nav nav";
   }
@@ -171,132 +145,50 @@ a {
   #supportingContentContainer {
     display: none;
   }
-
 }
 
-
-
 @media only screen and (max-width: 992px) {
-  
   #headerContainer {
-    grid-template-rows: 30% 70%;
     grid-template-columns: 40% 60%;
     grid-template-areas:
       "h1 h1"
       "imageContainer navAndSupporting";
   }
-  #imageContainer{
-
-  width: 100%;
-  height: 80%;
-}
-}
-
-@media only screen and (min-width: 992px) {
-  
- #headerContainer {
-  grid-template-rows: 20% 50% 30%;
-  grid-template-columns: 100%;
-  grid-template-areas:
-    "h1"
-    "imageContainer"
-    "navAndSupporting";
+  #imageContainer {
+    width: 100%;
+    height: 80%;
+  }
 }
 
-#imageContainer{
-  width: 100%;
-  height: 70%;
+@media only screen and (min-width: 410px) {
+  #headerContainer {
+    grid-template-rows: 30% 70%;
+  }
 }
-
-}
-
 
 @media only screen and (min-width: 768px) {
-
-  
-
   #navAndSupportingContainer {
-  grid-template-areas: "nav supportingContent";
-
-}
+    grid-template-areas: "nav supportingContent";
+  }
 
   #supportingContentContainer {
     display: block;
   }
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* @media only screen and (max-width: 410px) {
+@media only screen and (min-width: 992px) {
   #headerContainer {
-    grid-template-rows: 55% 45%;
+    grid-template-rows: 20% 50% 30%;
+    grid-template-columns: 100%;
+    grid-template-areas:
+      "h1"
+      "imageContainer"
+      "navAndSupporting";
   }
-} */
 
-/* @media only screen and (min-width: 992px){
-
-#navAndSupportingContainer{
-  grid-template-columns: 50% 50%;
-  grid-template-areas: "nav supportingContent";
-
+  #imageContainer {
+    width: 100%;
+    height: 70%;
+  }
 }
-
-#supportingContentContainer{
-  display: block;
-}
-
-#headerContainer {
-
-  grid-template-rows: 10% 60% 30%;
-
-}
-
-h1{font-size: 32px}
-
- 
-} */
-
-/* @media only screen and (min-width: 768px) and (max-width: 991px) {
-
-  #navAndSupportingContainer{
-  grid-template-columns: 100%;
-  grid-template-areas: "nav";
-}
-
-#supportingContentContainer{
-  display: none;
-}
-
-#headerContainer {
-
-  grid-template-rows: 20% 50% 30%;
-
-}
-
-h1 {
-  font-size: 28px;
-  
-}
-
- 
-} */
 </style>

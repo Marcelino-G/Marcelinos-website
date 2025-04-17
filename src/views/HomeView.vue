@@ -22,17 +22,20 @@ let supportingContent = computed(() => ({
   setCurrentHomeTitleAndImage: websiteStore.setCurrentHomeTitleAndImage,
   forwardHomeTitleAndImage: websiteStore.forwardHomeTitleAndImage,
   backwardHomeTitleAndImage: websiteStore.backwardHomeTitleAndImage,
-  currentHomeIndex: websiteStore.homePage.currentHomeIndex
-
+  currentHomeIndex: websiteStore.homePage.currentHomeIndex,
 }));
 </script>
 
 <template>
   <div id="homeContainer">
-    <topic-main id="topic-main" :content="titleContent" :isHome="true" />
-    <content-main id="content-main" :content="mainContent" :isHome="true" />
+    <topic-main id="topic-main-home" :content="titleContent" :isHome="true" />
+    <content-main
+      id="content-main-home"
+      :content="mainContent"
+      :isHome="true"
+    />
     <supporting-content-main
-      id="supporting-content-main"
+      id="supporting-content-main-home"
       :content="supportingContent"
       :isHome="true"
     />
@@ -42,7 +45,6 @@ let supportingContent = computed(() => ({
 <style scoped>
 #homeContainer {
   height: 100%;
-  /* background-color: blue; */
   display: grid;
   grid-template-rows: 10% 60% 30%;
   grid-template-areas:
@@ -51,80 +53,18 @@ let supportingContent = computed(() => ({
     "supporting-content-main";
 }
 
-#topic-main {
-  /* background-color: red; */
+#topic-main-home {
   grid-area: topic-main;
 }
 
-#content-main {
-  /* background-color: gold; */
+#content-main-home {
   grid-area: content-main;
 }
 
-#supporting-content-main {
-  /* background-color: aqua; */
+#supporting-content-main-home {
   grid-area: supporting-content-main;
-  /* border: solid gray 5px;
+  border: solid gray 5px;
   border-radius: 10px;
   background: radial-gradient(at 150% 100%, black, blue);
-  width: 97%;
-  margin: 0 auto; */
 }
-
-/* header {
-  background-color: black;
-  grid-area: header;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 90% 10%;
-  grid-template-areas:
-    "topic-header topic-header"
-    "nav-header supporting-content-header";
-}
-
-#topic-header {
-  grid-area: topic-header;
-  background-color: beige;
-}
-
-#nav-header {
-  background-color: orange;
-  grid-area: nav-header;
-}
-
-#supporting-content-header {
-  grid-area: supporting-content-header;
-  background-color: brown;
-}
-
-main {
-  background-color: black;
-  grid-area: main;
-  display: grid;
-  grid-template-rows: 15% 75% 10%;
-  grid-template-areas:
-    "topic-main"
-    "content-main"
-    "supporting-content-main";
-}
-
-#topic-main {
-  background-color: red;
-  grid-area: topic-main;
-}
-
-#content-main {
-  background-color: gold;
-  grid-area: content-main;
-}
-
-#supporting-content-main {
-  background-color: aqua;
-  grid-area: supporting-content-main;
-}
-
-footer {
-  background-color: grey;
-  grid-area: footer;
-} */
 </style>

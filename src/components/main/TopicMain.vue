@@ -1,4 +1,5 @@
 <script setup>
+import { motion, AnimatePresence } from "motion-v";
 import { defineProps } from "vue";
 const props = defineProps({
   content: Object,
@@ -6,7 +7,7 @@ const props = defineProps({
   isAbout: Boolean,
   isProject: Boolean
 });
-import { motion, AnimatePresence } from "motion-v";
+
 </script>
 
 <template>

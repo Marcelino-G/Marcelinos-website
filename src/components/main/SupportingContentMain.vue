@@ -1,4 +1,7 @@
 <script setup>
+import { motion, AnimatePresence } from "motion-v";
+import leftFinger from "@/assets/icons/arrow-left.png";
+import rightFinger from "@/assets/icons/arrow-right.png";
 import { defineProps } from "vue";
 const props = defineProps({
   content: Object,
@@ -6,28 +9,11 @@ const props = defineProps({
   isAbout: Boolean,
   isProject: Boolean,
 });
-
-// import { useRoute } from "vue-router";
-// const route = useRoute();
-import { motion, AnimatePresence } from "motion-v";
-import leftFinger from "@/assets/icons/arrow-left.png";
-import rightFinger from "@/assets/icons/arrow-right.png";
-import handPointerImage from "@/assets/icons/hand-pointer.png";
-import { ref } from 'vue';
-
-let browserWidth = ref(window.innerWidth);
-
-
-window.addEventListener("resize", (() => {
-  browserWidth.value = window.innerWidth
-}))
-
-
 </script>
 
 <template>
   <div>
-    <div id="isHomeContainer" v-if="isHome === true">
+    <div id="isHomeContainerSupportingContent" v-if="isHome === true">
       <motion.button
         @click="content.backwardHomeTitleAndImage"
         :whilePress="{ scale: 0.9 }"
@@ -35,7 +21,7 @@ window.addEventListener("resize", (() => {
         <img :src="leftFinger" />
       </motion.button>
 
-      <ul id="isHomeUlMedium">
+      <ul id="isHomeUlMediumInterface">
         <AnimatePresence
           v-for="(detail, index) in content.homeImages"
           :key="index"
@@ -58,34 +44,28 @@ window.addEventListener("resize", (() => {
         </AnimatePresence>
       </ul>
 
-      <ul id="isHomeUlSmall">
+      <ul id="isHomeUlSmallInterface">
         <AnimatePresence
           v-for="(detail, index) in content.homeImages"
           :key="index"
         >
           <motion.li
-            :initial="{ opacity: 0.4, scale: 0.75}"
+            :initial="{ opacity: 0.4, scale: 0.75 }"
             :key="index"
             v-if="index !== content.currentHomeIndex"
           >
           </motion.li>
           <motion.li
-            :initial="{ opacity: 0.4, scale: 0.75}"
-            :animate="{ opacity: 1, scale: 1}"
+            :initial="{ opacity: 0.4, scale: 0.75 }"
+            :animate="{ opacity: 1, scale: 1 }"
             :key="index"
-            :exit="{ opacity: 0.4, scale: 0.75}"
-            :transition="{duration: 1}"
+            :exit="{ opacity: 0.4, scale: 0.75 }"
+            :transition="{ duration: 1 }"
             v-if="index === content.currentHomeIndex"
           >
           </motion.li>
         </AnimatePresence>
       </ul>
-
-
-
-
-
-
 
       <motion.button
         @click="content.forwardHomeTitleAndImage"
@@ -95,9 +75,9 @@ window.addEventListener("resize", (() => {
       </motion.button>
     </div>
 
-    <div v-if="isAbout === true" id="isAboutContainer">
+    <div v-if="isAbout === true" id="isAboutContainerSupportingContent">
       <ul id="isAboutUl">
-        <li id="stack">
+        <li id="stackListItem">
           <h3>Tech Stack</h3>
           <ul
             v-for="(skillCategory, index) in content.technicalSkills"
@@ -109,7 +89,7 @@ window.addEventListener("resize", (() => {
             </li>
           </ul>
         </li>
-        <li id="faq">
+        <li id="faqListItem">
           <h3>FAQ</h3>
           <ul>
             <li
@@ -126,7 +106,6 @@ window.addEventListener("resize", (() => {
                 v-else
                 style="border-radius: 12px"
                 src="https://open.spotify.com/embed/playlist/7y8S1cGlXAeLRRmWk85Nud?utm_source=generator"
-                width="100%"
                 height="100px"
                 frameBorder="0"
                 allowfullscreen=""
@@ -136,23 +115,10 @@ window.addEventListener("resize", (() => {
             </li>
           </ul>
         </li>
-        <!-- <li id="spotify">
-          <h3>Spotify Playlist</h3>
-          <iframe
-            style="border-radius: 12px"
-            src="https://open.spotify.com/embed/playlist/7y8S1cGlXAeLRRmWk85Nud?utm_source=generator"
-            width="100%"
-            height="100px"
-            frameBorder="0"
-            allowfullscreen=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          ></iframe>
-        </li> -->
       </ul>
     </div>
 
-    <div id="isProjectContainer" v-if="isProject === true">
+    <div id="isProjectContainerSupportingContent" v-if="isProject === true">
       <ul>
         <li
           v-for="(title, index) in content.titles"
@@ -161,20 +127,20 @@ window.addEventListener("resize", (() => {
         >
           <p>{{ title }}</p>
 
-          <div class="titleBackground">
+          <div class="projectTitleBackground">
             <div
               :class="{
-                backgroundCircleOne: content.currentProjectIndex === index,
+                titleBackgroundOne: content.currentProjectIndex === index,
               }"
             ></div>
             <div
               :class="{
-                backgroundCircleTwo: content.currentProjectIndex === index,
+                titleBackgroundTwo: content.currentProjectIndex === index,
               }"
             ></div>
             <div
               :class="{
-                backgroundCircleThree: content.currentProjectIndex === index,
+                titleBackgroundThree: content.currentProjectIndex === index,
               }"
             ></div>
           </div>
@@ -185,45 +151,8 @@ window.addEventListener("resize", (() => {
 </template>
 
 <style scoped>
-#supporting-content-main {
-  border: solid gray 5px;
-  border-radius: 10px;
-  background: radial-gradient(at 150% 100%, black, blue);
-  /* width: 97%;
-  margin: 0 auto; */
-}
-
-#isHomeContainer {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 5%;
-}
-
 ul {
   list-style: none;
-}
-
-#isHomeUlMedium {
-  /* display: flex; */
-  justify-content: center;
-  /* list-style: none; */
-  height: 100%;
-}
-
-#isHomeUlMedium li {
-  max-height: 100%;
-  /* margin: 0 -2.5%; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-#isHomeUlMedium li img {
-  max-width: 90%;
-  max-height: 90%;
 }
 
 button {
@@ -232,8 +161,39 @@ button {
   display: flex;
 }
 
-#isAboutContainer {
-  /* background: red; */
+#supporting-content-main {
+  /* border: solid gray 5px;
+  border-radius: 10px;
+  background: radial-gradient(at 150% 100%, black, blue); */
+}
+
+#isHomeContainerSupportingContent {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+}
+
+#isHomeUlMediumInterface {
+  justify-content: center;
+  height: 100%;
+}
+
+#isHomeUlMediumInterface li {
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#isHomeUlMediumInterface li img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+#isAboutContainerSupportingContent {
   height: 100%;
   width: 100%;
 }
@@ -241,9 +201,6 @@ button {
 #isAboutUl {
   height: 100%;
   width: 100%;
-  /* display: flex; */
-  /* background: blue; */
-  /* justify-content: space-evenly; */
   list-style: none;
   display: grid;
   grid-template-columns: 45% 55%;
@@ -253,19 +210,11 @@ button {
 
 #isAboutUl h3 {
   width: 100%;
-  /* margin-bottom: 10px; */
 }
 
 #isAboutUl > li {
   overflow: auto;
   scrollbar-color: #a9a9a9 rgba(0, 0, 0, 0.4);
-
-  /* scrollbar-width: thin; */
-  /* width: 100%; */
-  /* overflow: auto; */
-  /* overflow-y: auto; */
-  /* scrollbar-width: auto;
-  scrollbar-color: #A9A9A9 rgba(0,0,0,0.4); */
   padding: 10px 5%;
   gap: 10px;
   display: flex;
@@ -275,63 +224,48 @@ button {
   padding-bottom: 0;
 }
 
-#stack {
-  /* display: flex; */
+#stackListItem {
   justify-content: space-evenly;
-  /* text-align: center; */
   flex-wrap: wrap;
-  /* gap: 10px; */
 }
-#stack ul {
+#stackListItem ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* justify-content: center; */
-  /* background: rgba(244, 208, 63, 0.5); */
-  /* background: rgba(163, 177, 138, 0.5); */
 }
 
-#stack ul li {
+#stackListItem ul li {
   border-radius: 5%;
   padding: 5px;
   background: rgba(244, 208, 63, 0.4);
 }
 
-#faq {
+#faqListItem {
   flex-direction: column;
 }
 
-#faq ul {
+#faqListItem ul {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-#faq ul p {
+#faqListItem ul p {
   margin: 0 auto;
 }
 
-#faq ul li p:last-child {
+#faqListItem ul li p:last-child {
   width: 75%;
   border-radius: 5%;
   padding: 5px;
   background: rgba(163, 177, 138, 0.4);
 }
 
-/* #spotify {
-  flex-direction: column;
-} */
-
-#isProjectContainer {
-  /* background: red; */
+#isProjectContainerSupportingContent {
   height: 100%;
-  
- 
 }
 
-#isProjectContainer ul {
-  /* background: green; */
-
+#isProjectContainerSupportingContent ul {
   height: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -339,39 +273,30 @@ button {
   flex-wrap: wrap;
   gap: 20px;
   text-align: center;
-   overflow: auto;
-   padding: 25px 5%;
-  /* background: red; */
+  overflow: auto;
+  padding: 25px 5%;
 }
 
-#isProjectContainer ul li {
+#isProjectContainerSupportingContent ul li {
   cursor: pointer;
   position: relative;
 }
 
-#isProjectContainer ul li p {
+#isProjectContainerSupportingContent ul li p {
   position: relative;
   z-index: 2;
 }
 
-.titleBackground {
-  /* background: green; */
-
+.projectTitleBackground {
   padding-top: 5px;
   min-height: 20px;
-  /* display: flex; */
-  /* justify-content: center; */
   width: 100%;
   position: absolute;
-  /* top: 0px; */
-  /* top: 10px; */
-  /* z-index: 5; */
 }
 
-.titleBackground div {
+.projectTitleBackground div {
   width: 0;
   height: 0;
-  /* bottom: 0px; */
   position: absolute;
 }
 
@@ -405,16 +330,14 @@ button {
   }
 }
 
-.backgroundCircleOne {
+.titleBackgroundOne {
   animation: poweringUpSides 2.5s infinite ease-in-out;
-  /* z-index: 1; */
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-
   left: 0px;
 }
 
-.backgroundCircleTwo {
+.titleBackgroundTwo {
   left: 0;
   right: 0;
   margin: auto;
@@ -424,149 +347,74 @@ button {
   animation-delay: 0.33s;
 }
 
-.backgroundCircleThree {
+.titleBackgroundThree {
   animation: poweringUpSides 2.5s infinite ease-in-out;
   animation-delay: 0.66s;
   right: 0px;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-  /* border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 30px solid rgba(128, 0, 128, 0.6); */
-
-  
 }
-
-
-
 
 @media only screen and (max-width: 992px) {
+  #isHomeUlMediumInterface {
+    display: none;
+  }
 
+  #isHomeUlSmallInterface {
+    display: flex;
+    gap: 10px;
+  }
 
-#isHomeContainer button img{
-  /* width: 20px;
-  height: 20px; */
+  #isHomeUlSmallInterface li {
+    width: 20px;
+    height: 20px;
+    background: rgba(245, 245, 240);
+  }
+
+  .projectTitleBackground {
+    display: none;
+  }
 }
 
+@media only screen and (max-width: 1200px) {
+  #isHomeUlMediumInterface li {
+    margin: 0;
+  }
 
-
-#isHomeUlMedium {
-  display: none;
- 
-}
-
-.titleBackground {
- display: none;
-}
-
-#isProjectContainer {
-  /* padding: 100px 5%; */
-}
-
-#isHomeUlSmall{
-  display: flex;
-  gap: 10px;
-}
-
-#isHomeUlSmall li{
-  width: 20px;
-  height: 20px;
-  background: rgba(245, 245, 240);
-}
-
-/* #isHomeUlMedium li {
-  margin: 0;
-} */
-
-
-}
-
-@media only screen and (max-width: 1200px){
-  #isHomeUlMedium li {
-  margin: 0;
-}
-
-iframe{
-  width: 80px;
-}
+  iframe {
+    width: 80px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
+  #isHomeUlMediumInterface {
+    display: flex;
+  }
 
-  #isHomeUlSmall{
-  display: none;
-}
-
-#isHomeUlMedium {
-  display: flex;
-}
-
-
-
+  #isHomeUlSmallInterface {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 992px) {
-
-.titleBackground {
- display: block;
-}
-
-
-
-
+  .projectTitleBackground {
+    display: block;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
+  #isHomeUlMediumInterface li {
+    margin: 0 -2%;
+  }
 
-#isHomeUlMedium li {
-  margin: 0 -2%;
+  iframe {
+    width: 100%;
+  }
 }
 
-iframe{
-  width: initial;
+@media only screen and (min-width: 1400px) {
+  iframe {
+    width: 85%;
+  }
 }
-
-}
-
-/* @media only screen and (max-width: 410px) {
-
-#isHomeUlMedium {
-  display: none;
- 
-}
-
-
-
-
-} */
-
-
-
-
-
-/* @media only screen and (min-width: 992px) and (max-width: 1199px) {
-
-#isHomeContainer button img{
-  width: 20px;
-  height: 20px;
-}
-
-#isAboutUl {
-  grid-template-columns: 40% 60%;
-}
-
-
-
-}
-
-@media only screen and (min-width: 768px) {
-
-  #isHomeContainer button img{
-  width: 20px;
-  height: 20px;
-} */
-
-
-
-/* } */
 </style>

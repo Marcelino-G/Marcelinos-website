@@ -4,23 +4,15 @@ import ContentMain from "@/components/main/ContentMain.vue";
 import SupportingContentMain from "@/components/main/SupportingContentMain.vue";
 
 import { computed } from "vue";
-// import { useProjectSelector } from "@/composables/projectSelector.js";
-// import { useWeaponSelector } from "@/composables/weaponSelector.js";
+
 import { useWebsiteStore } from "@/stores/websiteStore.js";
 const websiteStore = useWebsiteStore();
-// const {setCurrentIndex, currentIndex, currentTitle, titles, currentMedia, currentDate, currentGithub, currentApplication, currentDescription} = useProjectSelector(websiteStore.projectsPage.main_content);
-// const {currentWeaponIndex, currentSound } = useWeaponSelector();
-
-// let currentHitImage = websiteStore.projectsPage.currentHitImage
-
-// let titleContent = reactive({currentIndex, currentTitle});
-// let mainContent = reactive({currentIndex, currentMedia, currentDate, currentGithub, currentApplication, currentDescription, currentWeaponIndex, currentSound});
-// let supportingContent = reactive({titles, setCurrentIndex, currentIndex});
 
 let titleContent = computed(() => ({
   currentProjectTitle: websiteStore.projectsPage.currentProjectTitle,
   currentProjectIndex: websiteStore.projectsPage.currentProjectIndex,
 }));
+
 let mainContent = computed(() => ({
   currentProjectVideo: websiteStore.projectsPage.currentProjectVideo,
   currentProjectDate: websiteStore.projectsPage.currentProjectDate,
@@ -38,21 +30,27 @@ let mainContent = computed(() => ({
   currentProjectIndex: websiteStore.projectsPage.currentProjectIndex,
 }));
 
-
-
 let supportingContent = computed(() => ({
   titles: websiteStore.getProjectTitles,
   setCurrentProject: websiteStore.setCurrentProject,
   currentProjectIndex: websiteStore.projectsPage.currentProjectIndex,
-})) 
+}));
 </script>
 
 <template>
   <div id="projectsContainer">
-    <topic-main id="topic-main" :content="titleContent" :isProject="true" />
-    <content-main id="content-main" :content="mainContent" :isProject="true" />
+    <topic-main
+      id="topic-main-projects"
+      :content="titleContent"
+      :isProject="true"
+    />
+    <content-main
+      id="content-main-projects"
+      :content="mainContent"
+      :isProject="true"
+    />
     <supporting-content-main
-      id="supporting-content-main"
+      id="supporting-content-main-projects"
       :content="supportingContent"
       :isProject="true"
     />
@@ -68,78 +66,20 @@ let supportingContent = computed(() => ({
     "topic-main"
     "content-main"
     "supporting-content-main";
-    /* gap: 10px; */
 }
 
-#topic-main {
+#topic-main-projects {
   grid-area: topic-main;
 }
 
-#content-main {
-  grid-area: content-main;
-  /* padding: 25px; */
-}
-
-#supporting-content-main {
-  grid-area: supporting-content-main;
-  overflow: auto;
-  /* padding: 25px; */
-}
-
-/* header {
-  background-color: black;
-  grid-area: header;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 90% 10%;
-  grid-template-areas:
-    "topic-header topic-header"
-    "nav-header supporting-content-header";
-}
-
-#topic-header {
-  grid-area: topic-header;
-  background-color: beige;
-}
-
-#nav-header {
-  background-color: orange;
-  grid-area: nav-header;
-}
-
-#supporting-content-header {
-  grid-area: supporting-content-header;
-  background-color: brown;
-}
-
-main {
-  background-color: black;
-  grid-area: main;
-  display: grid;
-  grid-template-rows: 15% 75% 10%;
-  grid-template-areas:
-    "topic-main"
-    "content-main"
-    "supporting-content-main";
-}
-
-#topic-main {
-  background-color: red;
-  grid-area: topic-main;
-}
-
-#content-main {
-  background-color: gold;
+#content-main-projects {
   grid-area: content-main;
 }
 
-#supporting-content-main {
-  background-color: aqua;
+#supporting-content-main-projects {
   grid-area: supporting-content-main;
+  border: solid gray 5px;
+  border-radius: 10px;
+  background: radial-gradient(at 150% 100%, black, blue);
 }
-
-footer {
-  background-color: grey;
-  grid-area: footer;
-}  */
 </style>

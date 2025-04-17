@@ -25,13 +25,13 @@ import magicSound from '@/assets/game_sounds/magicSound.mp3';
 import punchSound from '@/assets/game_sounds/punchSound.mp3';
 import slashSound from '@/assets/game_sounds/slashSound.mp3';
 
-
 export const useWebsiteStore = defineStore('websiteStore', {
 
     state: () => {
         return {
 
             isCredits: false,
+            currentHeaderImage: mainImage,
             homePage: {
                 headerImage: mainImage,
                 currentHomeTitle: "I bleed dodger blue",
@@ -110,6 +110,10 @@ export const useWebsiteStore = defineStore('websiteStore', {
             },
 
             projectsPage: {
+
+
+                isProjectPage: false,
+
                 headerImage: animatedImage,
 
                 currentProjectTitle: "Roll for Pokemon",
@@ -122,8 +126,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
 
 
-                currentProjectSound: new Audio(slashSound) ,
-                isMuted: false,
+                currentProjectSound: new Audio(slashSound),
+                // isMuted: false,
                 currentProjectHitImage: swordHitImage,
                 currentProjectWeaponIndex: 0,
                 main_content: {
@@ -169,24 +173,34 @@ export const useWebsiteStore = defineStore('websiteStore', {
                     },
                 },
 
-                supporting_content_header: {
+                supporting_content: {
                     0: {
                         weaponImage: swordImage,
                         description: 'Buster Sword',
                         sound: slashSound,
-                        hitImage: swordHitImage
+                        hitImage: swordHitImage,
+                        weaponImageLink: 'https://finalfantasy.fandom.com/wiki/Buster_Sword_(Final_Fantasy_VII)',
+                        hitImageLink: 'https://pixabay.com/vectors/cross-delete-remove-cancel-abort-296507/',
+                        soundLink: 'https://pixabay.com/sound-effects/slash1-94367/'
+                        
                     },
                     1: {
                         weaponImage: stickImage,
                         description: 'Guard Stick',
                         sound: magicSound,
-                        hitImage: stickHitImage
+                        hitImage: stickHitImage,
+                        weaponImageLink: 'https://finalfantasy.fandom.com/wiki/Guard_Stick_(Final_Fantasy_VII)',
+                        hitImageLink: 'https://pixabay.com/illustrations/star-swirl-twirl-light-geometric-7095346/',
+                        soundLink: 'https://pixabay.com/sound-effects/magic-244951/'
                     },
                     2: {
                         weaponImage: glovesImage,
                         description: 'Leather Gloves',
                         sound: punchSound,
-                        hitImage: gloveHitImage
+                        hitImage: gloveHitImage,
+                        weaponImageLink: 'https://finalfantasy.fandom.com/wiki/Leather_Gloves_(VII_Remake)',
+                        hitImageLink: 'https://pixabay.com/vectors/celebration-fireworks-night-party-152951/',
+                        soundLink: 'https://pixabay.com/sound-effects/punch-2-37333/'
                     }
 
                 }
@@ -194,6 +208,12 @@ export const useWebsiteStore = defineStore('websiteStore', {
         }
     },
     actions: {
+        setCurrentHeaderImage(img){
+            this.currentHeaderImage = img;
+        },
+        setProjectPage(bool){
+            this.projectsPage.isProjectPage = bool;
+        },
         setCurrentHomeTitleAndImage(key) {
             this.homePage.currentHomeTitle = this.homePage.main_content[key].title;
             this.homePage.currentHomeImage = this.homePage.main_content[key].image;
@@ -215,30 +235,28 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 this.setCurrentHomeTitleAndImage(this.homePage.currentHomeIndex);
             }
         },
-        setCurrentProjectHitImageAndSound(key) {
-            this.projectsPage.currentProjectHitImage = this.projectsPage.supporting_content_header[key].hitImage;
-            this.projectsPage.currentProjectSound = new Audio(this.projectsPage.supporting_content_header[key].sound) ;
-        },
         setCurrentProject(key) {
-            if(key !== this.projectsPage.currentProjectIndex){
+            if (key !== this.projectsPage.currentProjectIndex) {
 
                 this.projectsPage.currentProjectTitle = this.projectsPage.main_content[key].title;
-            this.projectsPage.currentProjectVideo = this.projectsPage.main_content[key].video;
-            this.projectsPage.currentProjectDate = this.projectsPage.main_content[key].dateCompleted;
-            this.projectsPage.currentProjectGithub = this.projectsPage.main_content[key].github;
-            this.projectsPage.currentProjectApplication = this.projectsPage.main_content[key].application;
-            this.projectsPage.currentProjectDescription = this.projectsPage.main_content[key].description;
-            this.projectsPage.currentProjectIndex = key;
+                this.projectsPage.currentProjectVideo = this.projectsPage.main_content[key].video;
+                this.projectsPage.currentProjectDate = this.projectsPage.main_content[key].dateCompleted;
+                this.projectsPage.currentProjectGithub = this.projectsPage.main_content[key].github;
+                this.projectsPage.currentProjectApplication = this.projectsPage.main_content[key].application;
+                this.projectsPage.currentProjectDescription = this.projectsPage.main_content[key].description;
+                this.projectsPage.currentProjectIndex = key;
 
-            if(this.projectsPage.isMuted === false){
+
                 this.projectsPage.currentProjectSound.currentTime = 0;
                 this.projectsPage.currentProjectSound.play();
             }
-
-            }  
+        },
+        setCurrentProjectHitImageAndSound(key) {
+            this.projectsPage.currentProjectHitImage = this.projectsPage.supporting_content[key].hitImage;
+            this.projectsPage.currentProjectSound = new Audio(this.projectsPage.supporting_content[key].sound);
         },
         forwardProjectWeapon() {
-            if (this.projectsPage.currentProjectWeaponIndex === Object.keys(this.projectsPage.supporting_content_header).length - 1) {
+            if (this.projectsPage.currentProjectWeaponIndex === Object.keys(this.projectsPage.supporting_content).length - 1) {
                 this.projectsPage.currentProjectWeaponIndex = 0
             } else {
                 this.projectsPage.currentProjectWeaponIndex = this.projectsPage.currentProjectWeaponIndex + 1;
@@ -247,23 +265,26 @@ export const useWebsiteStore = defineStore('websiteStore', {
         },
         backwardProjectWeapon() {
             if (this.projectsPage.currentProjectWeaponIndex === 0) {
-                this.projectsPage.currentProjectWeaponIndex = Object.keys(this.projectsPage.supporting_content_header).length - 1;
+                this.projectsPage.currentProjectWeaponIndex = Object.keys(this.projectsPage.supporting_content).length - 1;
             } else {
                 this.projectsPage.currentProjectWeaponIndex = this.projectsPage.currentProjectWeaponIndex - 1;
             }
             this.setCurrentProjectHitImageAndSound(this.projectsPage.currentProjectWeaponIndex)
         },
-        setMute(){
-            this.projectsPage.isMuted = !this.projectsPage.isMuted;
+        setCredits(){
+            this.isCredits = !this.isCredits;
         }
-
-
-
-
-
-
+        // setMute(){
+        //     this.projectsPage.isMuted = !this.projectsPage.isMuted;
+        // }
     },
     getters: {
+        getCurrentHeaderImage(state){
+            return state.currentHeaderImage;
+        },
+        getProjectPage(state){
+            return state.projectsPage.isProjectPage;
+        },
         getHomeImages(state) {
             let images = [];
             for (let key in state.homePage.main_content) {
@@ -271,37 +292,76 @@ export const useWebsiteStore = defineStore('websiteStore', {
             }
             return images;
         },
-        getAboutTechnicalSkills() {
-            let skills = this.aboutMePage.main_content.funFacts.technical;
+        getAboutTechnicalSkills(state) {
+            let skills = state.aboutMePage.main_content.funFacts.technical;
             return skills;
         },
-        getAboutQuestionsAndAnswers() {
+        getAboutQuestionsAndAnswers(state) {
             let questions = [];
             let answers = [];
-            for (let key in this.aboutMePage.main_content.funFacts.questionsAndAnswers) {
-                questions.push(this.aboutMePage.main_content.funFacts.questionsAndAnswers[key].question);
-                answers.push(this.aboutMePage.main_content.funFacts.questionsAndAnswers[key].answer);
+            for (let key in state.aboutMePage.main_content.funFacts.questionsAndAnswers) {
+                questions.push(state.aboutMePage.main_content.funFacts.questionsAndAnswers[key].question);
+                answers.push(state.aboutMePage.main_content.funFacts.questionsAndAnswers[key].answer);
             }
             return { questions, answers };
         },
-        getProjectWeaponImagesAndDescriptions() {
+        getProjectWeaponImagesAndDescriptions(state) {
             let weaponImages = [];
             let descriptions = [];
 
-            for (let key in this.projectsPage.supporting_content_header) {
-                weaponImages.push(this.projectsPage.supporting_content_header[key].weaponImage);
-                descriptions.push(this.projectsPage.supporting_content_header[key].description);
+            for (let key in state.projectsPage.supporting_content) {
+                weaponImages.push(state.projectsPage.supporting_content[key].weaponImage);
+                descriptions.push(state.projectsPage.supporting_content[key].description);
             }
             return { weaponImages, descriptions };
         },
-        getProjectTitles() {
+        getProjectTitles(state) {
             let titles = [];
 
-            for (let key in this.projectsPage.main_content) {
-                titles.push(this.projectsPage.main_content[key].title);
+            for (let key in state.projectsPage.main_content) {
+                titles.push(state.projectsPage.main_content[key].title);
             }
 
             return titles;
+        },
+        getHitImages(state){
+            let hitImages = [];
+
+            for (let key in state.projectsPage.supporting_content) {
+                hitImages.push(state.projectsPage.supporting_content[key].hitImage);
+            }
+
+            return hitImages;
+        },
+        getWeaponImageLinks(state){
+            let links = [];
+
+            for (let key in state.projectsPage.supporting_content) {
+                links.push(state.projectsPage.supporting_content[key].weaponImageLink);
+            }
+
+            return links;
+
+        },
+        getHitImageLinks(state){
+            let hitImageLinks = [];
+
+            for (let key in state.projectsPage.supporting_content) {
+                hitImageLinks.push(state.projectsPage.supporting_content[key].hitImageLink);
+            }
+
+            return hitImageLinks;
+
+        },
+        getSoundLinks(state){
+            let soundLinks = [];
+
+            for (let key in state.projectsPage.supporting_content) {
+                soundLinks.push(state.projectsPage.supporting_content[key].soundLink);
+            }
+
+            return soundLinks;
+
         }
     }
 })
