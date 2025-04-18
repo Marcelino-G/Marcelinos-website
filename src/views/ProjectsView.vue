@@ -15,6 +15,7 @@ let titleContent = computed(() => ({
 
 let mainContent = computed(() => ({
   currentProjectVideo: websiteStore.projectsPage.currentProjectVideo,
+  currentBuiltWith: websiteStore.projectsPage.currentBuiltWith,
   currentProjectDate: websiteStore.projectsPage.currentProjectDate,
   currentProjectGithub: websiteStore.projectsPage.currentProjectGithub,
   currentProjectApplication:

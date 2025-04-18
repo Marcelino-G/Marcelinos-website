@@ -155,11 +155,19 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 headerImage: animatedImage,
 
                 currentProjectTitle: "Roll for Pokemon",
+                currentBuiltWith: "Java, SQL",
                 currentProjectVideo: rollPokemonVideo,
                 currentProjectDate: "Jan 2025",
                 currentProjectGithub: "https://github.com/Marcelino-G/Roll-for-Pokemon",
                 currentProjectApplication: "",
-                currentProjectDescription: "this does that",
+                currentProjectDescription:
+                        `
+                        Grab your bag and step into the tall grass, what Pokemon await and will you catch them all? The objective
+                        of this project was to design it with polymorphism, inheritance, and encapsulation fundamentals in mind
+                        to simplify complexity, promote readability, and encourage modifications. This project made me realize
+                        that a detailed blueprint that outlines the features and connections between different components makes
+                        the building process much smoother.
+                        `,
                 currentProjectIndex: 0,
 
 
@@ -171,43 +179,78 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 main_content: {
                     0: {
                         title: "Roll for Pokemon",
+                        builtWith: "Java, SQL",
                         video: rollPokemonVideo,
                         dateCompleted: "Jan 2025",
                         github: "https://github.com/Marcelino-G/Roll-for-Pokemon",
                         application: "",
-                        description: "this does that"
+                        description: 
+                        `
+                        Grab your bag and step into the tall grass, what Pokemon await and will you catch them all? The objective
+                        of this project was to design it with polymorphism, inheritance, and encapsulation fundamentals in mind
+                        to simplify complexity, promote readability, and encourage modifications. This project made me realize
+                        that a detailed blueprint that outlines the features and connections between different components makes
+                        the building process much smoother.
+                        `
                     },
                     1: {
                         title: "3,000 Meters Above",
+                        builtWith: "JavaScript, CSS",
                         video: metersGameVideo,
                         dateCompleted: "Feb 2023",
                         github: "https://github.com/Marcelino-G/3-000-Meters-Above",
                         application: "https://marcelino-g.github.io/3-000-Meters-Above/",
-                        description: "this does this"
+                        description: 
+                        `
+                        Take control of a fighter pilot who faces waves of enemies as a strange voice tries to guide you home.
+                        The purpose of this project was to familiarize myself with the methods associated with drawing onto the
+                        <canvas> element and interactive animations. While this project may not be perfect, presentational and functional
+                        goals were met, demonstrating animation and one of the many ways to express yourself through technology.
+                        `
                     },
                     2: {
                         title: "Replicat, Soft Revival",
+                        builtWith: "JavaScript, Bootstrap",
                         video: replicatVideo,
                         dateCompleted: "Oct 2022",
                         github: "https://github.com/Marcelino-G/Replicat-Soft-Revival",
                         application: "https://marcelino-g.github.io/Replicat-Soft-Revival/",
-                        description: "this does what"
+                        description: 
+                        `
+                        Browse through The Siber Corporation's website and be persuaded by their "Replicat" product. The goal of this 
+                        project was to create a responsive webpage capable of accomdating various device types and screen sizes with Bootstrap.
+                        This project taught me that the message being conveyed to the user is what's most important and sometimes you have to
+                        sacrifice or change features in order to translate it well for their specific devices.
+                        `
                     },
                     3: {
                         title: "Movie Pals",
+                        builtWith: "React, Bootstrap",
                         video: moviePalsVideo,
                         dateCompleted: "Aug 2022",
                         github: "https://github.com/Marcelino-G/Movie-Pals",
                         application: "",
-                        description: "this does what"
+                        description: 
+                        `
+                        Create an account and build up your movie portfolio to share with friends in this imagined social media like platform. The 
+                        focus of this project was to take advantage of React's reusable components and features to design clean code. The biggest 
+                        takeaway from working on this project revolved around the importance of organization and clarity in development like 
+                        properly naming/defining code elements, commenting on functions, and maintaining a consistent style throughout the project.
+                        `
                     },
                     4: {
                         title: "Who's that Monstermon?",
+                        builtWith: "JavaScript, CSS",
                         video: whosMonsterVideo,
                         dateCompleted: "May 2022",
                         github: "https://github.com/Marcelino-G/Who-s-that-Monstermon",
                         application: "https://marcelino-g.github.io/Who-s-that-Monstermon/",
-                        description: "this does what"
+                        description:
+                        `
+                        Watch your score count go up and reach a new personal record as you challenge your Pokemon knowledge. The emphasis of
+                        this project was to fetch data from an API and display it to the user. This project helped me understand the concepts
+                        related to "async" and "await" when working with external data and how unexpected behavior may occur without them.    
+                        `
                     },
                 },
 
@@ -219,7 +262,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         hitImage: swordHitImage,
                         weaponImageLink: 'https://finalfantasy.fandom.com/wiki/Buster_Sword_(Final_Fantasy_VII)',
                         hitImageLink: 'https://pixabay.com/vectors/cross-delete-remove-cancel-abort-296507/',
-                        soundLink: 'https://pixabay.com/sound-effects/slash1-94367/'
+                        soundLink: 'https://pixabay.com/sound-effects/sword-slash-05-266312/'
                         
                     },
                     1: {
@@ -278,6 +321,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
             if (key !== this.projectsPage.currentProjectIndex) {
 
                 this.projectsPage.currentProjectTitle = this.projectsPage.main_content[key].title;
+                this.projectsPage.currentBuiltWith = this.projectsPage.main_content[key].builtWith;
                 this.projectsPage.currentProjectVideo = this.projectsPage.main_content[key].video;
                 this.projectsPage.currentProjectDate = this.projectsPage.main_content[key].dateCompleted;
                 this.projectsPage.currentProjectGithub = this.projectsPage.main_content[key].github;
@@ -320,6 +364,13 @@ export const useWebsiteStore = defineStore('websiteStore', {
     getters: {
         getCurrentHeaderImage(state){
             return state.currentHeaderImage;
+        },
+        getCurrentHomeImage(state){
+            let currentHomeImage = state.homePage.currentHomeImage;
+            let currentHomeIndex = state.homePage.currentHomeIndex;
+            let currentHomeAltText = state.homePage.currentHomeAltText;
+
+            return {currentHomeImage, currentHomeIndex, currentHomeAltText}
         },
         getProjectPage(state){
             return state.projectsPage.isProjectPage;

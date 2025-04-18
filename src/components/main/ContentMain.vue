@@ -8,18 +8,21 @@ const props = defineProps({
   isAbout: Boolean,
   isProject: Boolean,
 });
+
+import { useWebsiteStore } from "@/stores/websiteStore.js";
+const websiteStore = useWebsiteStore();
 </script>
 
 <template>
   <div>
     <div v-if="isHome === true" id="isHomeContainerMainContent">
-        <motion.img
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :key="content.currentHomeIndex"
-          :src="content.currentHomeImage"
-          :alt="content.currentHomeAltText"
-        />
+      <motion.img
+        :initial="{ opacity: 0 }"
+        :animate="{ opacity: 1 }"
+        :key="websiteStore.getCurrentHomeImage.currentHomeIndex"
+        :src="websiteStore.getCurrentHomeImage.currentHomeImage"
+        :alt="websiteStore.getCurrentHomeImage.currentHomeAltText"
+      />
     </div>
 
     <div v-if="isAbout === true" id="isAboutContainerMainContent">
@@ -39,17 +42,25 @@ const props = defineProps({
         <li>
           {{ content.currentProjectDescription }}
         </li>
-        <li>Completed: {{ content.currentProjectDate }}</li>
-        <li>
-          <a :href="content.currentProjectGithub" target="_blank"
-            >GitHub repository</a
-          >
-        </li>
-        <li v-if="content.currentProjectApplication !== ''">
-          <a :href="content.currentProjectApplication" target="_blank"
-            >Application</a
-          >
-        </li>
+
+        <div class="projectDetailsContainer">
+          <li>Completed: {{ content.currentProjectDate }}</li>
+          <li>Built with: {{ content.currentBuiltWith }}</li>
+          <li>
+            <a :href="content.currentProjectGithub" target="_blank"
+              >GitHub repository</a
+            >
+          </li>
+          <li>
+            <a
+              v-if="content.currentProjectApplication !== ''"
+              :href="content.currentProjectApplication"
+              target="_blank"
+              >Application</a
+            >
+            <p v-else>&nbsp;</p>
+          </li>
+        </div>
       </motion.ul>
 
       <div id="videoHitContainer">
@@ -86,6 +97,10 @@ const props = defineProps({
 </template>
 
 <style scoped>
+a {
+  color: #f8f8ff;
+}
+
 #isHomeContainerMainContent {
   width: 100%;
   height: 100%;
@@ -108,10 +123,9 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-#isAboutContainerMainContent p{
+#isAboutContainerMainContent p {
   width: 90%;
   height: 90%;
   background: rgba(0, 0, 0, 0.5);
@@ -126,7 +140,6 @@ const props = defineProps({
   align-items: center;
   /* justify-content: center; */
   padding: 0 20px;
-  
 }
 
 #isProjectContainerMainContent ul {
@@ -134,13 +147,19 @@ const props = defineProps({
   list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 90%;
   height: 90%;
   background: rgba(0, 0, 0, 0.5);
   border-radius: 5%;
-  padding: 10px;
+  padding: 20px;
+  text-align: center;
+  overflow: auto;
+}
+
+.projectDetailsContainer li {
+  margin: 5px 0;
 }
 
 #videoHitContainer {
@@ -178,8 +197,8 @@ const props = defineProps({
   }
 
   #isProjectContainerMainContent ul {
-  width: 100%;
-}
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -190,12 +209,12 @@ const props = defineProps({
     /* padding: 25px; */
   }
   #isProjectContainerMainContent ul {
-  width: 90%;
-}
+    width: 90%;
+  }
 
-#videoHitContainer {
-  display: flex;
-}
+  #videoHitContainer {
+    display: flex;
+  }
 }
 
 @media only screen and (min-width: 992px) {

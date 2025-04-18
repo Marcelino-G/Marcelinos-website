@@ -12,11 +12,11 @@ let titleContent = computed(() => ({
   currentHomeIndex: websiteStore.homePage.currentHomeIndex,
 }));
 
-let mainContent = computed(() => ({
-  currentHomeImage: websiteStore.homePage.currentHomeImage,
-  currentHomeAltText: websiteStore.homePage.currentHomeAltText,
-  currentHomeIndex: websiteStore.homePage.currentHomeIndex,
-}));
+// let mainContent = computed(() => ({
+//   currentHomeImage: websiteStore.homePage.currentHomeImage,
+//   currentHomeAltText: websiteStore.homePage.currentHomeAltText,
+//   currentHomeIndex: websiteStore.homePage.currentHomeIndex,
+// }));
 
 let supportingContent = computed(() => ({
   homeImages: websiteStore.getHomeImages,
@@ -32,7 +32,7 @@ let supportingContent = computed(() => ({
     <topic-main id="topic-main-home" :content="titleContent" :isHome="true" />
     <content-main
       id="content-main-home"
-      :content="mainContent"
+      
       :isHome="true"
     />
     <supporting-content-main
