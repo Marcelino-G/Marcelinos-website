@@ -18,35 +18,34 @@ const props = defineProps({
         @click="content.backwardHomeTitleAndImage"
         :whilePress="{ scale: 0.9 }"
       >
-        <img :src="leftFinger" />
+        <img :src="leftFinger" alt="Left arrow button." />
       </motion.button>
 
       <ul id="isHomeUlMediumInterface">
-        <AnimatePresence
-          v-for="(detail, index) in content.homeImages"
+        <motion.li
+          v-for="(detail, index) in content.homeImages.images"
           :key="index"
+          :initial="{ opacity: 0.7, rotateX: 10, rotateY: 65, scale: 1 }"
+          :whileHover="{
+            opacity: 1,
+            rotateX: 0,
+            rotateY: 0,
+            scale: 1.2,
+          }"
+          :transition="{ duration: 0.5 }"
+          @click="content.setCurrentHomeTitleAndImage(index)"
         >
-          <motion.li
-            :initial="{ opacity: 0.75, rotateX: 10, rotateY: 65, zIndex: 0 }"
-            :whileHover="{
-              opacity: 1,
-              rotateX: 0,
-              rotateY: 0,
-              scale: 1.2,
-              zIndex: 1,
-            }"
-            :transition="{ duration: 1 }"
-            :key="index"
-            @click="content.setCurrentHomeTitleAndImage(index)"
-          >
-            <img :src="detail" />
-          </motion.li>
-        </AnimatePresence>
+          <motion.img
+            :whilePress="{ backgroundColor: ['rgba(255, 255, 255, 0.5)'] }"
+            :src="detail"
+            :alt="content.homeImages.alts[index]"
+          />
+        </motion.li>
       </ul>
 
       <ul id="isHomeUlSmallInterface">
         <AnimatePresence
-          v-for="(detail, index) in content.homeImages"
+          v-for="(detail, index) in content.homeImages.images"
           :key="index"
         >
           <motion.li
@@ -71,7 +70,7 @@ const props = defineProps({
         @click="content.forwardHomeTitleAndImage"
         :whilePress="{ scale: 0.9 }"
       >
-        <img :src="rightFinger" />
+        <img :src="rightFinger" alt="Right arrow button." />
       </motion.button>
     </div>
 
@@ -125,7 +124,7 @@ const props = defineProps({
           :key="index"
           @click="content.setCurrentProject(index)"
         >
-          <p>{{ title }}</p>
+          <p>|| {{ title }} ||</p>
 
           <div class="projectTitleBackground">
             <div
@@ -189,8 +188,11 @@ button {
 }
 
 #isHomeUlMediumInterface li img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 95%;
+  max-height: 95%;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5%;
+  padding: 10px;
 }
 
 #isAboutContainerSupportingContent {
@@ -363,6 +365,8 @@ button {
   #isHomeUlSmallInterface {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   #isHomeUlSmallInterface li {
@@ -377,9 +381,9 @@ button {
 }
 
 @media only screen and (max-width: 1200px) {
-  #isHomeUlMediumInterface li {
+  /* #isHomeUlMediumInterface li {
     margin: 0;
-  }
+  } */
 
   iframe {
     width: 80px;
@@ -394,6 +398,10 @@ button {
   #isHomeUlSmallInterface {
     display: none;
   }
+
+  #isHomeUlMediumInterface li img {
+    padding: 5px;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -403,12 +411,16 @@ button {
 }
 
 @media only screen and (min-width: 1200px) {
-  #isHomeUlMediumInterface li {
+  /* #isHomeUlMediumInterface li {
     margin: 0 -2%;
-  }
+  } */
 
   iframe {
     width: 100%;
+  }
+
+  #isHomeUlMediumInterface li img {
+    padding: 10px;
   }
 }
 

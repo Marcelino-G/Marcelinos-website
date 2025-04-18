@@ -13,16 +13,13 @@ const props = defineProps({
 <template>
   <div>
     <div v-if="isHome === true">
-      <AnimatePresence>
         <motion.h2
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :transition="{ duration: 2 }"
+          :initial="{ y: -35 }"
+          :animate="{ y: 0 }"
           :key="content.currentHomeIndex"
         >
           {{ content.currentHomeTitle }}
         </motion.h2>
-      </AnimatePresence>
     </div>
 
 
@@ -61,5 +58,12 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+}
+
+h2{
+  text-align: center;
+  overflow: auto;
+  max-height: 100%;
 }
 </style>

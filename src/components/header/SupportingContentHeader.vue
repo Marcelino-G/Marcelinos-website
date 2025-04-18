@@ -25,7 +25,7 @@ let currentProjectWeaponIndex = computed(() => ({
         @click="websiteStore.backwardProjectWeapon"
         :whilePress="{ scale: 0.9 }"
       >
-        <img :src="leftFinger" />
+        <img :src="leftFinger" alt="Left arrow button." />
       </motion.button>
 
       <div id="weaponContainer">
@@ -36,6 +36,9 @@ let currentProjectWeaponIndex = computed(() => ({
               currentProjectWeaponIndex.currentProjectWeaponIndex
             ]
           "
+          :alt="weaponsAndDescriptions.descriptions[
+              currentProjectWeaponIndex.currentProjectWeaponIndex
+            ]"
         />
         <p class="weaponDescriptions">
           {{
@@ -50,7 +53,7 @@ let currentProjectWeaponIndex = computed(() => ({
         @click="websiteStore.forwardProjectWeapon"
         :whilePress="{ scale: 0.9 }"
       >
-        <img :src="rightFinger" />
+        <img :src="rightFinger" alt="Right arrow button." />
       </motion.button>
     </div>
   </div>

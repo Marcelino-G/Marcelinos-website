@@ -21,7 +21,7 @@ const websiteStore = useWebsiteStore();
           href="https://fontawesome.com/icons/linkedin?f=classic&s=brands"
           target="_blank"
         >
-          <img :src="linkedInImage" />
+          <img :src="linkedInImage" alt="LinkedIn logo" />
           <p>LinkedIn logo</p>
         </a>
       </li>
@@ -30,7 +30,7 @@ const websiteStore = useWebsiteStore();
           href="https://fontawesome.com/icons/github?f=classic&s=brands"
           target="_blank"
         >
-          <img :src="githubImage" />
+          <img :src="githubImage" alt="GitHub logo" />
           <p>GitHub logo</p>
         </a>
       </li>
@@ -39,7 +39,7 @@ const websiteStore = useWebsiteStore();
           href="https://fontawesome.com/icons/envelope?f=classic&s=solid"
           target="_blank"
         >
-          <img :src="envelopeImage" />
+          <img :src="envelopeImage" alt="Envelope icon" />
           <p>Envelope icon</p>
         </a>
       </li>
@@ -48,7 +48,7 @@ const websiteStore = useWebsiteStore();
           href="https://fontawesome.com/icons/circle?f=classic&s=solid"
           target="_blank"
         >
-          <img :src="greenMateria" />
+          <img :src="greenMateria" alt="Green Materia circle" />
           <p>Circle icon</p>
         </a>
       </li>
@@ -57,7 +57,7 @@ const websiteStore = useWebsiteStore();
           href="https://fontawesome.com/icons/circle?f=classic&s=solid"
           target="_blank"
         >
-          <img :src="blueMateria" />
+          <img :src="blueMateria" alt="Blue Materia circle" />
           <p>Circle icon</p>
         </a>
       </li>
@@ -66,7 +66,7 @@ const websiteStore = useWebsiteStore();
           href="https://fontawesome.com/icons/circle?f=classic&s=solid"
           target="_blank"
         >
-          <img :src="purpleMateria" />
+          <img :src="purpleMateria" alt="Purple Materia circle" />
           <p>Circle icon</p>
         </a>
       </li>
@@ -75,7 +75,7 @@ const websiteStore = useWebsiteStore();
           href="https://fontawesome.com/icons/arrow-left?f=classic&s=solid"
           target="_blank"
         >
-          <img :src="leftFinger" />
+          <img :src="leftFinger" alt="Left arrow button" />
           <p>Left arrow icon</p>
         </a>
       </li>
@@ -84,7 +84,7 @@ const websiteStore = useWebsiteStore();
           href="https://fontawesome.com/icons/arrow-right?f=classic&s=solid"
           target="_blank"
         >
-          <img :src="rightFinger" />
+          <img :src="rightFinger" alt="Right arrow button" />
           <p>Right arrow icon</p>
         </a>
       </li>
@@ -97,7 +97,8 @@ const websiteStore = useWebsiteStore();
         :key="index"
       >
         <a :href="websiteStore.getWeaponImageLinks[index]" target="_blank">
-          <img :src="weaponImg" />
+          <img :src="weaponImg" :alt="websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[
+                index]" />
           <p>
             {{
               websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[
@@ -112,7 +113,9 @@ const websiteStore = useWebsiteStore();
       <h2>From: Pixabay (edited with Gimp)</h2>
       <li v-for="(hitImg, index) in websiteStore.getHitImages" :key="index">
         <a :href="websiteStore.getHitImageLinks[index]" target="_blank">
-          <img :src="hitImg" />
+          <img :src="hitImg" :alt="websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[
+                index
+              ] + ' hit image'" />
           <p>
             {{
               websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[

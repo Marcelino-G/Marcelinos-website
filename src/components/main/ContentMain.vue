@@ -13,15 +13,13 @@ const props = defineProps({
 <template>
   <div>
     <div v-if="isHome === true" id="isHomeContainerMainContent">
-      <AnimatePresence>
         <motion.img
           :initial="{ opacity: 0 }"
           :animate="{ opacity: 1 }"
-          :transition="{ duration: 2 }"
           :key="content.currentHomeIndex"
           :src="content.currentHomeImage"
+          :alt="content.currentHomeAltText"
         />
-      </AnimatePresence>
     </div>
 
     <div v-if="isAbout === true" id="isAboutContainerMainContent">
@@ -97,8 +95,11 @@ const props = defineProps({
 }
 
 #isHomeContainerMainContent img {
-  max-width: 95%;
-  max-height: 95%;
+  max-width: 90%;
+  max-height: 90%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5%;
+  padding: 10px;
 }
 
 #isAboutContainerMainContent {
@@ -107,12 +108,25 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
+
+}
+
+#isAboutContainerMainContent p{
+  width: 90%;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5%;
+  padding: 10px;
 }
 
 #isProjectContainerMainContent {
   width: 100%;
   height: 100%;
   display: grid;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 0 20px;
+  
 }
 
 #isProjectContainerMainContent ul {
@@ -122,7 +136,11 @@ const props = defineProps({
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 100%;
+  width: 90%;
+  height: 90%;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5%;
+  padding: 10px;
 }
 
 #videoHitContainer {
@@ -140,7 +158,7 @@ const props = defineProps({
 }
 
 #videoContainer video {
-  background: rgba(128, 128, 128, 0.8);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 5%;
   max-width: 100%;
   max-height: 100%;
@@ -152,12 +170,16 @@ const props = defineProps({
     grid-template-columns: 100%;
     grid-template-rows: 100%;
     grid-template-areas: "ul";
-    padding: 10px;
+    /* padding: 10px; */
   }
 
   #videoHitContainer {
     display: none;
   }
+
+  #isProjectContainerMainContent ul {
+  width: 100%;
+}
 }
 
 @media only screen and (min-width: 768px) {
@@ -165,8 +187,15 @@ const props = defineProps({
     grid-template-columns: 70% 30%;
     grid-template-rows: 100%;
     grid-template-areas: "ul video";
-    padding: 25px;
+    /* padding: 25px; */
   }
+  #isProjectContainerMainContent ul {
+  width: 90%;
+}
+
+#videoHitContainer {
+  display: flex;
+}
 }
 
 @media only screen and (min-width: 992px) {

@@ -24,32 +24,32 @@ const websiteStore = useWebsiteStore();
             href="https://www.linkedin.com/in/marcelino-gamino/"
             target="_blank"
           >
-            <img :src="linkedInImage" />
+            <img :src="linkedInImage" alt="LinkedIn logo" />
             <p>LinkedIn</p>
           </a>
         </li>
         <li>
           <a href="https://github.com/Marcelino-G" target="_blank">
-            <img :src="githubImage" />
+            <img :src="githubImage" alt="GitHub logo" />
             <p>GitHub</p>
           </a>
         </li>
         <li>
           <a href="mailto:marcelino.gamino11@gmail.com">
-            <img :src="envelopeImage" />
+            <img :src="envelopeImage" alt="Envelope logo" />
             <p>Email</p>
           </a>
         </li>
       </ul>
       <ul id="materiaIcons">
         <li>
-          <img :src="greenMateria" />
+          <img :src="greenMateria" alt="Green Materia circle" />
         </li>
         <li>
-          <img :src="blueMateria" />
+          <img :src="blueMateria" alt="Blue Materia circle" />
         </li>
         <li>
-          <img :src="purpleMateria" />
+          <img :src="purpleMateria" alt="Purple Materia circle" />
         </li>
         <div id="materiaBackground"></div>
       </ul>

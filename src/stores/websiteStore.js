@@ -7,6 +7,13 @@ import sonicImage from '@/assets/home_images/sonic.jpg';
 import dodgersImage from '@/assets/home_images/dodgers.jpg';
 import yosemiteImage from '@/assets/home_images/yosemite.jpg';
 import disneyImage from '@/assets/home_images/disney.jpg';
+import americorpsImage from '@/assets/home_images/americorps.jpg';
+import batmanImage from '@/assets/home_images/batman.jpg';
+import conservationImage from '@/assets/home_images/conservation.jpg';
+import gradImage from '@/assets/home_images/grad.jpg';
+import theaterImage from '@/assets/home_images/theater.jpg';
+
+
 
 import metersGameVideo from '@/assets/project_videos/metersGame.mp4';
 import moviePalsVideo from '@/assets/project_videos/moviePals.mp4';
@@ -34,25 +41,56 @@ export const useWebsiteStore = defineStore('websiteStore', {
             currentHeaderImage: mainImage,
             homePage: {
                 headerImage: mainImage,
-                currentHomeTitle: "I bleed dodger blue",
-                currentHomeImage: dodgersImage,
+                currentHomeTitle: "I'm a CSUSB Coyote!",
+                currentHomeImage: gradImage,
                 currentHomeIndex: 0,
+                currentHomeAltText:"Graduation collage picture.",
                 main_content: {
                     0: {
-                        title: "I bleed dodger blue",
-                        image: dodgersImage
+                        title: "I'm a CSUSB Coyote!",
+                        image: gradImage,
+                        alt: "Graduation collage picture."
                     },
                     1: {
-                        title: "I am an adventurer",
-                        image: yosemiteImage
+                        title: "I'm always up for a conservation effort.",
+                        image: conservationImage,
+                        alt: "Group picture of conservation workers."
                     },
                     2: {
-                        title: "I am a movie goer",
-                        image: sonicImage
+                        title: "I'm an AmeriCorps alum.",
+                        image: americorpsImage,
+                        alt: "Picture with AmeriCorps poster."
                     },
                     3: {
-                        title: "I am a magic holder",
-                        image: disneyImage
+                        title: "I'm an adventurer!",
+                        image: yosemiteImage,
+                        alt: "Picture with waterfall in the background."
+                    },
+                    4: {
+                        title: "It's time for Dodger baseball!",
+                        image: dodgersImage,
+                        alt: "Picture of me holding churros and Dodgers stadium in the background."
+                    },
+                    5: {
+                        title: "I'm a movie goer.",
+                        image: theaterImage,
+                        alt: "Picture with Sonic 3 theater cardboard setup."
+                    },
+                    
+                    6: {
+                        title: "I will place among the best in your Halloween contest. (Sonic)",
+                        image: sonicImage,
+                        alt: "Picture of me dressed up as Sonic."
+                    },
+                    7: {
+                        title: "I'm a Disney hater, but a Magic Key holder.",
+                        image: disneyImage,
+                        alt: "Picture of me on a Disney ride."
+                    },
+                    8: {
+                        title: "I am the night.",
+                        image: batmanImage,
+                        alt: "Picture of me as Batman."
                     }
                 }
             },
@@ -217,6 +255,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
         setCurrentHomeTitleAndImage(key) {
             this.homePage.currentHomeTitle = this.homePage.main_content[key].title;
             this.homePage.currentHomeImage = this.homePage.main_content[key].image;
+            this.homePage.currentHomeAltText = this.homePage.main_content[key].alt;
             this.homePage.currentHomeIndex = key;
         },
         forwardHomeTitleAndImage() {
@@ -287,10 +326,12 @@ export const useWebsiteStore = defineStore('websiteStore', {
         },
         getHomeImages(state) {
             let images = [];
+            let alts = [];
             for (let key in state.homePage.main_content) {
                 images.push(state.homePage.main_content[key].image);
+                alts.push(state.homePage.main_content[key].alt)
             }
-            return images;
+            return {images, alts};
         },
         getAboutTechnicalSkills(state) {
             let skills = state.aboutMePage.main_content.funFacts.technical;

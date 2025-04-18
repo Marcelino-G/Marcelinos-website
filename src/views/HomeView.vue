@@ -14,6 +14,7 @@ let titleContent = computed(() => ({
 
 let mainContent = computed(() => ({
   currentHomeImage: websiteStore.homePage.currentHomeImage,
+  currentHomeAltText: websiteStore.homePage.currentHomeAltText,
   currentHomeIndex: websiteStore.homePage.currentHomeIndex,
 }));
 
@@ -47,6 +48,7 @@ let supportingContent = computed(() => ({
   height: 100%;
   display: grid;
   grid-template-rows: 10% 60% 30%;
+  grid-template-columns: 100%;
   grid-template-areas:
     "topic-main"
     "content-main"
