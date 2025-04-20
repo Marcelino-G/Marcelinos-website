@@ -2,6 +2,9 @@ import { defineStore } from 'pinia';
 
 import mainImage from "@/assets/profile_images/m1.jpg"
 import animatedImage from '@/assets/profile_images/m2.jpg';
+import meAsCloud from '@/assets/profile_images/meAsCloud.png';
+import meAsTifa from '@/assets/profile_images/meAsTifa.png';
+import meAsAerith from '@/assets/profile_images/meAsAerith.png';
 
 import sonicImage from '@/assets/home_images/sonic.jpg';
 import dodgersImage from '@/assets/home_images/dodgers.jpg';
@@ -44,7 +47,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 currentHomeTitle: "I'm a CSUSB Coyote!",
                 currentHomeImage: gradImage,
                 currentHomeIndex: 0,
-                currentHomeAltText:"Graduation collage picture.",
+                currentHomeAltText: "Graduation collage picture.",
                 main_content: {
                     0: {
                         title: "I'm a CSUSB Coyote!",
@@ -76,7 +79,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         image: theaterImage,
                         alt: "Picture with Sonic 3 theater cardboard setup."
                     },
-                    
+
                     6: {
                         title: "I will place among the best in your Halloween contest. (Sonic)",
                         image: sonicImage,
@@ -98,7 +101,29 @@ export const useWebsiteStore = defineStore('websiteStore', {
             aboutMePage: {
                 main_content: {
                     currentAboutTitle: "About me",
-                    currentBiography: "lorem",
+                    currentBiography: [`Growing up in Southern California, I was surrounded by diverse cultures, awesome music, delicious food, 
+                    and the natural beauty of the San Bernardino National Forest. This environment fostered my deep appreciation 
+                    for the world around me and ultimately inspired my desire to dedicate my skills to enhancing quality of life 
+                    in some way.`,
+                        `Initially, I planned to do so as a high school teacher, but after earning my psychology degree 
+                    and working as a student mentor for at-risk youth, I got a glimpse into the education world and found that it 
+                    left a void in me, one it wouldn't be able to fill.`,
+                        `Yes, I have an affinity for the world around me, but I 
+                    also have a strong need for creative expression, something I didn't want to limit to my weekends or free time. 
+                    This realization led me to explore different technologies before fully gravitating toward software development. 
+                    I chose technology, specifically code because I had already dabbled with it during my college years and really 
+                    enjoyed it.`,
+                        `You might be wondering, "Is software development really a means of expression?" and I would say "Yes". 
+                    Software development, from sketching and brainstorming your ideas on a diagram all the way to deploying it, gives 
+                    me the same satisfaction and feeling writing a song on the guitar or drums did when I was younger. Building projects 
+                    feels like an orchestration, a form of storytelling.`,
+                        ` Fast forward to today, I've been immersed in software development 
+                    for over three years and recently graduated from Tech Elevator's Java Web Application Development Bootcamp. With tools 
+                    like Java, JavaScript, and SQL in my toolkit, my intentions remain the same, and that's to apply my skills to improve 
+                    quality of life through technology. Looking further ahead, I hope to return to the education space to volunteer my time 
+                    teaching software development to high school students.`,
+                        `Now that you've gotten to know me a bit, I invite you to explore 
+                    my projects, connect with me on LinkedIn, and share your story.`],
                     funFacts: {
                         technical: {
                             Languages: ["Java", "SQL (PostgreSQL)", "JavaScript", "HTML/CSS"],
@@ -152,7 +177,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
                 isProjectPage: false,
 
-                headerImage: animatedImage,
+                // headerImage: animatedImage,
 
                 currentProjectTitle: "Roll for Pokemon",
                 currentBuiltWith: "Java, SQL",
@@ -161,7 +186,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 currentProjectGithub: "https://github.com/Marcelino-G/Roll-for-Pokemon",
                 currentProjectApplication: "",
                 currentProjectDescription:
-                        `
+                    `
                         Grab your bag and step into the tall grass, what Pokemon await and will you catch them all? The objective
                         of this project was to design it with polymorphism, inheritance, and encapsulation fundamentals in mind
                         to simplify complexity, promote readability, and encourage modifications. This project made me realize
@@ -184,8 +209,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         dateCompleted: "Jan 2025",
                         github: "https://github.com/Marcelino-G/Roll-for-Pokemon",
                         application: "",
-                        description: 
-                        `
+                        description:
+                            `
                         Grab your bag and step into the tall grass, what Pokemon await and will you catch them all? The objective
                         of this project was to design it with polymorphism, inheritance, and encapsulation fundamentals in mind
                         to simplify complexity, promote readability, and encourage modifications. This project made me realize
@@ -200,8 +225,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         dateCompleted: "Feb 2023",
                         github: "https://github.com/Marcelino-G/3-000-Meters-Above",
                         application: "https://marcelino-g.github.io/3-000-Meters-Above/",
-                        description: 
-                        `
+                        description:
+                            `
                         Take control of a fighter pilot who faces waves of enemies as a strange voice tries to guide you home.
                         The purpose of this project was to familiarize myself with the methods associated with drawing onto the
                         <canvas> element and interactive animations. While this project may not be perfect, presentational and functional
@@ -215,8 +240,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         dateCompleted: "Oct 2022",
                         github: "https://github.com/Marcelino-G/Replicat-Soft-Revival",
                         application: "https://marcelino-g.github.io/Replicat-Soft-Revival/",
-                        description: 
-                        `
+                        description:
+                            `
                         Browse through The Siber Corporation's website and be persuaded by their "Replicat" product. The goal of this 
                         project was to create a responsive webpage capable of accomdating various device types and screen sizes with Bootstrap.
                         This project taught me that the message being conveyed to the user is what's most important and sometimes you have to
@@ -230,8 +255,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         dateCompleted: "Aug 2022",
                         github: "https://github.com/Marcelino-G/Movie-Pals",
                         application: "",
-                        description: 
-                        `
+                        description:
+                            `
                         Create an account and build up your movie portfolio to share with friends in this imagined social media like platform. The 
                         focus of this project was to take advantage of React's reusable components and features to design clean code. The biggest 
                         takeaway from working on this project revolved around the importance of organization and clarity in development like 
@@ -246,7 +271,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         github: "https://github.com/Marcelino-G/Who-s-that-Monstermon",
                         application: "https://marcelino-g.github.io/Who-s-that-Monstermon/",
                         description:
-                        `
+                            `
                         Watch your score count go up and reach a new personal record as you challenge your Pokemon knowledge. The emphasis of
                         this project was to fetch data from an API and display it to the user. This project helped me understand the concepts
                         related to "async" and "await" when working with external data and how unexpected behavior may occur without them.    
@@ -256,6 +281,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
                 supporting_content: {
                     0: {
+                        pixelImage: meAsCloud,
                         weaponImage: swordImage,
                         description: 'Buster Sword',
                         sound: slashSound,
@@ -263,9 +289,10 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         weaponImageLink: 'https://finalfantasy.fandom.com/wiki/Buster_Sword_(Final_Fantasy_VII)',
                         hitImageLink: 'https://pixabay.com/vectors/cross-delete-remove-cancel-abort-296507/',
                         soundLink: 'https://pixabay.com/sound-effects/sword-slash-05-266312/'
-                        
+
                     },
                     1: {
+                        pixelImage: meAsAerith,
                         weaponImage: stickImage,
                         description: 'Guard Stick',
                         sound: magicSound,
@@ -275,6 +302,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         soundLink: 'https://pixabay.com/sound-effects/magic-244951/'
                     },
                     2: {
+                        pixelImage: meAsTifa,
                         weaponImage: glovesImage,
                         description: 'Leather Gloves',
                         sound: punchSound,
@@ -289,10 +317,15 @@ export const useWebsiteStore = defineStore('websiteStore', {
         }
     },
     actions: {
-        setCurrentHeaderImage(img){
-            this.currentHeaderImage = img;
+        setCurrentHeaderImage(isProjectsPage) {
+
+            if(isProjectsPage){
+                this.currentHeaderImage = this.projectsPage.supporting_content[this.projectsPage.currentProjectWeaponIndex].pixelImage;
+            } else{
+                this.currentHeaderImage = this.homePage.headerImage;
+            }
         },
-        setProjectPage(bool){
+        setProjectPage(bool) {
             this.projectsPage.isProjectPage = bool;
         },
         setCurrentHomeTitleAndImage(key) {
@@ -337,6 +370,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
         setCurrentProjectHitImageAndSound(key) {
             this.projectsPage.currentProjectHitImage = this.projectsPage.supporting_content[key].hitImage;
             this.projectsPage.currentProjectSound = new Audio(this.projectsPage.supporting_content[key].sound);
+            this.currentHeaderImage = this.projectsPage.supporting_content[this.projectsPage.currentProjectWeaponIndex].pixelImage;
         },
         forwardProjectWeapon() {
             if (this.projectsPage.currentProjectWeaponIndex === Object.keys(this.projectsPage.supporting_content).length - 1) {
@@ -354,7 +388,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
             }
             this.setCurrentProjectHitImageAndSound(this.projectsPage.currentProjectWeaponIndex)
         },
-        setCredits(){
+        setCredits() {
             this.isCredits = !this.isCredits;
         }
         // setMute(){
@@ -362,17 +396,17 @@ export const useWebsiteStore = defineStore('websiteStore', {
         // }
     },
     getters: {
-        getCurrentHeaderImage(state){
+        getCurrentHeaderImage(state) {
             return state.currentHeaderImage;
         },
-        getCurrentHomeImage(state){
+        getCurrentHomeImage(state) {
             let currentHomeImage = state.homePage.currentHomeImage;
             let currentHomeIndex = state.homePage.currentHomeIndex;
             let currentHomeAltText = state.homePage.currentHomeAltText;
 
-            return {currentHomeImage, currentHomeIndex, currentHomeAltText}
+            return { currentHomeImage, currentHomeIndex, currentHomeAltText }
         },
-        getProjectPage(state){
+        getProjectPage(state) {
             return state.projectsPage.isProjectPage;
         },
         getHomeImages(state) {
@@ -382,7 +416,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 images.push(state.homePage.main_content[key].image);
                 alts.push(state.homePage.main_content[key].alt)
             }
-            return {images, alts};
+            return { images, alts };
         },
         getAboutTechnicalSkills(state) {
             let skills = state.aboutMePage.main_content.funFacts.technical;
@@ -396,6 +430,12 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 answers.push(state.aboutMePage.main_content.funFacts.questionsAndAnswers[key].answer);
             }
             return { questions, answers };
+        },
+        getCurrentProjectIndex(state){
+            return state.projectsPage.currentProjectIndex;
+        },
+        getCurrentProjectWeaponIndex(state){
+            return state.projectsPage.currentProjectWeaponIndex;
         },
         getProjectWeaponImagesAndDescriptions(state) {
             let weaponImages = [];
@@ -416,7 +456,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
             return titles;
         },
-        getHitImages(state){
+        getHitImages(state) {
             let hitImages = [];
 
             for (let key in state.projectsPage.supporting_content) {
@@ -425,7 +465,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
             return hitImages;
         },
-        getWeaponImageLinks(state){
+        getWeaponImageLinks(state) {
             let links = [];
 
             for (let key in state.projectsPage.supporting_content) {
@@ -435,7 +475,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
             return links;
 
         },
-        getHitImageLinks(state){
+        getHitImageLinks(state) {
             let hitImageLinks = [];
 
             for (let key in state.projectsPage.supporting_content) {
@@ -445,7 +485,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
             return hitImageLinks;
 
         },
-        getSoundLinks(state){
+        getSoundLinks(state) {
             let soundLinks = [];
 
             for (let key in state.projectsPage.supporting_content) {

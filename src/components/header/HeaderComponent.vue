@@ -3,16 +3,17 @@ import SupportingContentHeader from "./SupportingContentHeader.vue";
 import { useRoute } from "vue-router";
 import { watch } from "vue";
 import { useWebsiteStore } from "@/stores/websiteStore.js";
+import { motion, AnimatePresence } from "motion-v";
 
 const route = useRoute();
 const websiteStore = useWebsiteStore();
 
 watch(route, (newRoute, oldRoute) => {
   if (newRoute.name === "projects") {
-    websiteStore.setCurrentHeaderImage(websiteStore.projectsPage.headerImage);
+    websiteStore.setCurrentHeaderImage(true);
     websiteStore.setProjectPage(true);
   } else {
-    websiteStore.setCurrentHeaderImage(websiteStore.homePage.headerImage);
+    websiteStore.setCurrentHeaderImage(false);
     websiteStore.setProjectPage(false);
   }
 });
@@ -22,7 +23,39 @@ watch(route, (newRoute, oldRoute) => {
   <div id="headerContainer">
     <h1>Marcelino's Website</h1>
     <div id="imageContainer">
-      <img alt="ll" :src="websiteStore.getCurrentHeaderImage" />
+      <img
+        v-if="!websiteStore.getProjectPage"
+        alt="ll"
+        :src="websiteStore.getCurrentHeaderImage"
+      />
+
+      <div id="projectPageImages" v-else>
+        <motion.div
+          :key="websiteStore.getCurrentProjectWeaponIndex"
+          class="headerImageMediumInterface"
+          :initial="{scale: 1}"
+          :animate="{scale:.8}"
+          :transition="{duration: 1}"
+
+        >
+          <AnimatePresence>
+            <motion.img
+              alt="ll"
+              :src="websiteStore.getCurrentHeaderImage"
+              :key="websiteStore.getCurrentProjectIndex"
+              :initial="{ x: 0, opacity: 0.5 }"
+              :animate="{ opacity: 1 }"
+              :exit="{ x: '75%', rotate: 10 }"
+            />
+          </AnimatePresence>
+        </motion.div>
+
+        <img
+          class="headerImageSmallInterface"
+          alt="ll"
+          :src="websiteStore.getCurrentHeaderImage"
+        />
+      </div>
     </div>
 
     <div id="navAndSupportingContainer">
@@ -40,6 +73,7 @@ watch(route, (newRoute, oldRoute) => {
 </template>
 
 <style scoped>
+
 #headerContainer {
   height: 100%;
   display: grid;
@@ -62,11 +96,45 @@ h1 {
   height: 70%;
   margin: auto;
   text-align: center;
+  position: relative;
+  /* background: red; */
+}
+
+#projectPageImages {
+  height: 100%;
+  width: 100%;
+  /* background: green; */
+}
+
+.headerImageMediumInterface {
+  /* background: grey; */
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.headerImageMediumInterface img {
+  /* background: grey; */
+  max-height: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 5%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* background: purple; */
 }
 
 img {
   max-height: 100%;
   max-width: 100%;
+  /* position: absolute; */
+  /* top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto; */
 }
 
 #navAndSupportingContainer {
@@ -145,6 +213,10 @@ a {
   #supportingContentContainer {
     display: none;
   }
+
+  .headerImageMediumInterface {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 992px) {
@@ -172,6 +244,14 @@ a {
   }
 
   #supportingContentContainer {
+    display: block;
+  }
+
+  .headerImageSmallInterface {
+    display: none;
+  }
+
+  .headerImageMediumInterface {
     display: block;
   }
 }

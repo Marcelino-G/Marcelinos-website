@@ -64,6 +64,7 @@ div {
 h2{
   text-align: center;
   overflow: auto;
+  scrollbar-color: #a9a9a9 rgba(0, 0, 0, 0.4);
   max-height: 100%;
 }
 </style>

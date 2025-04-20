@@ -26,15 +26,14 @@ const websiteStore = useWebsiteStore();
     </div>
 
     <div v-if="isAbout === true" id="isAboutContainerMainContent">
-      <AnimatePresence>
-        <motion.p
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :transition="{ duration: 2 }"
-        >
-          {{ content.currentBiography }}
-        </motion.p>
-      </AnimatePresence>
+      <div>
+        <p>{{ content.currentBiography[0] }}</p>
+        <p>{{ content.currentBiography[1] }}</p>
+        <p>{{ content.currentBiography[2] }}</p>
+        <p>{{ content.currentBiography[3] }}</p>
+        <p>{{ content.currentBiography[4] }}</p>
+        <p>{{ content.currentBiography[5] }}</p>
+      </div>
     </div>
 
     <div v-if="isProject === true" id="isProjectContainerMainContent">
@@ -120,17 +119,33 @@ a {
 #isAboutContainerMainContent {
   width: 100%;
   height: 100%;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+padding: 0 20px;
+  /* padding: 20px; */
+
+}
+
+#isAboutContainerMainContent div {
+  width: 90%;
+  height: 90%;
+  padding: 20px;
+  overflow: auto;
+  scrollbar-color: #a9a9a9 rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* align-items: center; */
+  gap: 15px;
+  
 }
 
 #isAboutContainerMainContent p {
-  width: 90%;
-  height: 90%;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 5%;
-  padding: 10px;
+  /* text-align: center; */
 }
 
 #isProjectContainerMainContent {
@@ -156,6 +171,8 @@ a {
   padding: 20px;
   text-align: center;
   overflow: auto;
+  scrollbar-color: #a9a9a9 rgba(0, 0, 0, 0.4);
+  gap: 20px;
 }
 
 .projectDetailsContainer li {
