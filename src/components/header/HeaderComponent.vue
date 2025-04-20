@@ -77,12 +77,7 @@ watch(route, (newRoute, oldRoute) => {
 #headerContainer {
   height: 100%;
   display: grid;
-  grid-template-rows: 20% 50% 30%;
-  grid-auto-columns: 100%;
-  grid-template-areas:
-    "h1"
-    "imageContainer"
-    "navAndSupporting";
+  grid-template-columns: 100%;
 }
 
 h1 {
@@ -203,8 +198,12 @@ a {
 
 @media only screen and (max-width: 410px) {
   #headerContainer {
-    grid-template-rows: 50% 50%;
+    grid-template-rows: auto 70%;
   }
+
+  h1 {
+  font-size: .95rem;
+}
 }
 
 @media only screen and (max-width: 768px) {
@@ -223,7 +222,8 @@ a {
 
 @media only screen and (max-width: 992px) {
   #headerContainer {
-    grid-template-columns: 40% 60%;
+    grid-template-columns: auto 70%;
+    gap: 10px;
     grid-template-areas:
       "h1 h1"
       "imageContainer navAndSupporting";
@@ -260,7 +260,7 @@ a {
 
 @media only screen and (min-width: 992px) {
   #headerContainer {
-    grid-template-rows: 20% 50% 30%;
+    grid-template-rows: 15% 60% 25%;
     grid-template-columns: 100%;
     grid-template-areas:
       "h1"

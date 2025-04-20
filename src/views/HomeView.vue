@@ -47,7 +47,7 @@ let supportingContent = computed(() => ({
 #homeContainer {
   height: 100%;
   display: grid;
-  grid-template-rows: 10% 60% 30%;
+  grid-template-rows: 15% 60% 25%;
   grid-template-columns: 100%;
   grid-template-areas:
     "topic-main"
