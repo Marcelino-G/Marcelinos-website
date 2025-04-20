@@ -93,7 +93,7 @@ h1 {
 #imageContainer {
   grid-area: imageContainer;
   width: 100%;
-  height: 70%;
+  max-height: 100%;
   margin: auto;
   text-align: center;
   position: relative;
@@ -135,6 +135,8 @@ img {
   left: 0;
   right: 0;
   margin: auto; */
+  /* background: radial-gradient(at 150% 100%, black, blue); */
+  
 }
 
 #navAndSupportingContainer {

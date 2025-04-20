@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-import mainImage from "@/assets/profile_images/m1.jpg"
+import mainImage from "@/assets/profile_images/m1.png"
 import animatedImage from '@/assets/profile_images/m2.jpg';
 import meAsCloud from '@/assets/profile_images/meAsCloud.png';
 import meAsTifa from '@/assets/profile_images/meAsTifa.png';
