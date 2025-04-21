@@ -160,7 +160,7 @@ a {
 
 @media only screen and (max-width: 992px) {
   p {
-    font-size: 0.65em;
+    font-size: 0.5em;
   }
 }
 
