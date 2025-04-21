@@ -111,7 +111,7 @@ a {
 #isHomeContainerMainContent img {
   max-width: 90%;
   max-height: 90%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(33, 33, 33, 0.6);
   border-radius: 5%;
   padding: 10px;
 }
@@ -134,7 +134,7 @@ padding: 0 20px;
   padding: 20px;
   overflow: auto;
   scrollbar-color: #a9a9a9 rgba(0, 0, 0, 0.4);
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(33, 33, 33, 0.6);
   border-radius: 5%;
   display: flex;
   flex-direction: column;
@@ -166,7 +166,7 @@ padding: 0 20px;
   align-items: center;
   width: 90%;
   height: 90%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(33, 33, 33, 0.6);
   border-radius: 5%;
   padding: 20px;
   text-align: center;
@@ -194,7 +194,7 @@ padding: 0 20px;
 }
 
 #videoContainer video {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(33, 33, 33, 0.6);
   border-radius: 5%;
   max-width: 100%;
   max-height: 100%;

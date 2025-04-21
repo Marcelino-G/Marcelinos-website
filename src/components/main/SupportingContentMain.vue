@@ -190,7 +190,7 @@ button {
 #isHomeUlMediumInterface li img {
   max-width: 95%;
   max-height: 95%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(33, 33, 33, 0.6);
   border-radius: 5%;
   padding: 10px;
 }
@@ -273,7 +273,7 @@ button {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 25px;
   text-align: center;
   overflow: auto;
   scrollbar-color: #a9a9a9 rgba(0, 0, 0, 0.4);

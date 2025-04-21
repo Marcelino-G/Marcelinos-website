@@ -27,7 +27,7 @@ const websiteStore = useWebsiteStore();
 
 <style scoped>
 #mainContainer {
-  width: 90%;
+  width: 95%;
   height: 90%;
   display: grid;
   grid-template-columns: 30% 70%;
