@@ -66,6 +66,7 @@ const websiteStore = useWebsiteStore();
         <div id="videoContainer">
           <AnimatePresence>
             <motion.video
+              playsinline
               autoplay
               muted
               loop
@@ -181,7 +182,7 @@ padding: 0 20px;
 
 #videoHitContainer {
   grid-area: video;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -191,6 +192,10 @@ padding: 0 20px;
   position: absolute;
   max-height: 15%;
   max-width: 10%;
+}
+
+#videoContainer{
+  display: none;
 }
 
 #videoContainer video {
@@ -208,10 +213,10 @@ padding: 0 20px;
     grid-template-areas: "ul";
     /* padding: 10px; */
   }
-
+/* 
   #videoHitContainer {
     display: none;
-  }
+  } */
 
   #isProjectContainerMainContent ul {
     width: 100%;
@@ -232,6 +237,13 @@ padding: 0 20px;
   #videoHitContainer {
     display: flex;
   }
+
+  #videoContainer{
+    display: block;
+  }
+
+
+
 }
 
 @media only screen and (min-width: 992px) {
