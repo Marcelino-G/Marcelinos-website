@@ -25,7 +25,7 @@ watch(route, (newRoute, oldRoute) => {
     <div id="imageContainer">
       <img
         v-if="!websiteStore.getProjectPage"
-        alt="ll"
+        alt="profile picture"
         :src="websiteStore.getCurrentHeaderImage"
       />
 
@@ -33,14 +33,13 @@ watch(route, (newRoute, oldRoute) => {
         <motion.div
           :key="websiteStore.getCurrentProjectWeaponIndex"
           class="headerImageMediumInterface"
-          :initial="{scale: 1}"
-          :animate="{scale:.8}"
-          :transition="{duration: 1}"
-
+          :initial="{ scale: 1 }"
+          :animate="{ scale: 0.8 }"
+          :transition="{ duration: 1 }"
         >
           <AnimatePresence>
             <motion.img
-              alt="ll"
+              alt="profile picture"
               :src="websiteStore.getCurrentHeaderImage"
               :key="websiteStore.getCurrentProjectIndex"
               :initial="{ x: 0, opacity: 0.5 }"
@@ -52,7 +51,7 @@ watch(route, (newRoute, oldRoute) => {
 
         <img
           class="headerImageSmallInterface"
-          alt="ll"
+          alt="profile picture"
           :src="websiteStore.getCurrentHeaderImage"
         />
       </div>
@@ -73,7 +72,6 @@ watch(route, (newRoute, oldRoute) => {
 </template>
 
 <style scoped>
-
 #headerContainer {
   height: 100%;
   display: grid;
@@ -131,7 +129,6 @@ img {
   right: 0;
   margin: auto; */
   /* background: radial-gradient(at 150% 100%, black, blue); */
-  
 }
 
 #navAndSupportingContainer {
@@ -202,8 +199,8 @@ a {
   }
 
   h1 {
-  font-size: .95rem;
-}
+    font-size: 0.95rem;
+  }
 }
 
 @media only screen and (max-width: 768px) {

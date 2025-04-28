@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
 
 import mainImage from "@/assets/profile_images/m1.png"
-import animatedImage from '@/assets/profile_images/m2.jpg';
 import meAsCloud from '@/assets/profile_images/meAsCloud.png';
 import meAsTifa from '@/assets/profile_images/meAsTifa.png';
 import meAsAerith from '@/assets/profile_images/meAsAerith.png';
@@ -43,7 +42,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
         return {
 
             // loadedImages: 0,
-            
+
             isCredits: false,
             currentHeaderImage: mainImage,
             homePage: {
@@ -116,8 +115,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         `Yes, I have an affinity for the world around me, but I 
                     also have a strong need for creative expression, something I didn't want to limit to my weekends or free time. 
                     This realization led me to explore different technologies before fully gravitating toward software development. 
-                    I chose technology, specifically code because I had already dabbled with it during my college years and really 
-                    enjoyed it.`,
+                    I chose technology, specifically code because I had experimented with it during my college years and really enjoyed it.`,
                         `You might be wondering, "Is software development really a means of expression?" and I would say "Yes". 
                     Software development, from sketching and brainstorming your ideas on a diagram all the way to deploying it, gives 
                     me the same satisfaction and feeling writing a song on the guitar or drums did when I was younger. Building projects 
@@ -179,11 +177,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
             projectsPage: {
 
-
                 isProjectPage: false,
-
                 // headerImage: animatedImage,
-
                 currentProjectTitle: "Roll for Pokemon",
                 currentBuiltWith: "Java, SQL",
                 currentProjectVideo: rollPokemonVideo,
@@ -199,23 +194,12 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         the building process much smoother.
                         `,
                 currentProjectIndex: 0,
-
-
-
                 currentProjectSound: new Audio(slashSound),
                 // isMuted: false,
                 currentProjectHitImage: swordHitImage,
-
-
                 isProjectWeaponImageLoading: true,
                 currentProjectWeaponImage: swordImage,
                 currentProjectWeaponDescription: 'Buster Sword',
-
-
-
-
-
-
                 currentProjectWeaponIndex: 0,
                 main_content: {
                     0: {
@@ -351,9 +335,9 @@ export const useWebsiteStore = defineStore('websiteStore', {
     actions: {
         setCurrentHeaderImage(isProjectsPage) {
 
-            if(isProjectsPage){
+            if (isProjectsPage) {
                 this.currentHeaderImage = this.projectsPage.supporting_content[this.projectsPage.currentProjectWeaponIndex].pixelImage;
-            } else{
+            } else {
                 this.currentHeaderImage = this.homePage.headerImage;
             }
         },
@@ -362,7 +346,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
         },
         setCurrentHomeTitleAndImage(key, isPictureClick) {
 
-            if(key === this.homePage.currentHomeIndex && isPictureClick){
+            if (key === this.homePage.currentHomeIndex && isPictureClick) {
                 return;
             }
 
@@ -434,47 +418,37 @@ export const useWebsiteStore = defineStore('websiteStore', {
         setCredits() {
             this.isCredits = !this.isCredits;
         },
-        setHomeSupportImagesLoading(){
+        setHomeSupportImagesLoading() {
 
             if (!this.loadedImages) {
                 this.loadedImages = 0;
             }
             this.loadedImages++;
-            if(this.getHomeImages.images.length === this.loadedImages){
+            if (this.getHomeImages.images.length === this.loadedImages) {
                 this.homePage.isHomeSupportImagesLoading = false;
             }
-     
+
         },
-        setHomeMainImageLoading(){
+        setHomeMainImageLoading() {
 
             if (!this.loadedImage) {
                 this.loadedImage = 0;
             }
 
             this.loadedImage = 0;
-        
             this.loadedImage++;
-        
-
-            if(1 === this.loadedImage){
-                
+            if (1 === this.loadedImage) {
                 this.homePage.isHomeMainImageLoading = false;
             }
-
         },
-        setProjectWeaponImageLoading(){
+        setProjectWeaponImageLoading() {
 
             if (!this.loadedWeaponImage) {
                 this.loadedWeaponImage = 0;
             }
-
             this.loadedWeaponImage = 0;
-        
             this.loadedWeaponImage++;
-        
-
-            if(1 === this.loadedWeaponImage){
-                
+            if (1 === this.loadedWeaponImage) {
                 this.projectsPage.isProjectWeaponImageLoading = false;
             }
 
@@ -521,10 +495,10 @@ export const useWebsiteStore = defineStore('websiteStore', {
             }
             return { questions, answers };
         },
-        getCurrentProjectIndex(state){
+        getCurrentProjectIndex(state) {
             return state.projectsPage.currentProjectIndex;
         },
-        getCurrentProjectWeaponIndex(state){
+        getCurrentProjectWeaponIndex(state) {
             return state.projectsPage.currentProjectWeaponIndex;
         },
         getProjectWeaponImagesAndDescriptions(state) {
@@ -537,7 +511,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
             }
             return { weaponImages, descriptions };
         },
-        getCurrentProjectWeaponImageAndDescription(state){
+        getCurrentProjectWeaponImageAndDescription(state) {
 
             let weaponImage = state.projectsPage.currentProjectWeaponImage;
             let weaponDescription = state.projectsPage.currentProjectWeaponDescription;

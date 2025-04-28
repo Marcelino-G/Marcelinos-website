@@ -97,8 +97,14 @@ const websiteStore = useWebsiteStore();
         :key="index"
       >
         <a :href="websiteStore.getWeaponImageLinks[index]" target="_blank">
-          <img :src="weaponImg" :alt="websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[
-                index]" />
+          <img
+            :src="weaponImg"
+            :alt="
+              websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[
+                index
+              ]
+            "
+          />
           <p>
             {{
               websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[
@@ -113,9 +119,14 @@ const websiteStore = useWebsiteStore();
       <h2>From: Pixabay (edited with Gimp)</h2>
       <li v-for="(hitImg, index) in websiteStore.getHitImages" :key="index">
         <a :href="websiteStore.getHitImageLinks[index]" target="_blank">
-          <img :src="hitImg" :alt="websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[
+          <img
+            :src="hitImg"
+            :alt="
+              websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[
                 index
-              ] + ' hit image'" />
+              ] + ' hit image'
+            "
+          />
           <p>
             {{
               websiteStore.getProjectWeaponImagesAndDescriptions.descriptions[

@@ -24,11 +24,12 @@ const websiteStore = useWebsiteStore();
         <img :src="leftFinger" alt="Left arrow button." />
       </motion.button>
 
-      <p v-if="websiteStore.homePage.isHomeSupportImagesLoading" >loading...</p>
-      <ul id="isHomeUlMediumInterface" v-show="!websiteStore.homePage.isHomeSupportImagesLoading">
-        
+      <p v-if="websiteStore.homePage.isHomeSupportImagesLoading">loading...</p>
+      <ul
+        id="isHomeUlMediumInterface"
+        v-show="!websiteStore.homePage.isHomeSupportImagesLoading"
+      >
         <motion.li
-          
           v-for="(detail, index) in content.homeImages.images"
           :key="index"
           :initial="{ opacity: 0.7, rotateX: 10, rotateY: 65, scale: 1 }"
@@ -50,7 +51,10 @@ const websiteStore = useWebsiteStore();
         </motion.li>
       </ul>
 
-      <ul id="isHomeUlSmallInterface" v-show="!websiteStore.homePage.isHomeSupportImagesLoading">
+      <ul
+        id="isHomeUlSmallInterface"
+        v-show="!websiteStore.homePage.isHomeSupportImagesLoading"
+      >
         <AnimatePresence
           v-for="(detail, index) in content.homeImages.images"
           :key="index"

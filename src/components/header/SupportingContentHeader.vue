@@ -31,9 +31,11 @@ let currentProjectWeaponIndex = computed(() => ({
       </motion.button>
 
       <!-- <p v-if="websiteStore.projectsPage.isProjectWeaponImageLoading">loading...</p> -->
-      <div id="weaponContainer" v-show="!websiteStore.projectsPage.isProjectWeaponImageLoading">
+      <div
+        id="weaponContainer"
+        v-show="!websiteStore.projectsPage.isProjectWeaponImageLoading"
+      >
         <img
-          
           @load="websiteStore.setProjectWeaponImageLoading()"
           class="weaponImages"
           :src="
@@ -53,7 +55,7 @@ let currentProjectWeaponIndex = computed(() => ({
       </div>
 
       <motion.button
-      id="button2"
+        id="button2"
         @click="websiteStore.forwardProjectWeapon"
         :whilePress="{ scale: 0.9 }"
       >
@@ -106,11 +108,11 @@ let currentProjectWeaponIndex = computed(() => ({
   text-align: center;
 }
 
-#button1{
+#button1 {
   grid-area: button1;
 }
 
-#button2{
+#button2 {
   grid-area: button2;
 }
 
