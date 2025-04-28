@@ -9,6 +9,9 @@ const props = defineProps({
   isAbout: Boolean,
   isProject: Boolean,
 });
+
+import { useWebsiteStore } from "@/stores/websiteStore.js";
+const websiteStore = useWebsiteStore();
 </script>
 
 <template>
@@ -21,8 +24,11 @@ const props = defineProps({
         <img :src="leftFinger" alt="Left arrow button." />
       </motion.button>
 
-      <ul id="isHomeUlMediumInterface">
+      <p v-if="websiteStore.homePage.isHomeSupportImagesLoading" >loading...</p>
+      <ul id="isHomeUlMediumInterface" v-show="!websiteStore.homePage.isHomeSupportImagesLoading">
+        
         <motion.li
+          
           v-for="(detail, index) in content.homeImages.images"
           :key="index"
           :initial="{ opacity: 0.7, rotateX: 10, rotateY: 65, scale: 1 }"
@@ -33,17 +39,18 @@ const props = defineProps({
             scale: 1.2,
           }"
           :transition="{ duration: 0.5 }"
-          @click="content.setCurrentHomeTitleAndImage(index)"
+          @click="content.setCurrentHomeTitleAndImage(index, true)"
         >
           <motion.img
             :whilePress="{ backgroundColor: ['rgba(255, 255, 255, 0.5)'] }"
             :src="detail"
             :alt="content.homeImages.alts[index]"
+            @load="websiteStore.setHomeSupportImagesLoading()"
           />
         </motion.li>
       </ul>
 
-      <ul id="isHomeUlSmallInterface">
+      <ul id="isHomeUlSmallInterface" v-show="!websiteStore.homePage.isHomeSupportImagesLoading">
         <AnimatePresence
           v-for="(detail, index) in content.homeImages.images"
           :key="index"
@@ -305,38 +312,38 @@ button {
 
 @keyframes poweringUpSides {
   0% {
-    border-bottom: 15px solid rgba(128, 0, 128, 0.6);
+    border-bottom: 9px solid rgba(128, 0, 128, 0.6);
   }
   33% {
-    border-bottom: 15px solid rgba(128, 0, 128, 0.8);
+    border-bottom: 9px solid rgba(128, 0, 128, 0.8);
   }
   66% {
-    border-bottom: 15px solid rgba(128, 0, 128, 1);
+    border-bottom: 9px solid rgba(128, 0, 128, 1);
   }
   100% {
-    border-bottom: 15px solid rgba(128, 0, 128, 0.6);
+    border-bottom: 9px solid rgba(128, 0, 128, 0.6);
   }
 }
 
 @keyframes poweringUpMiddle {
   0% {
-    border-bottom: 20px solid rgba(128, 0, 128, 0.6);
+    border-bottom: 13px solid rgba(128, 0, 128, 0.6);
   }
   33% {
-    border-bottom: 20px solid rgba(128, 0, 128, 0.8);
+    border-bottom: 13px solid rgba(128, 0, 128, 0.8);
   }
   66% {
-    border-bottom: 20px solid rgba(128, 0, 128, 1);
+    border-bottom: 13px solid rgba(128, 0, 128, 1);
   }
   100% {
-    border-bottom: 20px solid rgba(128, 0, 128, 0.6);
+    border-bottom: 13px solid rgba(128, 0, 128, 0.6);
   }
 }
 
 .titleBackgroundOne {
   animation: poweringUpSides 2.5s infinite ease-in-out;
-  border-right: 10px solid transparent;
-  border-left: 10px solid transparent;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
   left: 0px;
 }
 
@@ -344,8 +351,8 @@ button {
   left: 0;
   right: 0;
   margin: auto;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
   animation: poweringUpMiddle 2.5s infinite ease-in-out;
   animation-delay: 0.33s;
 }
@@ -354,8 +361,8 @@ button {
   animation: poweringUpSides 2.5s infinite ease-in-out;
   animation-delay: 0.66s;
   right: 0px;
-  border-right: 10px solid transparent;
-  border-left: 10px solid transparent;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
 }
 
 @media only screen and (max-width: 992px) {

@@ -6,16 +6,15 @@ import meAsCloud from '@/assets/profile_images/meAsCloud.png';
 import meAsTifa from '@/assets/profile_images/meAsTifa.png';
 import meAsAerith from '@/assets/profile_images/meAsAerith.png';
 
-import sonicImage from '@/assets/home_images/sonic.jpg';
-import dodgersImage from '@/assets/home_images/dodgers.jpg';
-import yosemiteImage from '@/assets/home_images/yosemite.jpg';
-import disneyImage from '@/assets/home_images/disney.jpg';
-import americorpsImage from '@/assets/home_images/americorps.jpg';
-import batmanImage from '@/assets/home_images/batman.jpg';
-import conservationImage from '@/assets/home_images/conservation.jpg';
+import devImage from '@/assets/home_images/dev.jpg';
 import gradImage from '@/assets/home_images/grad.jpg';
-import theaterImage from '@/assets/home_images/theater.jpg';
-
+import conservationImage from '@/assets/home_images/conservation.jpg';
+import americorpsImage from '@/assets/home_images/americorps.jpg';
+import yosemiteImage from '@/assets/home_images/yosemite.jpg';
+import dodgersImage from '@/assets/home_images/dodgers.jpg';
+import sonicImage from '@/assets/home_images/sonic.jpg';
+import disneyImage from '@/assets/home_images/disney.jpg';
+import batmanImage from '@/assets/home_images/batman.jpg';
 
 
 import metersGameVideo from '@/assets/project_videos/metersGame.mp4';
@@ -23,6 +22,7 @@ import moviePalsVideo from '@/assets/project_videos/moviePals.mp4';
 import replicatVideo from '@/assets/project_videos/replicat.mp4';
 import rollPokemonVideo from '@/assets/project_videos/rollForPokemon.mp4';
 import whosMonsterVideo from '@/assets/project_videos/whosThatMonster.mp4';
+import spookyMoviesVideo from '@/assets/project_videos/topSpookyMovies.mp4';
 
 import swordImage from '@/assets/game_images/busterSword.png';
 import swordHitImage from '@/assets/game_images/swordHit.png';
@@ -35,53 +35,58 @@ import magicSound from '@/assets/game_sounds/magicSound.mp3';
 import punchSound from '@/assets/game_sounds/punchSound.mp3';
 import slashSound from '@/assets/game_sounds/slashSound.mp3';
 
+import spookyMoviesPdf from '@/assets/pdfs/top_spooky_movies.pdf';
+
 export const useWebsiteStore = defineStore('websiteStore', {
 
     state: () => {
         return {
 
+            // loadedImages: 0,
+            
             isCredits: false,
             currentHeaderImage: mainImage,
             homePage: {
+                isHomeSupportImagesLoading: true,
+                isHomeMainImageLoading: true,
                 headerImage: mainImage,
-                currentHomeTitle: "I'm a CSUSB Coyote!",
-                currentHomeImage: gradImage,
+                currentHomeTitle: "I'm a software developer.",
+                currentHomeImage: devImage,
                 currentHomeIndex: 0,
-                currentHomeAltText: "Graduation collage picture.",
+                currentHomeAltText: "Me sitting at computer desk.",
                 main_content: {
                     0: {
+                        title: "I'm a software developer.",
+                        image: devImage,
+                        alt: "Me sitting at computer desk."
+                    },
+                    1: {
                         title: "I'm a CSUSB Coyote!",
                         image: gradImage,
                         alt: "Graduation collage picture."
                     },
-                    1: {
+                    2: {
                         title: "I'm always up for a conservation effort.",
                         image: conservationImage,
                         alt: "Group picture of conservation workers."
                     },
-                    2: {
+                    3: {
                         title: "I'm an AmeriCorps alum.",
                         image: americorpsImage,
                         alt: "Picture with AmeriCorps poster."
                     },
-                    3: {
+                    4: {
                         title: "I'm an adventurer!",
                         image: yosemiteImage,
                         alt: "Picture with waterfall in the background."
                     },
-                    4: {
+                    5: {
                         title: "It's time for Dodger baseball!",
                         image: dodgersImage,
                         alt: "Picture of me holding churros and Dodgers stadium in the background."
                     },
-                    5: {
-                        title: "I'm a movie goer.",
-                        image: theaterImage,
-                        alt: "Picture with Sonic 3 theater cardboard setup."
-                    },
-
                     6: {
-                        title: "I will place among the best in your Halloween contest. (Sonic)",
+                        title: "I will rank among the best in your Halloween contest. (Sonic)",
                         image: sonicImage,
                         alt: "Picture of me dressed up as Sonic."
                     },
@@ -164,7 +169,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                                 answer: "Kazuma Kuwabara - YuYu Hakusho"
                             },
                             8: {
-                                question: "What music do you  recommend?",
+                                question: "What music do you recommend?",
                                 answer: "spotify"
                             }
                         }
@@ -200,6 +205,17 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 currentProjectSound: new Audio(slashSound),
                 // isMuted: false,
                 currentProjectHitImage: swordHitImage,
+
+
+                isProjectWeaponImageLoading: true,
+                currentProjectWeaponImage: swordImage,
+                currentProjectWeaponDescription: 'Buster Sword',
+
+
+
+
+
+
                 currentProjectWeaponIndex: 0,
                 main_content: {
                     0: {
@@ -219,6 +235,22 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         `
                     },
                     1: {
+                        title: "Top Spooky Movies",
+                        builtWith: "Microsoft Excel, SQL",
+                        video: spookyMoviesVideo,
+                        dateCompleted: "Oct 2023",
+                        github: "",
+                        application: spookyMoviesPdf,
+                        description:
+                            `
+                        It's time to face your fears and uncover the creepiest crawlies in cinema that will send shivers down your spine.
+                        The reason for this project was to perform an analysis with Microsoft Excel and to replicate the results with 
+                        SQL to demonstrate data validity and compare the processes between the two technologies that reach the same goal.
+                        This project made me recognize that each technology has its own benefits and characteristics and that it's 
+                        wise to understand them so that you can apply the proper one to your project.
+                        `
+                    },
+                    2: {
                         title: "3,000 Meters Above",
                         builtWith: "JavaScript, CSS",
                         video: metersGameVideo,
@@ -233,7 +265,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         goals were met, demonstrating animation and one of the many ways to express yourself through technology.
                         `
                     },
-                    2: {
+                    3: {
                         title: "Replicat, Soft Revival",
                         builtWith: "JavaScript, Bootstrap",
                         video: replicatVideo,
@@ -243,12 +275,12 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         description:
                             `
                         Browse through The Siber Corporation's website and be persuaded by their "Replicat" product. The goal of this 
-                        project was to create a responsive webpage capable of accomdating various device types and screen sizes with Bootstrap.
-                        This project taught me that the message being conveyed to the user is what's most important and sometimes you have to
+                        project was to create a responsive webpage capable of accommodating various device types and screen sizes with Bootstrap.
+                        This project taught me that the message being conveyed to the user is what is most important and sometimes you have to
                         sacrifice or change features in order to translate it well for their specific devices.
                         `
                     },
-                    3: {
+                    4: {
                         title: "Movie Pals",
                         builtWith: "React, Bootstrap",
                         video: moviePalsVideo,
@@ -263,7 +295,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         properly naming/defining code elements, commenting on functions, and maintaining a consistent style throughout the project.
                         `
                     },
-                    4: {
+                    5: {
                         title: "Who's that Monstermon?",
                         builtWith: "JavaScript, CSS",
                         video: whosMonsterVideo,
@@ -328,26 +360,32 @@ export const useWebsiteStore = defineStore('websiteStore', {
         setProjectPage(bool) {
             this.projectsPage.isProjectPage = bool;
         },
-        setCurrentHomeTitleAndImage(key) {
+        setCurrentHomeTitleAndImage(key, isPictureClick) {
+
+            if(key === this.homePage.currentHomeIndex && isPictureClick){
+                return;
+            }
+
             this.homePage.currentHomeTitle = this.homePage.main_content[key].title;
             this.homePage.currentHomeImage = this.homePage.main_content[key].image;
             this.homePage.currentHomeAltText = this.homePage.main_content[key].alt;
             this.homePage.currentHomeIndex = key;
+            this.homePage.isHomeMainImageLoading = true;
         },
         forwardHomeTitleAndImage() {
             if (this.homePage.currentHomeIndex === Object.keys(this.homePage.main_content).length - 1) {
-                this.setCurrentHomeTitleAndImage(0);
+                this.setCurrentHomeTitleAndImage(0, false);
             } else {
                 this.homePage.currentHomeIndex = this.homePage.currentHomeIndex + 1;
-                this.setCurrentHomeTitleAndImage(this.homePage.currentHomeIndex);
+                this.setCurrentHomeTitleAndImage(this.homePage.currentHomeIndex, false);
             }
         },
         backwardHomeTitleAndImage() {
             if (this.homePage.currentHomeIndex === 0) {
-                this.setCurrentHomeTitleAndImage(Object.keys(this.homePage.main_content).length - 1);
+                this.setCurrentHomeTitleAndImage(Object.keys(this.homePage.main_content).length - 1, false);
             } else {
                 this.homePage.currentHomeIndex = this.homePage.currentHomeIndex - 1;
-                this.setCurrentHomeTitleAndImage(this.homePage.currentHomeIndex);
+                this.setCurrentHomeTitleAndImage(this.homePage.currentHomeIndex, false);
             }
         },
         setCurrentProject(key) {
@@ -367,10 +405,15 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 this.projectsPage.currentProjectSound.play();
             }
         },
+        // this is setting everything related to the weapon not just hit and sound
         setCurrentProjectHitImageAndSound(key) {
+            this.projectsPage.currentProjectWeaponImage = this.projectsPage.supporting_content[key].weaponImage;
+            this.projectsPage.currentProjectWeaponDescription = this.projectsPage.supporting_content[key].description;
             this.projectsPage.currentProjectHitImage = this.projectsPage.supporting_content[key].hitImage;
             this.projectsPage.currentProjectSound = new Audio(this.projectsPage.supporting_content[key].sound);
             this.currentHeaderImage = this.projectsPage.supporting_content[this.projectsPage.currentProjectWeaponIndex].pixelImage;
+
+            this.projectsPage.isProjectWeaponImageLoading = true;
         },
         forwardProjectWeapon() {
             if (this.projectsPage.currentProjectWeaponIndex === Object.keys(this.projectsPage.supporting_content).length - 1) {
@@ -390,6 +433,51 @@ export const useWebsiteStore = defineStore('websiteStore', {
         },
         setCredits() {
             this.isCredits = !this.isCredits;
+        },
+        setHomeSupportImagesLoading(){
+
+            if (!this.loadedImages) {
+                this.loadedImages = 0;
+            }
+            this.loadedImages++;
+            if(this.getHomeImages.images.length === this.loadedImages){
+                this.homePage.isHomeSupportImagesLoading = false;
+            }
+     
+        },
+        setHomeMainImageLoading(){
+
+            if (!this.loadedImage) {
+                this.loadedImage = 0;
+            }
+
+            this.loadedImage = 0;
+        
+            this.loadedImage++;
+        
+
+            if(1 === this.loadedImage){
+                
+                this.homePage.isHomeMainImageLoading = false;
+            }
+
+        },
+        setProjectWeaponImageLoading(){
+
+            if (!this.loadedWeaponImage) {
+                this.loadedWeaponImage = 0;
+            }
+
+            this.loadedWeaponImage = 0;
+        
+            this.loadedWeaponImage++;
+        
+
+            if(1 === this.loadedWeaponImage){
+                
+                this.projectsPage.isProjectWeaponImageLoading = false;
+            }
+
         }
         // setMute(){
         //     this.projectsPage.isMuted = !this.projectsPage.isMuted;
@@ -412,10 +500,12 @@ export const useWebsiteStore = defineStore('websiteStore', {
         getHomeImages(state) {
             let images = [];
             let alts = [];
+
             for (let key in state.homePage.main_content) {
                 images.push(state.homePage.main_content[key].image);
                 alts.push(state.homePage.main_content[key].alt)
             }
+
             return { images, alts };
         },
         getAboutTechnicalSkills(state) {
@@ -446,6 +536,12 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 descriptions.push(state.projectsPage.supporting_content[key].description);
             }
             return { weaponImages, descriptions };
+        },
+        getCurrentProjectWeaponImageAndDescription(state){
+
+            let weaponImage = state.projectsPage.currentProjectWeaponImage;
+            let weaponDescription = state.projectsPage.currentProjectWeaponDescription;
+            return { weaponImage, weaponDescription }
         },
         getProjectTitles(state) {
             let titles = [];

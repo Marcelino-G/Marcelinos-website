@@ -5,51 +5,29 @@ const props = defineProps({
   content: Object,
   isHome: Boolean,
   isAbout: Boolean,
-  isProject: Boolean
+  isProject: Boolean,
 });
-
 </script>
 
 <template>
   <div>
     <div v-if="isHome === true">
-        <motion.h2
-          :initial="{ y: -35 }"
-          :animate="{ y: 0 }"
-          :key="content.currentHomeIndex"
-        >
-          {{ content.currentHomeTitle }}
-        </motion.h2>
+      <h2 :key="content.currentHomeIndex">
+        {{ content.currentHomeTitle }}
+      </h2>
     </div>
 
-
-
-
     <div v-if="isAbout === true">
-      <AnimatePresence>
-        <motion.h2
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :transition="{ duration: 2 }"
-        >
-          {{ content.currentAboutTitle }}
-        </motion.h2>
-      </AnimatePresence>
+      <h2>
+        {{ content.currentAboutTitle }}
+      </h2>
     </div>
 
     <div v-if="isProject === true">
-      <AnimatePresence>
-        <motion.h2
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :transition="{ duration: 2 }"
-          :key="content.currentProjectIndex"
-        >
-          {{ content.currentProjectTitle }}
-        </motion.h2>
-      </AnimatePresence>
+      <h2 :key="content.currentProjectIndex">
+        {{ content.currentProjectTitle }}
+      </h2>
     </div>
-    
   </div>
 </template>
 
@@ -61,7 +39,7 @@ div {
   height: 100%;
 }
 
-h2{
+h2 {
   text-align: center;
   overflow: auto;
   scrollbar-color: #a9a9a9 rgba(0, 0, 0, 0.4);

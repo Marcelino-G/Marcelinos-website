@@ -16,12 +16,15 @@ const websiteStore = useWebsiteStore();
 <template>
   <div>
     <div v-if="isHome === true" id="isHomeContainerMainContent">
+      <p v-if="websiteStore.homePage.isHomeMainImageLoading">loading...</p>
       <motion.img
-        :initial="{ opacity: 0 }"
-        :animate="{ opacity: 1 }"
+        v-show="!websiteStore.homePage.isHomeMainImageLoading"
+        :initial="{ borderRadius: '100%' }"
+        :animate="{ borderRadius: '0%' }"
         :key="websiteStore.getCurrentHomeImage.currentHomeIndex"
         :src="websiteStore.getCurrentHomeImage.currentHomeImage"
         :alt="websiteStore.getCurrentHomeImage.currentHomeAltText"
+        @load="websiteStore.setHomeMainImageLoading"
       />
     </div>
 
@@ -37,7 +40,7 @@ const websiteStore = useWebsiteStore();
     </div>
 
     <div v-if="isProject === true" id="isProjectContainerMainContent">
-      <motion.ul :key="content.currentProjectIndex">
+      <ul :key="content.currentProjectIndex">
         <li>
           {{ content.currentProjectDescription }}
         </li>
@@ -46,21 +49,25 @@ const websiteStore = useWebsiteStore();
           <li>Completed: {{ content.currentProjectDate }}</li>
           <li>Built with: {{ content.currentBuiltWith }}</li>
           <li>
-            <a :href="content.currentProjectGithub" target="_blank"
+            <a
+              v-if="content.currentProjectGithub !== ''"
+              :href="content.currentProjectGithub"
+              target="_blank"
               >GitHub repository</a
             >
+            <p v-else>&nbsp;</p>
           </li>
           <li>
             <a
               v-if="content.currentProjectApplication !== ''"
               :href="content.currentProjectApplication"
               target="_blank"
-              >Application</a
+              >View project</a
             >
             <p v-else>&nbsp;</p>
           </li>
         </div>
-      </motion.ul>
+      </ul>
 
       <div id="videoHitContainer">
         <div id="videoContainer">
@@ -110,8 +117,8 @@ a {
 }
 
 #isHomeContainerMainContent img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 100%;
+  max-height: 100%;
   background: rgba(33, 33, 33, 0.6);
   border-radius: 5%;
   padding: 10px;
@@ -124,9 +131,8 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-padding: 0 20px;
+  padding: 0 20px;
   /* padding: 20px; */
-
 }
 
 #isAboutContainerMainContent div {
@@ -142,7 +148,6 @@ padding: 0 20px;
   justify-content: space-evenly;
   /* align-items: center; */
   gap: 15px;
-  
 }
 
 #isAboutContainerMainContent p {
@@ -194,7 +199,7 @@ padding: 0 20px;
   max-width: 10%;
 }
 
-#videoContainer{
+#videoContainer {
   display: none;
 }
 
@@ -213,7 +218,7 @@ padding: 0 20px;
     grid-template-areas: "ul";
     /* padding: 10px; */
   }
-/* 
+  /* 
   #videoHitContainer {
     display: none;
   } */
@@ -238,12 +243,9 @@ padding: 0 20px;
     display: flex;
   }
 
-  #videoContainer{
+  #videoContainer {
     display: block;
   }
-
-
-
 }
 
 @media only screen and (min-width: 992px) {
