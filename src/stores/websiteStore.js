@@ -230,8 +230,8 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         It's time to face your fears and uncover the creepiest crawlies in cinema that will send shivers down your spine.
                         The reason for this project was to perform an analysis with Microsoft Excel and to replicate the results with 
                         SQL to demonstrate data validity and compare the processes between the two technologies that reach the same goal.
-                        This project made me recognize that each technology has its own benefits and characteristics and that it's 
-                        wise to understand them so that you can apply the proper one to your project.
+                        This project made me recognize that similar technologies still have their own benefits and characteristics and understanding them
+                        is wise, so that you can apply the proper tool to your project.
                         `
                     },
                     2: {
@@ -245,7 +245,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                             `
                         Take control of a fighter pilot who faces waves of enemies as a strange voice tries to guide you home.
                         The purpose of this project was to familiarize myself with the methods associated with drawing onto the
-                        <canvas> element and interactive animations. While this project may not be perfect, presentational and functional
+                        <canvas> element and creating interactive animations. While this project may not be perfect, presentational and functional
                         goals were met, demonstrating animation and one of the many ways to express yourself through technology.
                         `
                     },
