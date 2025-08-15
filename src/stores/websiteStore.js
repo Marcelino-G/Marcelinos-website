@@ -105,26 +105,23 @@ export const useWebsiteStore = defineStore('websiteStore', {
             aboutMePage: {
                 main_content: {
                     currentAboutTitle: "About me",
-                    currentBiography: [`Growing up in Southern California, I was surrounded by diverse cultures, awesome music, delicious food, 
-                    and the natural beauty of the San Bernardino National Forest. This environment fostered my deep appreciation 
-                    for the world around me and ultimately inspired my desire to dedicate my skills to enhancing quality of life 
-                    in some way.`,
-                        `Initially, I planned to do so as a high school teacher, but after earning my psychology degree 
-                    and working as a student mentor for at-risk youth, I got a glimpse into the education world and found that it 
+                    currentBiography: [`Growing up in Southern California, I was surrounded by diverse cultures, awesome music, delicious foods, 
+                    and the beautiful San Bernardino National Forest. This environment fostered my deep appreciation 
+                    for the world around me and ultimately inspired me to dedicate myself to nurturing it in some way.`,
+                        `Initially, I planned to do this by becoming a high school teacher. At one point, I was working as a student mentor
+                    for at-risk youth and I got a glimpse into the education world. I found that it 
                     left a void in me, one it wouldn't be able to fill.`,
                         `Yes, I have an affinity for the world around me, but I 
-                    also have a strong need for creative expression, something I didn't want to limit to my weekends or free time. 
+                    also have a strong need for creative expression, which is something I don't want to limit to my free time. 
                     This realization led me to explore different technologies before fully gravitating toward software development. 
-                    I chose technology, specifically code because I had experimented with it during my college years and really enjoyed it.`,
+                    I chose software development because I had already touched upon it during my college years and really enjoyed it. I recognized
+                    that it not only satisfied my creative tendencies, but that it can also benefit the world in a variety of ways.`,
                         `You might be wondering, "Is software development really a means of expression?" and I would say "Yes". 
                     Software development, from sketching and brainstorming your ideas on a diagram all the way to deploying it, gives 
                     me the same satisfaction and feeling writing a song on the guitar or drums did when I was younger. Building projects 
-                    feels like an orchestration, a form of storytelling.`,
-                        ` Fast forward to today, I've been immersed in software development 
-                    for over three years and recently graduated from Tech Elevator's Java Web Application Development Bootcamp. With tools 
-                    like Java, JavaScript, and SQL in my toolkit, my intentions remain the same, and that's to apply my skills to improve 
-                    quality of life through technology. Looking further ahead, I hope to return to the education space to volunteer my time 
-                    teaching software development to high school students.`,
+                    feels like an orchestration or a form of storytelling.`,
+                        `So, because software development allows me to be creative and gives me the opportunity to better the world, I've naturally 
+                    been immersed in it for over three years. My goal is to be part of meaningful projects that enhance quality of life and to become a mentor for future developers.`,
                         `Now that you've gotten to know me a bit, I invite you to explore 
                     my projects, connect with me on LinkedIn, and share your story.`],
                     funFacts: {
