@@ -177,19 +177,18 @@ export const useWebsiteStore = defineStore('websiteStore', {
 
                 isProjectPage: false,
                 // headerImage: animatedImage,
-                currentProjectTitle: "Roll for Pokemon",
-                currentBuiltWith: "Java, SQL",
-                currentProjectVideo: rollPokemonVideo,
-                currentProjectDate: "Jan 2025",
-                currentProjectGithub: "https://github.com/Marcelino-G/Roll-for-Pokemon",
+                currentProjectTitle: "Party Planner",
+                currentBuiltWith: "Java, Spring Boot, JavaScript",
+                currentProjectVideo: partyPlannerVideo,
+                currentProjectDate: "Nov 2025",
+                currentProjectGithub: "https://github.com/Marcelino-G/Party-Planner",
                 currentProjectApplication: "",
                 currentProjectDescription:
                     `
-                        Grab your bag and step into the tall grass, what Pokemon await and will you catch them all? The objective
-                        of this project was to design it with polymorphism, inheritance, and encapsulation fundamentals in mind
-                        to simplify complexity, promote readability, and encourage modifications. This project made me realize
-                        that a detailed blueprint that outlines the features and connections between different components makes
-                        the building process much smoother.
+                        Start party planning with ease for your next event. Party Planner was built to exemplify UI interaction with
+                        a RESTful API as a full-stack application. The MVC design pattern was leveraged for backend development using Java Spring Boot,
+                        alongside PostgreSQL for database management. From this project, I learned that identifying exactly which pieces of data the
+                        frontend needs can save significant development time. It helps avoid building unnecessary data models or assigning redundant setters and variables.
                         `,
                 currentProjectIndex: 0,
                 currentProjectSound: new Audio(slashSound),
