@@ -47,7 +47,7 @@ const websiteStore = useWebsiteStore();
 
         <div class="projectDetailsContainer">
           <li>Completed: {{ content.currentProjectDate }}</li>
-          <li>Built with: {{ content.currentBuiltWith }}</li>
+          <li>Focused technologies: {{ content.currentBuiltWith }}</li>
           <li>
             <a
               v-if="content.currentProjectGithub !== ''"

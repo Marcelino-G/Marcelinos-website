@@ -22,6 +22,7 @@ import replicatVideo from '@/assets/project_videos/replicat.mp4';
 import rollPokemonVideo from '@/assets/project_videos/rollForPokemon.mp4';
 import whosMonsterVideo from '@/assets/project_videos/whosThatMonster.mp4';
 import spookyMoviesVideo from '@/assets/project_videos/topSpookyMovies.mp4';
+import partyPlannerVideo from '@/assets/project_videos/partyPlanner.mp4';
 
 import swordImage from '@/assets/game_images/busterSword.png';
 import swordHitImage from '@/assets/game_images/swordHit.png';
@@ -200,6 +201,21 @@ export const useWebsiteStore = defineStore('websiteStore', {
                 currentProjectWeaponIndex: 0,
                 main_content: {
                     0: {
+                        title: "Party Planner",
+                        builtWith: "Java, Spring Boot, JavaScript",
+                        video: partyPlannerVideo,
+                        dateCompleted: "Nov 2025",
+                        github: "https://github.com/Marcelino-G/Party-Planner",
+                        application: "",
+                        description:
+                            `
+                        Start party planning with ease for your next event. Party Planner was built to exemplify UI interaction with
+                        a RESTful API as a full-stack application. The MVC design pattern was leveraged for backend development using Java Spring Boot,
+                        alongside PostgreSQL for database management. From this project, I learned that identifying exactly which pieces of data the
+                        frontend needs can save significant development time. It helps avoid building unnecessary data models or assigning redundant setters and variables.
+                        `
+                    },
+                    1: {
                         title: "Roll for Pokemon",
                         builtWith: "Java, SQL",
                         video: rollPokemonVideo,
@@ -215,7 +231,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         the building process much smoother.
                         `
                     },
-                    1: {
+                    2: {
                         title: "Top Spooky Movies",
                         builtWith: "Microsoft Excel, SQL",
                         video: spookyMoviesVideo,
@@ -231,7 +247,7 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         is wise, so that you can apply the proper tool to your project.
                         `
                     },
-                    2: {
+                    3: {
                         title: "3,000 Meters Above",
                         builtWith: "JavaScript, CSS",
                         video: metersGameVideo,
@@ -246,9 +262,9 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         goals were met, demonstrating animation and one of the many ways to express yourself through technology.
                         `
                     },
-                    3: {
+                    4: {
                         title: "Replicat, Soft Revival",
-                        builtWith: "JavaScript, Bootstrap",
+                        builtWith: "JavaScript, Bootstrap, CSS",
                         video: replicatVideo,
                         dateCompleted: "Oct 2022",
                         github: "https://github.com/Marcelino-G/Replicat-Soft-Revival",
@@ -261,9 +277,9 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         sacrifice or change features in order to translate it well for their specific devices.
                         `
                     },
-                    4: {
+                    5: {
                         title: "Movie Pals",
-                        builtWith: "React, Bootstrap",
+                        builtWith: "React, Bootstrap, CSS",
                         video: moviePalsVideo,
                         dateCompleted: "Aug 2022",
                         github: "https://github.com/Marcelino-G/Movie-Pals",
@@ -276,9 +292,9 @@ export const useWebsiteStore = defineStore('websiteStore', {
                         properly naming/defining code elements, commenting on functions, and maintaining a consistent style throughout the project.
                         `
                     },
-                    5: {
+                    6: {
                         title: "Who's that Monstermon?",
-                        builtWith: "JavaScript, CSS",
+                        builtWith: "JavaScript",
                         video: whosMonsterVideo,
                         dateCompleted: "May 2022",
                         github: "https://github.com/Marcelino-G/Who-s-that-Monstermon",
